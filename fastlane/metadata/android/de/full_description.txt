@@ -1,5 +1,5 @@
-<i>Windvolt</i> hilft Dir bei der strategischen Nutzung erneuerbarer Energie, insbesondere aus Wind.
+<i>Windvolt</i> hilft bei der strategischen Nutzung erneuerbarer Energie, insbesondere aus Wind.
 
-<i>Windvolt</i> wird Dir Zeitpunkte zum Laden Deiner elektrischen Geräte wie Smartphone, E-Bike oder E-Auto empfehlen – nämlich dann, wenn die Erträge aus erneuerbarer Energie gerade hoch sind.
+<i>Windvolt</i> empfiehlt das Laden Deiner elektrischen Geräte wie Smartphone, E-Bike oder E-Auto immer dann, wenn die Erträge aus erneuerbarer Energie gerade hoch sind.
 
-Leider gibt es für Windenergie keine Open Data Quelle, deshalb nutzt diese App ein NonFreeNet feature.
+Leider gibt es für Windenergie keine Open Data, deshalb nutzt diese App NonFreeNet features.

@@ -1,8 +1,6 @@
 ##Version 1.04
 windvolt official presence
 @windvolt@mastodon.technology
-pinimento (at) gmail dot com
-
 
 de-de:
 'Strategische Nutzung Erneuerbarer Energie'

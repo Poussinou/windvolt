@@ -2,4 +2,4 @@
 
 <i>Windvolt</i> empfiehlt das Laden Deiner elektrischen Geräte wie Smartphone, E-Bike oder E-Auto immer dann, wenn die Erträge aus erneuerbarer Energie gerade hoch sind.
 
-Leider gibt es für Windenergie keine Open Data, deshalb nutzt diese App NonFreeNet features.
+- Leider gibt es für Windenergie keinen Open-Data Dienst, deshalb nutzt diese App NonFreeNet features.

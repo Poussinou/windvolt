@@ -2,4 +2,4 @@
 
 <i>Windvolt</i> will recommend loading your devices like smartphone, e-bike or e-car when there is plenty of renewable energy harvested.
 
-Unfortunately there is no Open Data source for windpower, that's why this app uses a NonFreeNet feature.
+- unfortunately there is no open data service for windpower, that's why this app uses NonFreeNet features.

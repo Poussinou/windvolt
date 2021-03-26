@@ -38,11 +38,11 @@ import androidx.fragment.app.DialogFragment;
 import com.google.android.material.snackbar.Snackbar;
 
 import org.windvolt.R;
-import org.windvolt.system.device_store.XMLDeviceStore;
+import org.windvolt.system.device_store.XMLModelStore;
 
 public class DeviceManagement extends AppCompatActivity {
 
-    static XMLDeviceStore deviceStore;
+    static XMLModelStore deviceStore;
     static TextView sumupDevices;
 
     @Override
@@ -54,7 +54,7 @@ public class DeviceManagement extends AppCompatActivity {
         if (actionBar != null) {
             //actionBar.setDisplayHomeAsUpEnabled(true);
 
-            actionBar.setTitle("Devices");
+            actionBar.setTitle(R.string.devices_title); // devices_title
         }
 
 
@@ -62,7 +62,7 @@ public class DeviceManagement extends AppCompatActivity {
         MODEL
          */
 
-        deviceStore = new XMLDeviceStore(this);
+        deviceStore = new XMLModelStore(this);
         deviceStore.createListViewAdapter(R.layout.system_device_list, R.id.device_name);
 
         ListView lv = (ListView) findViewById(R.id.list_devices);
@@ -92,9 +92,7 @@ public class DeviceManagement extends AppCompatActivity {
 
 
 
-        /*
-        DIALOG ACTIONS
-         */
+        /* DIALOG ACTIONS */
 
         // share action
         findViewById(R.id.device_share).setOnClickListener(
@@ -102,7 +100,7 @@ public class DeviceManagement extends AppCompatActivity {
 
                     @Override
                     public void onClick(View view) {
-                        // TODO send devices
+                        // TODO share devices
 
                         Snackbar.make(view, "derzeit nicht unterstützt", Snackbar.LENGTH_LONG).show();
                     }
@@ -154,13 +152,13 @@ public class DeviceManagement extends AppCompatActivity {
             final View view = inflater.inflate(R.layout.system_device_add, null);
 
             builder.setView(view)
-                    .setTitle("add device")
+                    .setTitle(getString(R.string.device_add_title))
 
-                    .setPositiveButton("add", new DialogInterface.OnClickListener() {
+                    .setPositiveButton(getString(R.string.device_action_add), new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
 
                             // create device
-                            EditText edit_name = view.findViewById(R.id.name_edit);
+                            EditText edit_name = view.findViewById(R.id.position_input);
                             String name = edit_name.getText().toString();
 
                             // evaluate type
@@ -189,7 +187,7 @@ public class DeviceManagement extends AppCompatActivity {
                         }
 
                     })
-                    .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+                    .setNegativeButton(getString(R.string.device_action_cancel), new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             // do nothing
                         }
@@ -211,13 +209,13 @@ public class DeviceManagement extends AppCompatActivity {
             final View view = inflater.inflate(R.layout.system_device_delete, null);
 
             builder.setView(view)
-                    .setTitle("delete device")
+                    .setTitle(getString(R.string.device_del_title))
 
-                    .setPositiveButton("delete", new DialogInterface.OnClickListener() {
+                    .setPositiveButton(getString(R.string.device_action_delete), new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             
                             // delete device
-                            EditText del_name = view.findViewById(R.id.name_edit);
+                            EditText del_name = view.findViewById(R.id.position_input);
                             String intpos = del_name.getText().toString();
                             int position = Integer.parseInt(intpos);
 
@@ -231,7 +229,7 @@ public class DeviceManagement extends AppCompatActivity {
                         }
 
                     })
-                    .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+                    .setNegativeButton(getString(R.string.device_action_cancel), new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             // do nothing
                         }

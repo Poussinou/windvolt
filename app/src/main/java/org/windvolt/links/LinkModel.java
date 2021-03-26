@@ -18,12 +18,12 @@
 */
 package org.windvolt.links;
 
-public class Link {
+public class LinkModel {
     private String linkSubject = "";
     private String linkAddress = "";
     private int linkImage = 0;
 
-    public Link(String subject, String address, int image) {
+    public LinkModel(String subject, String address, int image) {
         setSubject(subject);
         setAddress(address);
         setImage(image);

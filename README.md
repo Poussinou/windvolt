@@ -3,26 +3,29 @@
 
 windvolt für Deutschland, (©) 2020 Max Sumer
 
-- Application Name: "windvolt"
-- [windvolt.org](windvolt/app/)
+windvolt targets the usage and pricing of renewable energy, especially wind
+
+
+# getting started
+
+- open the settings and enter a location.
+- use any city, state format.
+- close and reopen the app.
 
 
 
-# Getting started
+## what's contained
 
-First thing is to determine your location in the settings.
-Enter the first letters of your nearest larger city to see if its in this list.
+* loading recommendation
 
-
-
-## What's contained in this project
-
-recommendation, story, organigram, structogram, weblinks
+* the story of wind
+* market who is who
+* business model
+* community weblinks
 
 
 
-
-### code
+### code and license
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

@@ -43,11 +43,10 @@ public class StoryOfWindvolt extends AppCompatActivity {
         if (actionBar != null) {
             //actionBar.setDisplayHomeAsUpEnabled(true);
 
-            actionBar.setTitle("windvolt story");
+            actionBar.setTitle(getString(R.string.story_title)); // story_title
         }
 
-
-        viewPager = findViewById(R.id.slip_pager);
+        viewPager = findViewById(R.id.story_pager);
 
         SlipAdapter adapter = new SlipAdapter(this);
         viewPager.setAdapter(adapter);
@@ -55,7 +54,7 @@ public class StoryOfWindvolt extends AppCompatActivity {
 
 
     public class SlipAdapter extends FragmentStateAdapter {
-        private static final int CARD_ITEM_SIZE = 7;
+        private static final int CARD_ITEM_SIZE = 8;
 
         public SlipAdapter(@NonNull FragmentActivity fragmentActivity) {
             super(fragmentActivity);

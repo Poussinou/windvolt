@@ -18,15 +18,19 @@
 */
 package org.windvolt.system;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
+import androidx.preference.PreferenceManager;
 
 import org.windvolt.R;
 
 public class Settings extends AppCompatActivity {
+
 
     public Settings() {}
 
@@ -39,7 +43,7 @@ public class Settings extends AppCompatActivity {
         if (actionBar != null) {
             //actionBar.setDisplayHomeAsUpEnabled(true);
 
-            actionBar.setTitle("Settings");
+            actionBar.setTitle(getString(R.string.settings_hello));
         }
 
         getSupportFragmentManager()
@@ -54,6 +58,23 @@ public class Settings extends AppCompatActivity {
         @Override
         public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
             setPreferencesFromResource(R.xml.preferences, rootKey);
+
+            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+
+            Preference p_location = findPreference("location_input");
+            String location = sharedPreferences.getString("location_input", "");
+            p_location.setTitle(location);
+
+            Preference p_longitude = findPreference("location_longitude");
+            String longitude = sharedPreferences.getString("location_longitude", "");
+            p_longitude.setTitle(longitude);
+
+            Preference p_latitude = findPreference("location_latitude");
+            String latitude = sharedPreferences.getString("location_latitude", "");
+            p_latitude.setTitle(latitude);
+
         }
+
+
     }
 }

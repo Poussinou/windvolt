@@ -47,8 +47,9 @@ public class StoryPage extends Fragment {
             "Es liegt nahe den Wind in Strom umzuwandeln.",
             "Leider ist der Wind sehr flackerig.",
             "Mit unseren Smartphones können wir den Windstrom speichern.",
-            "Das Smartphone kann man immer laden. Es kann sich nicht überladen.",
-            "Ein typisches Smartphone hat eine Leistung von 11 Wattstunden im Betrieb. Beim Laden sind es 3 Wattstunden.",
+            "Das Smartphone kann man immer laden. Auch wenn es noch nicht leer ist.",
+            "Benutze windvolt täglich und verändere so Deine Ladegewohnheiten.",
+            "Dekarbonisiere den Strom und unterstütze damit die ökologische Bewegung.",
             "windvolt informiert Dich wenn sich das Laden lohnt."
     };
 

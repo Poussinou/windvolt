@@ -1,1 +1,25 @@
-Version 1.03
+##Version 1.04
+windvolt official presence
+@windvolt@mastodon.technology
+pinimento (at) gmail dot com
+
+
+de-de:
+'Strategische Nutzung Erneuerbarer Energie'
+'Strategische Nutzung erneuerbarer Energie'
+
+
+
+location:       location assistant, added geolocation, added location service
+
+
+strings:        texts approved, prepared translations
+preferences:    texts improved, location displayed, restart notice
+devices:        XMLDeviceStore  ->  XMLModelStore, analog ModelStore
+story:          page 6 replaced, page 7 added
+links:          adapter integrated
+
+
+#Version 1.03
+initial official release
+i used the app myself for 3 month and made many changes

@@ -17,34 +17,58 @@
  You should have received a copy of the GNU General Public License
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
-<PreferenceScreen xmlns:tools="http://schemas.android.com/tools"
+<PreferenceScreen xmlns:app2="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res/android"
     tools:ignore="NamespaceTypo">
 
-    <PreferenceCategory app:title="@string/category_location">
+    <PreferenceCategory
+        app:title="@string/location_category"
+        >
 
         <EditTextPreference
-            app:key="input_location"
+            app:key="location_input"
             app:selectAllOnFocus="true"
-            app:singleLine="false"
+            app:singleLine="true"
             app:summary="@string/location_summary"
-            app:title="@string/location_title" />
+            app:title="@string/location_title">
+
+        </EditTextPreference>
+        <EditTextPreference
+            app:key="location_longitude"
+            app:selectAllOnFocus="true"
+            app:singleLine="true"
+            app:summary="@string/location_longitude"
+            app:title="longitude"
+            app:visibility="invisible" />
+        <EditTextPreference
+            app:key="location_latitude"
+            app:selectAllOnFocus="true"
+            app:singleLine="true"
+            app:summary="@string/location_latitude"
+            app:title="latitude"
+            app:visibility="invisible" />
 
     </PreferenceCategory>
 
-    <PreferenceCategory app:title="@string/category_devices">
+    <PreferenceCategory app:title="@string/community_category">
 
         <CheckBoxPreference
             app:defaultValue="false"
-            app:key="updates"
-            app:summary="@string/updates_summary"
-            app:title="@string/updates_title" />
+            app:key="community_updates"
+            app:summary="@string/sharing_summary"
+            app:title="@string/sharing_title">
+
+        </CheckBoxPreference>
+
         <CheckBoxPreference
             app:defaultValue="false"
             app:enabled="false"
-            app:key="notifications"
-            app:summary="@string/notifications_summary"
-            app:title="@string/notifications_title" />
+            app:key="community_notifications"
+            app:summary="@string/notification_summary"
+            app:title="@string/notification_title">
+
+        </CheckBoxPreference>
 
     </PreferenceCategory>
 

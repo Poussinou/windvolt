@@ -39,10 +39,10 @@
             android:layout_marginLeft="24dp"
             android:layout_marginTop="24dp"
             android:layout_weight="1"
-            android:text="position" />
+            android:text="@string/device_del_name" />
 
         <EditText
-            android:id="@+id/name_edit"
+            android:id="@+id/position_input"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="24dp"

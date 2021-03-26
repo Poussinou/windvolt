@@ -68,12 +68,12 @@ public class Welcome extends Fragment {
 
 
         if (true) {
-            String htmlString = getString(R.string.welcome_html);
+            String htmlString = getString(R.string.welcome_html); // welcome_html
             webView.loadDataWithBaseURL(null, htmlString, "text/html", "utf-8", null);
         }
 
         if (false) {
-            String webUrl = "http://www.windjournal.de/";
+            String webUrl = "https://windvolt.org/";
 
             webView.setWebViewClient(new WebViewClient() {
                 @Override

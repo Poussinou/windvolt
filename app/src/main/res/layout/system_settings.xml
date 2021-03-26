@@ -30,7 +30,7 @@
         android:layout_marginEnd="24dp"
         android:layout_marginRight="24dp"
         android:background="#6373BFC6"
-        android:text="@string/disclaimer"
+        android:text="@string/app_disclaimer"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="@android:color/holo_blue_bright" />
 

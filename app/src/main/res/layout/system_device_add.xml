@@ -38,10 +38,10 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="24dp"
             android:layout_marginTop="24dp"
-            android:text="Name" />
+            android:text="@string/device_add_name" />
 
         <EditText
-            android:id="@+id/name_edit"
+            android:id="@+id/position_input"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="24dp"
@@ -63,7 +63,7 @@
             android:layout_marginStart="12dp"
             android:layout_marginLeft="12dp"
             android:layout_marginTop="24dp"
-            android:text="Capacity" />
+            android:text="@string/device_add_capacity" />
 
         <EditText
             android:id="@+id/capacity_edit"
@@ -87,7 +87,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="24dp"
             android:layout_marginTop="24dp"
-            android:text="Type" />
+            android:text="@string/device_add_type" />
 
         <RadioGroup
             android:id="@+id/device_types"

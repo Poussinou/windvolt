@@ -77,8 +77,7 @@ public class Recommendation extends Fragment {
         setRecommendation(view, LOAD_NOT_AVAILABLE);
         ImageView icon = view.findViewById(R.id.recommendation_image);
 
-        FloatingActionButton services_open = view.findViewById(R.id.services_open);
-        services_open.setOnClickListener(services);
+
 
         // UPDATE LOCATION AND GEODATA
         // display location
@@ -89,7 +88,21 @@ public class Recommendation extends Fragment {
         if (loc.isEmpty()) { loc = getString(R.string.location_notice); } // location_notice
 
         display.setText(loc);
-        display.setOnClickListener(toggler);
+        display.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                // load from list
+                loadLocations();
+
+                // toogle visibilty
+
+                display.setVisibility(View.GONE);
+                geodata.setVisibility(View.GONE);
+
+                location.setVisibility(View.VISIBLE);
+            }
+        });
 
 
 
@@ -100,6 +113,30 @@ public class Recommendation extends Fragment {
         String latitude = sharedPreferences.getString("location_latitude", "");
 
         displayLocation(longitude, latitude);
+
+
+        FloatingActionButton services_open = view.findViewById(R.id.services_open);
+        services_open.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+
+                String longitude = sharedPreferences.getString("location_longitude", "");
+                String latitude = sharedPreferences.getString("location_latitude", "");
+
+                String geo = "open service for: " + longitude + ":" + latitude;
+                Toast.makeText(getContext(), geo, Toast.LENGTH_SHORT).show();
+
+                String url = "https://www.windy.com/?";
+                url += latitude;
+                url += ",";
+                url += longitude;
+                url += ",";
+                url += "10";
+
+                getContext().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
+            }
+        });
 
 
         return view;
@@ -155,112 +192,53 @@ public class Recommendation extends Fragment {
         );
         location.setAdapter(adapter); //setting the adapter data into the AutoCompleteTextView
 
-        location.setOnItemClickListener(clicker);
-        //location.setOnItemSelectedListener(selector);
+        location.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+
+                // display location
+                String loc = location.getText().toString();
+
+                editor.putString("location_input", loc);
+                editor.apply();
+
+                display.setText(loc);
+
+
+                // get longitude, latitude
+                String[] geo = findLocation(loc).split(":");
+
+                String longitude = geo[0];
+                String latitude = geo[1];
+
+
+                // display geodata
+                editor.putString("location_longitude", longitude);
+                editor.apply();
+
+                editor.putString("location_latitude", latitude);
+                editor.apply();
+
+                displayLocation(longitude, latitude);
+
+                names.clear();
+                allnames.clear();
+
+                // toogle visibilty
+                location.setVisibility(View.GONE);
+
+                display.setVisibility(View.VISIBLE);
+                geodata.setVisibility(View.VISIBLE);
+
+                String location_saved = getString(R.string.location_saved); // location_saved
+                Toast.makeText(getContext(), location_saved, Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 
-
-    private View.OnClickListener services = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-
-            String longitude = sharedPreferences.getString("location_longitude", "");
-            String latitude = sharedPreferences.getString("location_latitude", "");
-
-            String geo = "open service for: " + longitude + ":" + latitude;
-            Toast.makeText(getContext(), geo, Toast.LENGTH_SHORT).show();
-
-            String url = "https://www.windy.com/?";
-            url += latitude;
-            url += ",";
-            url += longitude;
-            url += ",";
-            url += "10";
-
-            getContext().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
-
-        }
-    };
-
-    private View.OnClickListener toggler = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-
-            // load from list
-            loadLocations();
-
-            // toogle visibilty
-
-            display.setVisibility(View.GONE);
-            geodata.setVisibility(View.GONE);
-
-            location.setVisibility(View.VISIBLE);
-        }
-    };
-
-
-    // listener
-
-    private AdapterView.OnItemClickListener clicker = new AdapterView.OnItemClickListener() {
-        @Override
-        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-
-            // display location
-            String loc = location.getText().toString();
-
-            editor.putString("location_input", loc);
-            editor.apply();
-
-            display.setText(loc);
-
-
-            // get longitude, latitude
-            String[] geo = findLocation(loc).split(":");
-
-            String longitude = geo[0];
-            String latitude = geo[1];
-
-
-            // display geodata
-            editor.putString("location_longitude", longitude);
-            editor.apply();
-
-            editor.putString("location_latitude", latitude);
-            editor.apply();
-
-            displayLocation(longitude, latitude);
-
-            names.clear();
-            allnames.clear();
-
-            // toogle visibilty
-            location.setVisibility(View.GONE);
-
-            display.setVisibility(View.VISIBLE);
-            geodata.setVisibility(View.VISIBLE);
-
-            String location_saved = getString(R.string.location_saved); // location_saved
-            Toast.makeText(getContext(), location_saved, Toast.LENGTH_SHORT).show();
-        }
-    };
-
-    /*
-    private AdapterView.OnItemSelectedListener selector = new AdapterView.OnItemSelectedListener() {
-        @Override
-        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-            Toast.makeText(getContext(), "select", Toast.LENGTH_SHORT).show();
-        }
-
-        @Override
-        public void onNothingSelected(AdapterView<?> parent) {
-            Toast.makeText(getContext(), "nothing select", Toast.LENGTH_SHORT).show();
-        }
-    };
-     */
 
 
 

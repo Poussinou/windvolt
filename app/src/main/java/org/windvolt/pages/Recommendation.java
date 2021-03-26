@@ -244,7 +244,7 @@ public class Recommendation extends Fragment {
             geodata.setVisibility(View.VISIBLE);
 
             String location_saved = getString(R.string.location_saved); // location_saved
-            Toast.makeText(getContext(), location_saved, Toast.LENGTH_SHORT).show(); // location_saved
+            Toast.makeText(getContext(), location_saved, Toast.LENGTH_SHORT).show();
         }
     };
 
@@ -295,7 +295,7 @@ public class Recommendation extends Fragment {
         if ("" == longitude) { longitude = "-"; }
         if ("" == latitude) { latitude = "-"; }
 
-        geodata.setText("Länge: " + longitude + "  Breite: " + latitude);
+        geodata.setText("Breite: " + latitude + "  Länge: " + longitude);
     }
 
 

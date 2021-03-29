@@ -68,7 +68,7 @@ public class Recommendation extends Fragment {
 
     TextView loc_display, geo_display, bat_display;
     String battery_level, last_battery_level;
-    String battery_time, last_battery_time;
+    String battery_date, last_battery_date;
 
     /* view location */
     @Override
@@ -323,15 +323,6 @@ public class Recommendation extends Fragment {
         bat_display.setText(bat);
     }
 
-    /* return date/time now */
-    private String now() {
-        // SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
-
-        SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        Date date = new Date(System.currentTimeMillis());
-
-        return formatter.format(date);
-    }
 
 
     /* show installed services */
@@ -437,12 +428,29 @@ public class Recommendation extends Fragment {
         Float lbattery = level * 100 / (float)scale;
         battery_level = lbattery.toString();
 
-
         last_battery_level = loadBatteryLevel();
-        last_battery_time = loadBatteryDate();
+        last_battery_date = loadBatteryDate();
 
-        saveBatteryLevel(battery_level);
-        saveBatteryDate(now());
+
+        SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+        Date now = new Date(System.currentTimeMillis());
+        battery_date = formatter.format(now);
+
+        long diff = 0;
+
+        try { // calculate time since last launch
+
+            Date last_date = formatter.parse(last_battery_date);
+            diff = now.getTime() - last_date.getTime();
+
+        } catch (Exception e) {}
+
+        if (diff/1000/60/60 > 0) { // more than 1 hour ago
+            saveBatteryLevel(battery_level);
+            saveBatteryDate(battery_date);
+        }
+
     }
 
     /* read and adapt stations */
@@ -478,7 +486,6 @@ public class Recommendation extends Fragment {
 
         }
     }
-
 
 
 

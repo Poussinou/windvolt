@@ -21,6 +21,7 @@
 
     <!-- windvolt -->
     <string name="app_name">windvolt</string>
+    <string name="app_disclaimer">*Zur Zeit sammeln wir selbst mit Deiner Zustimmung keine Daten.</string>
 
     <!-- welcome page -->
     <string name="welcome_label">Übersicht</string>
@@ -36,42 +37,51 @@
 
 
     <!-- location -->
-    <string name="app_disclaimer">Zur Zeit sammeln wir selbst mit Deiner Zustimmung keine Daten.</string>
-
-    <string name="location_notice">Wähle einen Standort</string>
+    <string name="location_notice">Wähle einen Ort</string>
     <string name="location_saved">gespeichert</string>
+    <string name="location_services">Dienste</string>
 
-    <string name="location_longitude">Länge</string>
-    <string name="location_latitude">Breite</string>
+
+    <!-- recommendation -->
+    <string name="recommendation_unavailable">keine Empfehlung verfügbar</string>
+
+    <string name="recommendation_load_prevent">laden nur falls nötig</string>
+    <string name="recommendation_load_small">kleine Geräte laden</string>
+    <string name="recommendation_load_more">große Geräte laden</string>
+    <string name="recommendation_load_all">alle Geräte laden</string>
 
     <!-- story -->
     <string name="story_action">Story</string>
     <string name="story_title">windvolt story</string>
 
 
-    <!-- devices -->
-    <string name="devices_action">Geräte</string>
-    <string name="devices_title">meine Geräte</string>
 
     <!-- settings -->
     <string name="settings_action">Einstellungen</string>
     <string name="settings_hello">Einstellungen vornehmen</string>
 
 
+
     <!-- devices -->
+    <string name="devices_action">Geräte</string>
+    <string name="devices_title">meine Geräte</string>
+
     <string name="device_sumup">Gesamt</string>
+
     <string name="device_action_add">hinzufügen</string>
     <string name="device_action_delete">entfernen</string>
     <string name="device_action_cancel">abbrechen</string>
 
     <!-- device add -->
     <string name="device_add_title">Gerät hinzufügen</string>
+
     <string name="device_add_name">Name</string>
     <string name="device_add_type">Typ</string>
     <string name="device_add_capacity">Kapazität</string>
 
     <!-- device del -->
     <string name="device_del_title">Gerät entfernen</string>
+
     <string name="device_del_name">Position</string>
 
 
@@ -96,17 +106,21 @@
 
     <!-- page3 'neutronal' -->
     <string name="page3_label">community</string>
-    <string name="page3_hello">Wissen im Web</string>
+    <string name="page3_hello">Wind Community</string>
     <string name="page3_open">links</string>
     <string name="page3_exit">zurück</string>
 
 
 
     <!-- preferences -->
-    <string name="location_category">Standort</string>
+    <string name="location_category">Ort</string>
 
-    <string name="location_title">Dein Standort</string>
-    <string name="location_summary">Freie Standorteingabe.\nDie App danach neu starten.</string>
+    <string name="location_title">Dein Ort</string>
+    <string name="location_summary">Freie Ortsangabe (App neu starten).</string>
+
+    <string name="location_longitude">Freie Längenangabe (App neu starten).</string>
+    <string name="location_latitude">Freie Breitenangabe (App neu starten).</string>
+
 
 
     <string name="community_category">Community</string>

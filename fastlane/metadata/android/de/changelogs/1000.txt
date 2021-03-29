@@ -2,13 +2,10 @@
 windvolt official presence
 @windvolt@mastodon.technology
 
-de-de:
-'Strategische Nutzung Erneuerbarer Energie'
-'Strategische Nutzung erneuerbarer Energie'
+de-de:          'Strategische Nutzung erneuerbarer Energie'
 
-
-
-location:       location assistant, added geolocation, added location service
+location:       location assistant, added geolocation, battery,
+                added location service
 
 
 strings:        texts approved, prepared translations

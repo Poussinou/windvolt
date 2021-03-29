@@ -141,7 +141,8 @@ public class BusinessModel extends AppCompatActivity {
         if (actionBar != null) {
             //actionBar.setDisplayHomeAsUpEnabled(true);
 
-            actionBar.setTitle("business model");
+            String title = getString(R.string.page2_hello); // values
+            actionBar.setTitle(title);
         }
 
         icon = AppCompatResources.getDrawable(this, R.drawable.gui_roundbox);

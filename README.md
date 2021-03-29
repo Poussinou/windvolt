@@ -8,15 +8,14 @@ windvolt targets the usage and pricing of renewable energy, especially wind
 
 # getting started
 
-- open the settings and enter a location.
-- use any city, state format.
-- close and reopen the app.
+- choose a location
 
 
 
 ## what's contained
 
-* loading recommendation
+* recommendation
+* location services
 
 * the story of wind
 * market who is who

@@ -67,13 +67,13 @@ public class Welcome extends Fragment {
         WebView webView = (WebView) view.findViewById(R.id.welcome_widget);
 
 
-        if (true) {
-            String htmlString = getString(R.string.welcome_html); // welcome_html
+        if (false) {
+            String htmlString = getString(R.string.welcome_html); // values
             webView.loadDataWithBaseURL(null, htmlString, "text/html", "utf-8", null);
         }
 
-        if (false) {
-            String webUrl = "https://windvolt.org/";
+        if (true) {
+            String webUrl = "https://www.windjournal.de/einspeisung-live.php?w=320&h=160";
 
             webView.setWebViewClient(new WebViewClient() {
                 @Override
@@ -90,7 +90,7 @@ public class Welcome extends Fragment {
 
     private void bindButtons(View view) {
         // view devices
-        FloatingActionButton fab = view.findViewById(R.id.action_open_devices);
+        FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.action_open_devices);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

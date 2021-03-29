@@ -104,7 +104,8 @@ public class WhoIsWho extends AppCompatActivity {
         if (actionBar != null) {
             //actionBar.setDisplayHomeAsUpEnabled(true);
 
-            actionBar.setTitle(getString(R.string.devices_action));
+            String title = getString(R.string.page1_hello); // values
+            actionBar.setTitle(title);
         }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {

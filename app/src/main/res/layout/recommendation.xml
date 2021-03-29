@@ -70,6 +70,7 @@
             android:id="@+id/location_battery"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:gravity="center"
             android:text="battery_display"
             android:textColor="@color/colorAccent" />

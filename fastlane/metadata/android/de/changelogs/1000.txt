@@ -1,14 +1,14 @@
 windvolt
 
-##Version 1.04
+#Version 1.10
 
-public presence @windvolt@mastodon.technology
-
-de-de:          'Strategische Nutzung erneuerbarer Energie'
-
-location:       location assistant, geolocation, battery,
+location:       location assistant,
                 location service
+                geolocation,
+                battery
 
+##Version 1.04
+de-de:          'Strategische Nutzung erneuerbarer Energie'
 
 strings:        texts approved, prepared translations
 preferences:    texts improved, location displayed, restart notice
@@ -17,6 +17,6 @@ story:          page 6 replaced, page 7 added
 links:          adapter integrated
 
 
-#Version 1.03
+###Version 1.03
 initial official release
 i used the app myself for 3 month and made many changes

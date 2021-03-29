@@ -120,7 +120,6 @@ public class Recommendation extends Fragment {
 
 
                 // toogle visibilty
-
                 loc_display.setVisibility(View.GONE);
                 geo_display.setVisibility(View.GONE);
                 bat_display.setVisibility(View.GONE);
@@ -257,74 +256,6 @@ public class Recommendation extends Fragment {
     }
 
 
-
-    /* load latitude:longitude */
-    private String loadGeodata() {
-        String longitude = "";
-        String latitude = "";
-
-        for (int geo=0; geo<allnames.size(); geo++) {
-            String[] fullgeo = allnames.get(geo).split(";");
-
-            if (location.equals(fullgeo[0])) {
-                String[] coordinates = fullgeo[2].split(",");
-
-                longitude = coordinates[0];
-                latitude = coordinates[1];
-
-                /*
-                String altitude = coordinates[2];
-                Double dlongitude = Location.convert(longitude);
-                Double dlatitude = Location.convert(latitude);
-                Double daltitude = Location.convert(altitude);
-               */
-            }
-
-        }
-
-        return longitude + ":" + latitude;
-    }
-
-
-
-    /* display latitude/longitude */
-    private void displayGeodata() {
-        String longitude = loadLongitude();
-        String latitude = loadLatitude();
-
-        if (longitude.isEmpty()) { longitude = "-"; }
-        if (latitude.isEmpty()) { latitude = "-"; }
-
-        String loc = "Breite: " + latitude + "  Länge: " + longitude;
-        geo_display.setText(loc);
-    }
-
-    /* display battery */
-    private void displayBattery() {
-
-        String bat = "battery: ";
-        Float fbattery = Float.parseFloat(battery_level);
-
-        try {
-            float flbattery = Float.parseFloat(last_battery_level);
-
-            Float delta = fbattery - flbattery;
-            int pdelta = delta.intValue();
-
-            if (delta < 0) { bat += pdelta; }
-            else { bat += "+" + pdelta; }
-
-
-        } catch (Exception e) {
-            bat += fbattery.intValue();
-        }
-        bat += "%";
-
-        bat_display.setText(bat);
-    }
-
-
-
     /* show installed services */
     public static class ServicesDialog extends DialogFragment {
 
@@ -415,6 +346,55 @@ public class Recommendation extends Fragment {
     }
 
 
+
+
+    /* -------------------------------------------------------------------------------- */
+
+
+
+
+
+    /* load latitude:longitude */
+    private String loadGeodata() {
+        String longitude = "";
+        String latitude = "";
+
+        for (int geo=0; geo<allnames.size(); geo++) {
+            String[] fullgeo = allnames.get(geo).split(";");
+
+            if (location.equals(fullgeo[0])) {
+                String[] coordinates = fullgeo[2].split(",");
+
+                longitude = coordinates[0];
+                latitude = coordinates[1];
+
+                /*
+                String altitude = coordinates[2];
+                Double dlongitude = Location.convert(longitude);
+                Double dlatitude = Location.convert(latitude);
+                Double daltitude = Location.convert(altitude);
+               */
+            }
+
+        }
+
+        return longitude + ":" + latitude;
+    }
+
+    /* display latitude/longitude */
+    private void displayGeodata() {
+        String longitude = loadLongitude();
+        String latitude = loadLatitude();
+
+        if (longitude.isEmpty()) { longitude = "-"; }
+        if (latitude.isEmpty()) { latitude = "-"; }
+
+        String loc = "Breite: " + latitude + "  Länge: " + longitude;
+        geo_display.setText(loc);
+    }
+
+
+
     /* read and set battery level */
     private void recordBattery() {
 
@@ -446,12 +426,39 @@ public class Recommendation extends Fragment {
 
         } catch (Exception e) {}
 
-        if (diff/1000/60/60 > 0) { // more than 1 hour ago
+        // if more than 1 hour ago
+        if (diff/1000/60/60 > 0) {
             saveBatteryLevel(battery_level);
             saveBatteryDate(battery_date);
         }
 
     }
+
+    /* display battery */
+    private void displayBattery() {
+
+        String bat = "battery: ";
+        Float fbattery = Float.parseFloat(battery_level);
+
+        try {
+            float flbattery = Float.parseFloat(last_battery_level);
+
+            Float delta = fbattery - flbattery;
+            int pdelta = delta.intValue();
+
+            if (delta < 0) { bat += pdelta; }
+            else { bat += "+" + pdelta; }
+
+
+        } catch (Exception e) {
+            bat += fbattery.intValue();
+        }
+        bat += "%";
+
+        bat_display.setText(bat);
+    }
+
+
 
     /* read and adapt stations */
     private void loadStations() {
@@ -486,7 +493,6 @@ public class Recommendation extends Fragment {
 
         }
     }
-
 
 
 

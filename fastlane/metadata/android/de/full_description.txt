@@ -1,4 +1,4 @@
-neu in V1.04    Ortsdienste, Batteriestatus
+neu in V1.10    Ortsdienste, Batteriestatus
 
 <i>Windvolt</i> hilft bei der strategischen Nutzung erneuerbarer Energie, insbesondere aus Wind.
 

@@ -1,7 +1,8 @@
+neu in V1.04    Ortsdienste, Batteriestatus
+
 <i>Windvolt</i> hilft bei der strategischen Nutzung erneuerbarer Energie, insbesondere aus Wind.
 
 <i>Windvolt</i> empfiehlt das Laden Deiner elektrischen Geräte wie Smartphone, E-Bike oder E-Auto wenn die Erträge aus erneuerbarer Energie hoch sind.
 
-neu in V1.04    Ortsdienste, Batteriestatus
 
 Leider gibt es für Windenergie keinen Open-Data Dienst, deshalb nutzt diese App NonFreeNet features.

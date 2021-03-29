@@ -1,11 +1,13 @@
+windvolt
+
 ##Version 1.04
-windvolt official presence
-@windvolt@mastodon.technology
+
+public presence @windvolt@mastodon.technology
 
 de-de:          'Strategische Nutzung erneuerbarer Energie'
 
-location:       location assistant, added geolocation, battery,
-                added location service
+location:       location assistant, geolocation, battery,
+                location service
 
 
 strings:        texts approved, prepared translations

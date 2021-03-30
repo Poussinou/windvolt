@@ -517,6 +517,13 @@ public class Recommendation extends Fragment {
         }
         bat += "%";
 
+        /*
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        String battery_levels = sharedPreferences.getString("battery_level", "");
+        String[] values = battery_levels.split(";");
+        bat += " e:" + values.length;
+        */
+
 
         /* display battery text */
         bat_display.setText(bat);

@@ -623,17 +623,19 @@ public class Recommendation extends Fragment {
         String[] values = battery_levels.split(";");
 
         String battery_level = value;
+        int hits = 1;
 
         if (values.length > 0) {
             for (int p=0; p<values.length; p++) {
+                String level = values[p];
 
-                if (p+1 < MAX_BATTERY_TRACE) {
-                    String level = values[p];
-
-                    if (!level.isEmpty()) {
+                if (!level.isEmpty()) {
+                    if (hits < MAX_BATTERY_TRACE) {
                         battery_level +=  ";" + level;
+                        hits++;
                     }
                 }
+
             }
         }
 
@@ -661,16 +663,19 @@ public class Recommendation extends Fragment {
         String[] values = battery_times.split(";");
 
         String battery_time = value;
+        int hits = 1;
 
         if (values.length > 0) {
             for (int p=0; p<values.length; p++) {
-                if (p+1 < MAX_BATTERY_TRACE) {
-                    String time = values[p];
+                String time = values[p];
 
-                    if (!time.isEmpty()) {
+                if (!time.isEmpty()) {
+                    if (hits < MAX_BATTERY_TRACE) {
                         battery_time +=  ";" + time;
+                        hits++;
                     }
                 }
+
             }
         }
 

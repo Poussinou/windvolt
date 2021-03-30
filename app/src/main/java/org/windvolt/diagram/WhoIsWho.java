@@ -52,48 +52,6 @@ public class WhoIsWho extends AppCompatActivity {
     TextView root;
     int rx, ry;
 
-    private class OrganigramLayout extends RelativeLayout {
-        Paint paint;
-
-        public OrganigramLayout(Context context) {
-            super(context);
-            paint = new Paint();
-            paint.setStrokeWidth(4);
-
-        }
-
-
-        /*
-        draw connections
-         */
-        protected void dispatchDraw(Canvas canvas) {
-
-
-            // test
-            paint.setColor(Color.BLUE);
-
-            //canvas.drawLine(0, 0, w, h, paint);
-
-
-
-
-
-            int size = getChildCount();
-            for (int v = 1; v < size; v++) {
-                View tv = getChildAt(v);
-
-                int x1 = tv.getLeft();
-                int y1 = tv.getTop() + tv.getHeight()/2;
-
-                canvas.drawLine(rx, ry, x1, y1, paint);
-            }
-
-
-
-            super.dispatchDraw(canvas);
-        }
-    }
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -148,7 +106,35 @@ public class WhoIsWho extends AppCompatActivity {
 
 
 
+    private class OrganigramLayout extends RelativeLayout {
+        Paint paint;
 
+        public OrganigramLayout(Context context) {
+            super(context);
+            paint = new Paint();
+            paint.setStrokeWidth(4);
+
+        }
+
+
+        /* draw connections */
+        protected void dispatchDraw(Canvas canvas) {
+
+            paint.setColor(Color.BLUE);
+
+            int size = getChildCount();
+            for (int v = 1; v < size; v++) {
+                View tv = getChildAt(v);
+
+                int x1 = tv.getLeft();
+                int y1 = tv.getTop() + tv.getHeight()/2;
+
+                canvas.drawLine(rx, ry, x1, y1, paint);
+            }
+
+            super.dispatchDraw(canvas);
+        }
+    }
 
 
 

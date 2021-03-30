@@ -49,6 +49,55 @@ public class BusinessModel extends AppCompatActivity {
 
     final int tab = 40;
 
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            //actionBar.setDisplayHomeAsUpEnabled(true);
+
+            String title = getString(R.string.page2_hello); // values
+            actionBar.setTitle(title);
+        }
+
+        icon = AppCompatResources.getDrawable(this, R.drawable.gui_roundbox);
+
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            Display display = getWindowManager().getDefaultDisplay();
+            DisplayMetrics displayMetrics = new DisplayMetrics();
+
+            display.getRealMetrics(displayMetrics);
+
+            w = displayMetrics.widthPixels;
+            h = displayMetrics.heightPixels;
+        }
+
+
+        diagram = new StructogramLayout(this);
+        RelativeLayout.LayoutParams diagramLayout = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
+
+        setContentView(diagram, diagramLayout);
+
+
+
+        if (true) {
+            addFrame(1, "Producer", "producer");
+            addFrame(2, "Distributor", "distributor");
+            addFrame(3, "Trader", "trader");
+            addFrame(4, "Seller", "seller");
+            addFrame(5, "Consumer", "consumer");
+        }
+
+
+        //diagram.invalidate();
+
+
+    }
+
+
     private class StructogramLayout extends RelativeLayout {
         Paint paint;
 
@@ -131,55 +180,6 @@ public class BusinessModel extends AppCompatActivity {
             super.dispatchDraw(canvas);
         }
     }
-
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            //actionBar.setDisplayHomeAsUpEnabled(true);
-
-            String title = getString(R.string.page2_hello); // values
-            actionBar.setTitle(title);
-        }
-
-        icon = AppCompatResources.getDrawable(this, R.drawable.gui_roundbox);
-
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-            Display display = getWindowManager().getDefaultDisplay();
-            DisplayMetrics displayMetrics = new DisplayMetrics();
-
-            display.getRealMetrics(displayMetrics);
-
-            w = displayMetrics.widthPixels;
-            h = displayMetrics.heightPixels;
-        }
-
-
-        diagram = new StructogramLayout(this);
-        RelativeLayout.LayoutParams diagramLayout = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
-
-        setContentView(diagram, diagramLayout);
-
-
-
-        if (true) {
-            addFrame(1, "Producer", "producer");
-            addFrame(2, "Distributor", "distributor");
-            addFrame(3, "Trader", "trader");
-            addFrame(4, "Seller", "seller");
-            addFrame(5, "Consumer", "consumer");
-        }
-
-
-        //diagram.invalidate();
-
-
-    }
-
 
 
 

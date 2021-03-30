@@ -7,13 +7,17 @@ location:       location assistant,
                 geolocation,
                 battery
 
+
+story:          added images
+
+
 ##Version 1.04
 de-de:          'Strategische Nutzung erneuerbarer Energie'
 
-strings:        texts approved, prepared translations
+strings:        texts improved, prepared translations
 preferences:    texts improved, location displayed, restart notice
 devices:        XMLDeviceStore  ->  XMLModelStore, analog ModelStore
-story:          page 6 replaced, page 7 added
+story:          page 6 replaced, page 7 inserted
 links:          adapter integrated
 
 

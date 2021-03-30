@@ -22,6 +22,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -53,14 +54,25 @@ public class StoryPage extends Fragment {
             "windvolt informiert Dich wenn sich das Laden lohnt."
     };
 
+    private int[] images = {
+            R.drawable.story_page_0,
+            R.drawable.story_page_1,
+            R.drawable.story_page_2,
+            R.drawable.story_page_3,
+            R.drawable.story_page_4,
+            R.drawable.story_page_5,
+            R.drawable.story_page_6,
+            R.drawable.story_page_7
+    };
+
     public StoryPage() {
         // Required empty public constructor
     }
 
-    public static StoryPage newInstance(Integer counter) {
+    public static StoryPage newInstance(Integer set_counter) {
         StoryPage fragment = new StoryPage();
         Bundle args = new Bundle();
-        args.putInt(ARG_COUNT, counter);
+        args.putInt(ARG_COUNT, set_counter);
         fragment.setArguments(args);
         return fragment;
     }
@@ -85,7 +97,7 @@ public class StoryPage extends Fragment {
 
         view.setBackgroundColor(ContextCompat.getColor(getContext(), COLOR_MAP[counter]));
 
-        TextView textViewCounter = view.findViewById(R.id.tv_counter);
+        TextView textViewCounter = view.findViewById(R.id.tv_content);
         textViewCounter.setText(story[counter]);
 
         int c = counter + 1;
@@ -98,7 +110,10 @@ public class StoryPage extends Fragment {
             wiper = "◄    " + wiper + "    ";
         }
 
-        TextView state = view.findViewById(R.id.tv_header);
+        TextView state = view.findViewById(R.id.tv_pagecount);
         state.setText(wiper);
+
+        ImageView i = view.findViewById(R.id.tv_image);
+        i.setImageResource(images[counter]);
     }
 }

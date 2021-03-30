@@ -60,20 +60,17 @@ public class Welcome extends Fragment {
 
 
 
-        /*
-        TODO load live widget
-         */
-
+        /* load live widget */
         WebView webView = (WebView) view.findViewById(R.id.welcome_widget);
 
 
         if (false) {
-            String htmlString = getString(R.string.welcome_html); // values
-            webView.loadDataWithBaseURL(null, htmlString, "text/html", "utf-8", null);
+            String value = getString(R.string.welcome_html); // values
+            webView.loadDataWithBaseURL(null, value, "text/html", "utf-8", null);
         }
 
         if (true) {
-            String webUrl = "https://www.windjournal.de/einspeisung-live.php?w=320&h=160";
+            String value = "https://www.windjournal.de/einspeisung-live.php?w=320&h=160";
 
             webView.setWebViewClient(new WebViewClient() {
                 @Override
@@ -83,7 +80,7 @@ public class Welcome extends Fragment {
                 }
             });
 
-            webView.loadUrl(webUrl);
+            webView.loadUrl(value);
         }
     }
 

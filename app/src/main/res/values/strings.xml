@@ -39,7 +39,6 @@
     <!-- location -->
     <string name="location_notice">Wähle einen Ort</string>
     <string name="location_saved">gespeichert</string>
-    <string name="location_services">Dienste</string>
 
 
     <!-- recommendation -->
@@ -116,12 +115,13 @@
     <string name="location_category">Ort</string>
 
     <string name="location_title">Dein Ort</string>
-    <string name="location_summary">Freie Ortsangabe (App neu starten).</string>
+    <string name="location_summary">Freie Ortsangabe.\n*Die App neu starten.</string>
 
-    <string name="location_longitude">Freie Längenangabe (App neu starten).</string>
-    <string name="location_latitude">Freie Breitenangabe (App neu starten).</string>
+    <string name="location_longitude">Längengrad.</string>
+    <string name="location_latitude">Breitengrad.</string>
 
-
+    <string name="location_services">Dienste</string>
+    <string name="location_services_summary">Durch die Verwendung der Dienste gibst du Daten preis.\n*Die App neu starten.</string>
 
     <string name="community_category">Community</string>
 

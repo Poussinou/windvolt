@@ -26,25 +26,34 @@
     android:layout_weight="7"
     tools:context=".story.StoryOfWindvolt">
 
+    <ImageView
+        android:id="@+id/tv_image"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/story_title"
+        app:layout_constraintBottom_toTopOf="@id/tv_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
-        android:id="@+id/tv_counter"
+        android:id="@+id/tv_content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="windvolt"
+        android:text="@string/story_title"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textColor="#fff"
         android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/tv_header"
+        app:layout_constraintBottom_toTopOf="@id/tv_pagecount"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="slip fragment" />
+        app:layout_constraintTop_toBottomOf="@id/tv_image" />
 
 
     <TextView
-        android:id="@+id/tv_header"
+        android:id="@+id/tv_pagecount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -54,8 +63,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_counter" />
-
+        app:layout_constraintTop_toBottomOf="@id/tv_content" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

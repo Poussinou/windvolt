@@ -24,9 +24,11 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/services_open"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_margin="16dp"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
         android:clickable="true"
         android:contentDescription="services_open"
         android:focusable="true"
@@ -54,8 +56,9 @@
             android:id="@+id/location_display"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:gravity="center"
-            android:text="location_display"
+            android:text="@string/location_notice"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textColor="@color/colorPrimary" />
 
@@ -64,7 +67,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="geodata_display" />
+            android:text="@string/location_category" />
 
         <TextView
             android:id="@+id/location_battery"
@@ -72,7 +75,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:gravity="center"
-            android:text="battery_display"
+            android:text="@string/location_category"
             android:textColor="@color/colorAccent" />
 
         <AutoCompleteTextView

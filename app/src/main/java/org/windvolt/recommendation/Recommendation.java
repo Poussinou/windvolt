@@ -49,10 +49,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 
 public class Recommendation extends Fragment {
+
+    final int MAX_BATTERY_TRACE = 10;
 
     final int LOAD_NOT_AVAILABLE = -1;
     final int LOAD_NOT_RECOMMENDED = 0;
@@ -67,8 +70,10 @@ public class Recommendation extends Fragment {
     String location;
 
     TextView loc_display, geo_display, bat_display;
-    String battery_level, last_battery_level;
-    String battery_date, last_battery_date;
+
+
+    String battery_level_now, battery_level_before;
+    String battery_time_now, battery_time_before;
 
     /* view location */
     @Override
@@ -145,6 +150,11 @@ public class Recommendation extends Fragment {
             }
         });
 
+
+        /* allow or hide services */
+        if (!locationServiceAllowed()) {
+            services_open.setVisibility(View.GONE);
+        }
 
 
         /* return inflated view */
@@ -271,8 +281,8 @@ public class Recommendation extends Fragment {
             SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
             String loc = sharedPreferences.getString("location_input", "");
 
-            String services = getString(R.string.location_services); // values
-            builder.setView(view).setTitle(services + ": " + loc);
+            //String services = getString(R.string.location_services); // values
+            builder.setView(view).setTitle("Dienste: " + loc);
 
 
             // register services
@@ -398,6 +408,10 @@ public class Recommendation extends Fragment {
     /* read and set battery level */
     private void recordBattery() {
 
+        battery_level_before = loadBatteryLevel();
+        battery_time_before = loadBatteryTime();
+
+
         /* get load % */
         IntentFilter ifilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
         Intent batteryStatus = getContext().registerReceiver(null, ifilter);
@@ -406,30 +420,50 @@ public class Recommendation extends Fragment {
         int scale = batteryStatus.getIntExtra(BatteryManager.EXTRA_SCALE, -1);
 
         Float lbattery = level * 100 / (float)scale;
-        battery_level = lbattery.toString();
-
-        last_battery_level = loadBatteryLevel();
-        last_battery_date = loadBatteryDate();
+        battery_level_now = lbattery.toString();
 
 
-        SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+
+        // calculate time
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        long milliseconds = 0;
 
         Date now = new Date(System.currentTimeMillis());
-        battery_date = formatter.format(now);
+        battery_time_now = formatter.format(now);
 
-        long diff = 0;
+        Date last_time = now;
 
         try { // calculate time since last launch
+            last_time = formatter.parse(battery_time_before);
 
-            Date last_date = formatter.parse(last_battery_date);
-            diff = now.getTime() - last_date.getTime();
+            // tune date
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(last_time);
 
-        } catch (Exception e) {}
+            // adjust time: -0 do not adjust, -1 hour, -2 hour, ...
+            int adjust_hours = -0;
+            calendar.add(Calendar.HOUR, adjust_hours);
+
+            last_time = calendar.getTime();
+
+            milliseconds = now.getTime() - last_time.getTime();
+
+        } catch (Exception e) {
+
+            // set valid values
+            saveBatteryLevel(battery_level_now);
+            saveBatteryTime(battery_time_now);
+        }
+
+        long hours = milliseconds/1000/60/60;
 
         // if more than 1 hour ago
-        if (diff/1000/60/60 > 0) {
-            saveBatteryLevel(battery_level);
-            saveBatteryDate(battery_date);
+        if (hours > 0) {
+            saveBatteryLevel(battery_level_now);
+            saveBatteryTime(battery_time_now);
+
+            battery_time_before = formatter.format(last_time);
         }
 
     }
@@ -438,10 +472,38 @@ public class Recommendation extends Fragment {
     private void displayBattery() {
 
         String bat = "battery: ";
-        Float fbattery = Float.parseFloat(battery_level);
+
+
+
+        /* show time since last */
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        long milliseconds = 0;
+
+        try { // calculate time since last launch
+
+            Date this_time = formatter.parse(battery_time_now);
+            Date last_time = formatter.parse(battery_time_before);
+
+            milliseconds = this_time.getTime() - last_time.getTime();
+
+        } catch (Exception e) {}
+
+
+        long minutes = milliseconds/1000/60;
+        long hours = minutes/60;
+        long days = hours/24;
+
+
+        if (days > 0) { bat += days + "d "; }
+        else  if (hours > 0) { bat += hours + "h "; }
+        else { bat += minutes + "m "; }
+
+
+        /* show load delta */
+        Float fbattery = Float.parseFloat(battery_level_now);
 
         try {
-            float flbattery = Float.parseFloat(last_battery_level);
+            float flbattery = Float.parseFloat(battery_level_before);
 
             Float delta = fbattery - flbattery;
             int pdelta = delta.intValue();
@@ -455,6 +517,8 @@ public class Recommendation extends Fragment {
         }
         bat += "%";
 
+
+        /* display battery text */
         bat_display.setText(bat);
     }
 
@@ -538,30 +602,89 @@ public class Recommendation extends Fragment {
 
 
 
-
     private String loadBatteryLevel() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-        String battery_level = sharedPreferences.getString("battery_level", "");
+        String battery_levels = sharedPreferences.getString("battery_level", "");
+        String[] values = battery_levels.split(";");
+
+        String battery_level = "";
+
+        if (values.length > 0) {
+            battery_level = values[0];
+        }
+
         return battery_level;
     }
     private void saveBatteryLevel(String value) {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("battery_level", value);
+
+        String battery_levels = sharedPreferences.getString("battery_level", "");
+        String[] values = battery_levels.split(";");
+
+        String battery_level = value;
+
+        if (values.length > 0) {
+            for (int p=0; p<values.length; p++) {
+
+                if (p+1 < MAX_BATTERY_TRACE) {
+                    String level = values[p];
+
+                    if (!level.isEmpty()) {
+                        battery_level +=  ";" + level;
+                    }
+                }
+            }
+        }
+
+        editor.putString("battery_level", battery_level);
         editor.apply();
     }
 
-    private String loadBatteryDate() {
+    private String loadBatteryTime() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-        String battery_level = sharedPreferences.getString("battery_date", "");
-        return battery_level;
+
+        String battery_times = sharedPreferences.getString("battery_time", "");
+        String[] values = battery_times.split(";");
+
+        String battery_time = "";
+
+        if (values.length > 0) battery_time = values[0];
+
+        return battery_time;
     }
-    private void saveBatteryDate(String value) {
+    private void saveBatteryTime(String value) {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("battery_date", value);
+
+        String battery_times = sharedPreferences.getString("battery_time", "");
+        String[] values = battery_times.split(";");
+
+        String battery_time = value;
+
+        if (values.length > 0) {
+            for (int p=0; p<values.length; p++) {
+                if (p+1 < MAX_BATTERY_TRACE) {
+                    String time = values[p];
+
+                    if (!time.isEmpty()) {
+                        battery_time +=  ";" + time;
+                    }
+                }
+            }
+        }
+
+        editor.putString("battery_time", battery_time);
         editor.apply();
     }
+
+    private boolean locationServiceAllowed() {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+
+        return sharedPreferences.getBoolean("location_services", false);
+    }
+
+
 
 
 

@@ -21,7 +21,6 @@
 
 
     <!-- welcome page -->
-
     <string name="welcome_html">
         <![CDATA[
         <br />
@@ -29,9 +28,6 @@
             <small>    Quelle: windjournal.de, ohne Gewähr </small>
         ]]>
     </string>
-
-
-
 
 
 

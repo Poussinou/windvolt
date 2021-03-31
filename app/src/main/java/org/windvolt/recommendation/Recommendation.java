@@ -410,6 +410,7 @@ public class Recommendation extends Fragment {
 
             final View view = inflater.inflate(R.layout.battery_tracker, null);
 
+            //sampleData();
 
             SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
             String levels = sharedPreferences.getString("battery_level", "");
@@ -541,44 +542,50 @@ public class Recommendation extends Fragment {
                         editor.apply();
                     }
 
-
-                    if (false) {
-                        // control values
-                        String levels = "100.0";
-                        levels += ";90.0";
-                        levels += ";80.0";
-                        levels += ";70.0";
-                        levels += ";60.0";
-                        levels += ";50.0";
-                        levels += ";40.0";
-                        levels += ";30.0";
-                        levels += ";20.0";
-                        levels += ";10.0";
-
-
-                        String times = "2021-03-30 15:00:00";
-                        times += ";2021-03-29 14:00:00";
-                        times += ";2021-03-28 16:00:00";
-                        times += ";2021-03-24 11:00:00";
-                        times += ";2021-03-23 10:02:00";
-                        times += ";2021-03-22 10:00:00";
-                        times += ";2021-03-21 12:08:00";
-                        times += ";2021-03-18 11:07:00";
-                        times += ";2021-03-15 11:00:00";
-                        times += ";2021-02-11 15:30:00";
-
-
-
-                        editor.putString("battery_level", levels);
-                        editor.apply();
-
-                        editor.putString("battery_time", times);
-                        editor.apply();
-                    }
                 }
             });
 
             return builder.create();
+        }
+
+        private void sampleData() {
+            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+
+
+
+                // control values
+                String levels = "100.0";
+                levels += ";90.0";
+                levels += ";80.0";
+                levels += ";70.0";
+                levels += ";60.0";
+                levels += ";50.0";
+                levels += ";40.0";
+                levels += ";30.0";
+                levels += ";20.0";
+                levels += ";10.0";
+
+
+                String times = "2021-03-30 15:00:00";
+                times += ";2021-03-29 14:00:00";
+                times += ";2021-03-28 16:00:00";
+                times += ";2021-03-24 11:00:00";
+                times += ";2021-03-23 10:02:00";
+                times += ";2021-03-22 10:00:00";
+                times += ";2021-03-21 12:08:00";
+                times += ";2021-03-18 11:07:00";
+                times += ";2021-03-15 11:00:00";
+                times += ";2021-02-11 15:30:00";
+
+
+
+                editor.putString("battery_level", levels);
+                editor.apply();
+
+                editor.putString("battery_time", times);
+                editor.apply();
+
         }
     }
 

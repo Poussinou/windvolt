@@ -43,6 +43,7 @@ public class WhoIsWho extends AppCompatActivity {
 
     Drawable icon;
     OrganigramLayout diagram;
+    //BoxTreeLayout diagram;
 
     int w = 480;
     int h = 720;
@@ -83,26 +84,27 @@ public class WhoIsWho extends AppCompatActivity {
 
 
 
-        diagram = new OrganigramLayout(this);
+
         RelativeLayout.LayoutParams diagramLayout = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
+        diagram = new OrganigramLayout(this);
+
 
         setContentView(diagram, diagramLayout);
 
+        drawTree();
+    }
 
+
+    private void drawTree() {
         root = addRoot("POWER", 20, 40);
 
-        //TextView tv0 = addChild(" Ampirion ", "apirina.de",15);
-        addChild(w + "/" + h, "apirina.de",15);
+        addChild(" Ampirion ", "apirina.de",15);
 
         addChild(" Tennet TSO ", "tennet.de",45);
         addChild(" TransnetBW ", "transnet.de",-15);
 
         addChild(" 50Hertz ", "50hertz.de", -45);
-
-
     }
-
-
 
 
 
@@ -181,20 +183,19 @@ public class WhoIsWho extends AppCompatActivity {
 
         diagram.addView(tv, params);
 
-        tv.setOnClickListener(new OnClick(action));
+        tv.setOnClickListener(new doClick(action));
 
         return tv;
     }
 
 
-    class OnClick implements View.OnClickListener {
+    private class doClick implements View.OnClickListener {
 
         String action;
 
-        public OnClick(String set_action) { action = set_action; }
+        public doClick(String set_action) { action = set_action; }
         @Override
         public void onClick(View v) {
-
             Snackbar.make(diagram, action, Snackbar.LENGTH_SHORT).show();
         }
     }

@@ -447,8 +447,8 @@ public class Recommendation extends Fragment {
                         int ilevel = flevel.intValue();
 
 
-                        if (ilevel > border) { t = prepone(t, CHART_DOT); }
-                        else { t = prepone(t, CHART_NO_DOT); }
+                        if (ilevel > border) { t = prepose(t, CHART_DOT); }
+                        else { t = prepose(t, CHART_NO_DOT); }
                     }
                 }
                 tv.setText(t);
@@ -488,14 +488,14 @@ public class Recommendation extends Fragment {
                     long days = hours/24;
 
                     if (days > 0) {
-                        cl0 = prepone(cl0,"" + days);
-                        cl1 = prepone(cl1, "d");
+                        cl0 = prepose(cl0,"" + days);
+                        cl1 = prepose(cl1, "d");
                     } else  if (hours > 0) {
-                        cl0 = prepone(cl0,"" + hours);
-                        cl1 = prepone(cl1, "h");
+                        cl0 = prepose(cl0,"" + hours);
+                        cl1 = prepose(cl1, "h");
                     } else {
-                        cl0 = prepone(cl0,"" + minutes);
-                        cl1 = prepone(cl1, "m");
+                        cl0 = prepose(cl0,"" + minutes);
+                        cl1 = prepose(cl1, "m");
                     }
 
                 }//vlevel.isEmpty()
@@ -543,7 +543,7 @@ public class Recommendation extends Fragment {
 
 
 
-        private String prepone(String t, String value) {
+        private String prepose(String t, String value) {
             String output;
 
             if (t.isEmpty()) {

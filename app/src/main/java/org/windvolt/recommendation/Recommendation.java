@@ -389,18 +389,7 @@ public class Recommendation extends Fragment {
 
         final String VALUE_DELIM = "  ";
 
-        private String prepone(String t, String value) {
-            String output;
 
-            if (t.isEmpty()) {
-                output = value;
-            } else {
-                output = value + VALUE_DELIM;
-                output = output.substring(0, 3);
-            }
-
-            return output + t;
-        }
 
         @Override
         public Dialog onCreateDialog(@NonNull Bundle savedInstanceState) {
@@ -410,7 +399,7 @@ public class Recommendation extends Fragment {
 
             final View view = inflater.inflate(R.layout.battery_tracker, null);
 
-            //sampleData();
+            //makeSampleData();
 
             SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
             String levels = sharedPreferences.getString("battery_level", "");
@@ -457,6 +446,7 @@ public class Recommendation extends Fragment {
                         Float flevel = Float.parseFloat(vlevel);
                         int ilevel = flevel.intValue();
 
+
                         if (ilevel > border) { t = prepone(t, CHART_DOT); }
                         else { t = prepone(t, CHART_NO_DOT); }
                     }
@@ -466,15 +456,24 @@ public class Recommendation extends Fragment {
 
 
 
+
+
             // print chart legend
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
             String cl0 = "", cl1 = "";
+            int sumup = 0;
 
             for (int p=0; p<size; p++) {
                 String vlevel = vlevels[p], vtime = vtimes[p];
 
                 if (!vlevel.isEmpty()) {
+                    Float flevel = Float.parseFloat(vlevel);
+                    int ilevel = flevel.intValue();
+
+                    sumup += ilevel;
+
+
                     long milliseconds = 0;
 
                     try { // calculate time since last launch
@@ -510,9 +509,7 @@ public class Recommendation extends Fragment {
             legend1.setText(cl1);
 
             TextView level = view.findViewById(R.id.track_level);
-            level.setText("okay");
-
-
+            level.setText("okay " + sumup/size + " " + levels);
 
 
             // dialog features
@@ -528,27 +525,39 @@ public class Recommendation extends Fragment {
             builder.setNegativeButton("clear", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-
                     SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
                     SharedPreferences.Editor editor = sharedPreferences.edit();
 
+                    // clear
+                    editor.putString("battery_level", "");
+                    editor.apply();
 
-                    if (true) {
-                        // clear
-                        editor.putString("battery_level", "");
-                        editor.apply();
-
-                        editor.putString("battery_time", "");
-                        editor.apply();
-                    }
-
+                    editor.putString("battery_time", "");
+                    editor.apply();
                 }
             });
 
             return builder.create();
         }
 
-        private void sampleData() {
+
+
+
+        private String prepone(String t, String value) {
+            String output;
+
+            if (t.isEmpty()) {
+                output = value;
+            } else {
+                output = value + VALUE_DELIM;
+                output = output.substring(0, 3);
+            }
+
+            return output + t;
+        }
+
+
+        private void makeSampleData() {
             SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
             SharedPreferences.Editor editor = sharedPreferences.edit();
 
@@ -567,8 +576,8 @@ public class Recommendation extends Fragment {
                 levels += ";10.0";
 
 
-                String times = "2021-03-30 15:00:00";
-                times += ";2021-03-29 14:00:00";
+                String times = "2021-03-31 15:00:00";
+                times += ";2021-03-31 10:07:00";
                 times += ";2021-03-28 16:00:00";
                 times += ";2021-03-24 11:00:00";
                 times += ";2021-03-23 10:02:00";
@@ -591,8 +600,6 @@ public class Recommendation extends Fragment {
 
 
     /* -------------------------------------------------------------------------------- */
-
-
 
 
 

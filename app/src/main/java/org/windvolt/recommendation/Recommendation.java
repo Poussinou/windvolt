@@ -19,6 +19,7 @@
 package org.windvolt.recommendation;
 
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
@@ -53,9 +54,24 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 
+/*
+    Recommendation
+    this fragment provides
+        - location display
+        - location editor
+        - location services dialog
+
+        - latitude/longitude display
+
+
+        - battery tracker display
+        - battery tracking dialog
+ */
 public class Recommendation extends Fragment {
 
     final int MAX_BATTERY_TRACE = 10;
+
+
 
     final int LOAD_NOT_AVAILABLE = -1;
     final int LOAD_NOT_RECOMMENDED = 0;
@@ -98,8 +114,16 @@ public class Recommendation extends Fragment {
         //ImageView rec_image = view.findViewById(R.id.recommendation_image);
         loc_display = (TextView) view.findViewById(R.id.location_display);
         geo_display = (TextView) view.findViewById(R.id.location_geodata);
-        bat_display = (TextView) view.findViewById(R.id.location_battery);
 
+        // update battery
+        bat_display = (TextView) view.findViewById(R.id.location_battery);
+        bat_display.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BatteryDialog dialog = new BatteryDialog();
+                dialog.show(getActivity().getSupportFragmentManager(), "battery");
+            }
+        });
 
         // load location name
         //
@@ -356,6 +380,207 @@ public class Recommendation extends Fragment {
     }
 
 
+    public static class BatteryDialog extends DialogFragment {
+
+        final int CHART_LINES = 5;
+
+        final String CHART_DOT = "•";
+        final String CHART_NO_DOT = " ";
+
+        final String VALUE_DELIM = "  ";
+
+        private String prepone(String t, String value) {
+            String output;
+
+            if (t.isEmpty()) {
+                output = value;
+            } else {
+                output = value + VALUE_DELIM;
+                output = output.substring(0, 3);
+            }
+
+            return output + t;
+        }
+
+        @Override
+        public Dialog onCreateDialog(@NonNull Bundle savedInstanceState) {
+            // Use the Builder class for convenient dialog construction
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            LayoutInflater inflater = requireActivity().getLayoutInflater();
+
+            final View view = inflater.inflate(R.layout.battery_tracker, null);
+
+
+            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+            String levels = sharedPreferences.getString("battery_level", "");
+            String times = sharedPreferences.getString("battery_time", "");
+
+
+            String[] vlevels = levels.split(";");
+            String vtimes[] = times.split(";");
+
+
+
+
+
+
+            /* create chart */
+
+            ArrayList<TextView> lines = new ArrayList<>();
+
+            TextView l0 = view.findViewById(R.id.chart_line0);
+            TextView l1 = view.findViewById(R.id.chart_line1);
+            TextView l2 = view.findViewById(R.id.chart_line2);
+            TextView l3 = view.findViewById(R.id.chart_line3);
+            TextView l4 = view.findViewById(R.id.chart_line4);
+
+            lines.add(l0);
+            lines.add(l1);
+            lines.add(l2);
+            lines.add(l3);
+            lines.add(l4);
+
+            int size = vlevels.length;
+
+            // print chart lines
+            for (int l=0; l<lines.size(); l++) {
+                TextView tv = lines.get(l);
+                int border = l * 100/CHART_LINES;
+
+                // print line
+                String t = "";
+                for (int p=0; p<size; p++) {
+                    String vlevel = vlevels[p];
+
+                    if (!vlevel.isEmpty()) {
+                        Float flevel = Float.parseFloat(vlevel);
+                        int ilevel = flevel.intValue();
+
+                        if (ilevel > border) { t = prepone(t, CHART_DOT); }
+                        else { t = prepone(t, CHART_NO_DOT); }
+                    }
+                }
+                tv.setText(t);
+            }
+
+
+
+            // print chart legend
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+            String cl0 = "", cl1 = "";
+
+            for (int p=0; p<size; p++) {
+                String vlevel = vlevels[p], vtime = vtimes[p];
+
+                if (!vlevel.isEmpty()) {
+                    long milliseconds = 0;
+
+                    try { // calculate time since last launch
+                        Date this_time = new Date(System.currentTimeMillis());
+                        Date last_time = formatter.parse(vtime);
+
+                        milliseconds = this_time.getTime() - last_time.getTime();
+                    } catch (Exception e) {}
+
+                    long minutes = milliseconds/1000/60;
+                    long hours = minutes/60;
+                    long days = hours/24;
+
+                    if (days > 0) {
+                        cl0 = prepone(cl0,"" + days);
+                        cl1 = prepone(cl1, "d");
+                    } else  if (hours > 0) {
+                        cl0 = prepone(cl0,"" + hours);
+                        cl1 = prepone(cl1, "h");
+                    } else {
+                        cl0 = prepone(cl0,"" + minutes);
+                        cl1 = prepone(cl1, "m");
+                    }
+
+                }//vlevel.isEmpty()
+            }//for
+
+
+            TextView legend0 = view.findViewById(R.id.chart_legend0);
+            legend0.setText(cl0);
+
+            TextView legend1 = view.findViewById(R.id.chart_legend1);
+            legend1.setText(cl1);
+
+            TextView level = view.findViewById(R.id.track_level);
+            level.setText("okay");
+
+
+
+
+            // dialog features
+            builder.setView(view).setTitle("battery");
+
+            builder.setPositiveButton("okay", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                }
+            });
+
+            builder.setNegativeButton("clear", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+
+
+                    if (true) {
+                        // clear
+                        editor.putString("battery_level", "");
+                        editor.apply();
+
+                        editor.putString("battery_time", "");
+                        editor.apply();
+                    }
+
+
+                    if (false) {
+                        // control values
+                        String levels = "100.0";
+                        levels += ";90.0";
+                        levels += ";80.0";
+                        levels += ";70.0";
+                        levels += ";60.0";
+                        levels += ";50.0";
+                        levels += ";40.0";
+                        levels += ";30.0";
+                        levels += ";20.0";
+                        levels += ";10.0";
+
+
+                        String times = "2021-03-30 15:00:00";
+                        times += ";2021-03-29 14:00:00";
+                        times += ";2021-03-28 16:00:00";
+                        times += ";2021-03-24 11:00:00";
+                        times += ";2021-03-23 10:02:00";
+                        times += ";2021-03-22 10:00:00";
+                        times += ";2021-03-21 12:08:00";
+                        times += ";2021-03-18 11:07:00";
+                        times += ";2021-03-15 11:00:00";
+                        times += ";2021-02-11 15:30:00";
+
+
+
+                        editor.putString("battery_level", levels);
+                        editor.apply();
+
+                        editor.putString("battery_time", times);
+                        editor.apply();
+                    }
+                }
+            });
+
+            return builder.create();
+        }
+    }
 
 
     /* -------------------------------------------------------------------------------- */
@@ -447,6 +672,9 @@ public class Recommendation extends Fragment {
 
             last_time = calendar.getTime();
 
+
+
+
             milliseconds = now.getTime() - last_time.getTime();
 
         } catch (Exception e) {
@@ -458,7 +686,7 @@ public class Recommendation extends Fragment {
 
         long hours = milliseconds/1000/60/60;
 
-        // if more than 1 hour ago
+        // save if more than 1 hour ago
         if (hours > 0) {
             saveBatteryLevel(battery_level_now);
             saveBatteryTime(battery_time_now);

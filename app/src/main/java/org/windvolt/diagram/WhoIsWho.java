@@ -42,7 +42,7 @@ import org.windvolt.R;
 public class WhoIsWho extends AppCompatActivity {
 
     Drawable icon;
-    OrganigramLayout diagram;
+    BoxTreeLayout diagram;
     //BoxTreeLayout diagram;
 
     int w = 480;
@@ -86,12 +86,19 @@ public class WhoIsWho extends AppCompatActivity {
 
 
         RelativeLayout.LayoutParams diagramLayout = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
-        diagram = new OrganigramLayout(this);
+        diagram = new BoxTreeLayout(this);
 
 
         setContentView(diagram, diagramLayout);
 
         drawTree();
+
+        /* switch to fragment
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.container_settings, new PreferenceFragment())
+                .commit();
+         */
     }
 
 
@@ -108,21 +115,31 @@ public class WhoIsWho extends AppCompatActivity {
 
 
 
-    private class OrganigramLayout extends RelativeLayout {
+
+    private class BoxTreeLayout extends RelativeLayout {
         Paint paint;
 
-        public OrganigramLayout(Context context) {
+        public BoxTreeLayout(Context context) {
             super(context);
             paint = new Paint();
-            paint.setStrokeWidth(4);
-
         }
 
 
-        /* draw connections */
+        /* draw */
         protected void dispatchDraw(Canvas canvas) {
 
-            paint.setColor(Color.BLUE);
+            /* diagram symbol */
+            paint.setColor(Color.RED);
+            paint.setStrokeWidth(8);
+
+            canvas.drawLine(0, 0, 20, 20, paint);
+            canvas.drawLine(20, 20, 20, 0, paint);
+            canvas.drawLine(20, 20, 0, 20, paint);
+
+
+            /* draw connections
+            paint.setColor(Color.BLACK);
+            paint.setStrokeWidth(4);
 
             int size = getChildCount();
             for (int v = 1; v < size; v++) {
@@ -133,13 +150,11 @@ public class WhoIsWho extends AppCompatActivity {
 
                 canvas.drawLine(rx, ry, x1, y1, paint);
             }
+             */
 
             super.dispatchDraw(canvas);
         }
     }
-
-
-
 
 
 

@@ -104,8 +104,6 @@ public class BusinessModel extends AppCompatActivity {
         public StructogramLayout(Context context) {
             super(context);
             paint = new Paint();
-            paint.setStrokeWidth(4);
-
         }
 
 
@@ -113,16 +111,22 @@ public class BusinessModel extends AppCompatActivity {
         draw arrows
          */
         protected void dispatchDraw(Canvas canvas) {
-            //canvas.drawLine(0, 0, w, h, paint);
 
+            /* diagram symbol */
+            paint.setColor(Color.RED);
+            paint.setStrokeWidth(8);
 
-            int size = this.getChildCount();
+            canvas.drawLine(0, 0, 20, 20, paint);
+            canvas.drawLine(20, 20, 20, 0, paint);
+            canvas.drawLine(20, 20, 0, 20, paint);
+
 
 
             /* draw connections */
-
             paint.setColor(Color.BLACK);
+            paint.setStrokeWidth(4);
 
+            int size = this.getChildCount();
             for (int v = 0; v < size-1; v++) {
                 View v0 = getChildAt(v);
                 View v1 = getChildAt(v+1);

@@ -407,7 +407,7 @@ public class Recommendation extends Fragment {
 
 
             String[] vlevels = levels.split(";");
-            String vtimes[] = times.split(";");
+            String[] vtimes = times.split(";");
 
 
 
@@ -429,6 +429,7 @@ public class Recommendation extends Fragment {
             lines.add(l2);
             lines.add(l3);
             lines.add(l4);
+
 
             int size = vlevels.length;
 
@@ -459,7 +460,7 @@ public class Recommendation extends Fragment {
 
 
             // print chart legend
-            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            //SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
             String cl0 = "", cl1 = "";
             int sumup = 0;
@@ -478,7 +479,7 @@ public class Recommendation extends Fragment {
 
                     try { // calculate time since last launch
                         Date this_time = new Date(System.currentTimeMillis());
-                        Date last_time = formatter.parse(vtime);
+                        Date last_time = new Date(Long.parseLong(vtime));
 
                         milliseconds = this_time.getTime() - last_time.getTime();
                     } catch (Exception e) {}
@@ -509,7 +510,7 @@ public class Recommendation extends Fragment {
             legend1.setText(cl1);
 
             TextView level = view.findViewById(R.id.track_level);
-            level.setText("okay " + sumup/size + " " + levels);
+            level.setText("okay " + sumup/size + " " + times);
 
 
             // dialog features
@@ -525,6 +526,30 @@ public class Recommendation extends Fragment {
             builder.setNegativeButton("clear", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
+
+                    // query decision
+                    /* this dialog inside a dialog does not work for deleting track
+
+                    AlertDialog.Builder query = new AlertDialog.Builder(getActivity());
+
+                    query.setMessage("clear battery track");
+                    query.setTitle("clear");
+
+                    query.setNegativeButton("cancel", null);
+                    query.setPositiveButton("okay", new DialogInterface.OnClickListener() {
+
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            //clearBatteryTrack();
+                            Toast.makeText(getContext(), "battery track will be created automatically", Toast.LENGTH_LONG).show();
+                        }
+                    });
+                    query.create().show();
+                     */
+
+
+
+
                     SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
                     SharedPreferences.Editor editor = sharedPreferences.edit();
 
@@ -534,12 +559,14 @@ public class Recommendation extends Fragment {
 
                     editor.putString("battery_time", "");
                     editor.apply();
+
+
+                    Toast.makeText(getContext(), "battery track will rebuild", Toast.LENGTH_LONG).show();
                 }
             });
 
             return builder.create();
         }
-
 
 
 
@@ -599,8 +626,9 @@ public class Recommendation extends Fragment {
     }
 
 
-    /* -------------------------------------------------------------------------------- */
 
+
+    /* -------------------------------------------------------------------------------- */
 
 
     /* load latitude:longitude */
@@ -665,16 +693,17 @@ public class Recommendation extends Fragment {
 
 
         // calculate time
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        //SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         long milliseconds = 0;
 
         Date now = new Date(System.currentTimeMillis());
-        battery_time_now = formatter.format(now);
+        battery_time_now = Long.toString(now.getTime());
 
         Date last_time = now;
 
         try { // calculate time since last launch
-            last_time = formatter.parse(battery_time_before);
+
+            last_time.setTime(Long.parseLong(battery_time_before));
 
             // tune date
             Calendar calendar = Calendar.getInstance();
@@ -683,7 +712,7 @@ public class Recommendation extends Fragment {
             // adjust time: -0 do not adjust, -1 hour, -2 hour, ...
             int adjust_hours = -0;
             calendar.add(Calendar.HOUR, adjust_hours);
-
+            
             last_time = calendar.getTime();
 
 
@@ -705,7 +734,7 @@ public class Recommendation extends Fragment {
             saveBatteryLevel(battery_level_now);
             saveBatteryTime(battery_time_now);
 
-            battery_time_before = formatter.format(last_time);
+            battery_time_before = Long.toString(last_time.getTime());
         }
 
     }
@@ -718,13 +747,18 @@ public class Recommendation extends Fragment {
 
 
         /* show time since last */
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        //SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         long milliseconds = 0;
 
         try { // calculate time since last launch
 
-            Date this_time = formatter.parse(battery_time_now);
-            Date last_time = formatter.parse(battery_time_before);
+            Date this_time = new Date();
+            this_time.setTime(Long.parseLong(battery_time_now));
+
+            Date last_time = new Date();
+            last_time.setTime(Long.parseLong(battery_time_before));
+
+            //
 
             milliseconds = this_time.getTime() - last_time.getTime();
 

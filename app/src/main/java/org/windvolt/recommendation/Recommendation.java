@@ -94,6 +94,8 @@ public class Recommendation extends Fragment {
 
     static Context context;
 
+
+
     /* VIEW */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -264,6 +266,9 @@ public class Recommendation extends Fragment {
         });
 
     }
+
+
+
 
 
     /* set recommendation */

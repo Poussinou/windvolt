@@ -43,7 +43,7 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
-public class XMLModelStore {
+public class XMLDeviceModelStore {
     final String ns = null;
     static String xml_file = "devices.xml";
 
@@ -60,7 +60,7 @@ public class XMLModelStore {
     private int xpower = 0;
     public String getPowerCapability() { return Integer.toString(xpower); }
 
-    public XMLModelStore(@NonNull Context context) {
+    public XMLDeviceModelStore(@NonNull Context context) {
         devices_context = context;
     }
 

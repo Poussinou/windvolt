@@ -510,7 +510,7 @@ public class Recommendation extends Fragment {
             legend1.setText(cl1);
 
             TextView level = view.findViewById(R.id.track_level);
-            level.setText("okay " + sumup/size + " " + times);
+            level.setText("average " + sumup/size + "%");
 
 
             // dialog features

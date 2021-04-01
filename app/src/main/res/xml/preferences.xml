@@ -42,15 +42,15 @@
             app:key="location_latitude"
             app:selectAllOnFocus="true"
             app:singleLine="true"
-            app:summary="@string/location_latitude"
-            app:title="latitude" />
+            app:summary="@string/location_latitude_summary"
+            app:title="@string/location_latitude" />
 
         <EditTextPreference
             app:key="location_longitude"
             app:selectAllOnFocus="true"
             app:singleLine="true"
-            app:summary="@string/location_longitude"
-            app:title="longitude" />
+            app:summary="@string/location_longitude_summary"
+            app:title="@string/location_longitude" />
 
         <CheckBoxPreference
             app:defaultValue="false"

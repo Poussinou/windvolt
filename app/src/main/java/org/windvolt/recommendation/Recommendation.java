@@ -402,7 +402,6 @@ public class Recommendation extends Fragment {
         final String CHART_DELIM = "  ";
         final int CHART_SIZE = 3;
 
-
         @Override
         public Dialog onCreateDialog(@NonNull Bundle savedInstanceState) {
             // Use the Builder class for convenient dialog construction
@@ -411,8 +410,12 @@ public class Recommendation extends Fragment {
 
             final View view = inflater.inflate(R.layout.battery_tracker, null);
 
-            // makeSampleData() creates a test array for this dialog
-            //makeSampleData();
+            // makeSampleData() creates sample data for diagnostic
+
+            if (false) {
+                makeSampleData();
+            }
+
 
 
             /* load tracking data from preferences */
@@ -588,8 +591,7 @@ public class Recommendation extends Fragment {
             return builder.create();
         }
 
-
-
+        /* preposes value to t */
         private String prepose(String t, String value) {
             String output;
 
@@ -604,6 +606,10 @@ public class Recommendation extends Fragment {
         }
 
 
+
+        /*
+        * creates sample data for diagnostic
+        */
         private void makeSampleData() {
             SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
             SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -632,7 +638,7 @@ public class Recommendation extends Fragment {
 
                 now = calendar.getTime();
 
-                times += ";" + Long.toString(now.getTime());
+                times += ";" + now.getTime();
             }
 
 
@@ -720,10 +726,11 @@ public class Recommendation extends Fragment {
 
         Date last_time = now;
 
-        try { // calculate time since last launch
+        try { // calculate time difference
 
             last_time.setTime(Long.parseLong(battery_time_before));
 
+            /*
             // tune date
             Calendar calendar = Calendar.getInstance();
             calendar.setTime(last_time);
@@ -731,17 +738,15 @@ public class Recommendation extends Fragment {
             // adjust time: -0 do not adjust, -1 hour, -2 hour, ...
             int adjust_hours = -0;
             calendar.add(Calendar.HOUR, adjust_hours);
-            
+
             last_time = calendar.getTime();
-
-
-
+            */
 
             milliseconds = now.getTime() - last_time.getTime();
 
         } catch (Exception e) {
 
-            // set valid values
+            // initialialize values
             saveBatteryLevel(battery_level_now);
             saveBatteryTime(battery_time_now);
         }
@@ -768,15 +773,10 @@ public class Recommendation extends Fragment {
         /* show time since last */
         long milliseconds = 0;
 
-        try { // calculate time since last launch
+        try { // calculate time difference
 
-            Date this_time = new Date();
-            this_time.setTime(Long.parseLong(battery_time_now));
-
-            Date last_time = new Date();
-            last_time.setTime(Long.parseLong(battery_time_before));
-
-            //
+            Date this_time = new Date(Long.parseLong(battery_time_now));
+            Date last_time = new Date(Long.parseLong(battery_time_before));
 
             milliseconds = this_time.getTime() - last_time.getTime();
 
@@ -793,30 +793,24 @@ public class Recommendation extends Fragment {
         else { bat += minutes + "m "; }
 
 
-        /* show load delta */
-        Float fbattery = Float.parseFloat(battery_level_now);
+        /* display load difference */
+        Float level_now = Float.parseFloat(battery_level_now);
 
         try {
-            float flbattery = Float.parseFloat(battery_level_before);
+            float level_before = Float.parseFloat(battery_level_before);
 
-            Float delta = fbattery - flbattery;
-            int pdelta = delta.intValue();
+            Float delta_time = level_now - level_before;
+            int intdelta = delta_time.intValue();
 
-            if (delta < 0) { bat += pdelta; }
-            else { bat += "+" + pdelta; }
+            if (delta_time < 0) { bat += "" + intdelta; }
+            else { bat += "+" + intdelta; }
 
 
         } catch (Exception e) {
-            bat += fbattery.intValue();
+            bat += "" + level_now.intValue();
         }
         bat += "%";
 
-        /*
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
-        String battery_levels = sharedPreferences.getString("battery_level", "");
-        String[] values = battery_levels.split(";");
-        bat += " e:" + values.length;
-        */
 
 
         /* display battery text */

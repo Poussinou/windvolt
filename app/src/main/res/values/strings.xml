@@ -115,18 +115,21 @@
     <string name="location_category">Ort</string>
 
     <string name="location_title">Dein Ort</string>
-    <string name="location_summary">Freie Ortsangabe.\n*Die App neu starten.</string>
+    <string name="location_summary">Freie Ortsangabe.\nDie App neu starten.</string>
 
     <string name="location_longitude">Längengrad.</string>
+    <string name="location_longitude_summary">Freie Längenangabe.\nDie App neu starten.</string>
+
     <string name="location_latitude">Breitengrad.</string>
+    <string name="location_latitude_summary">Freie Breitenangabe.\nDie App neu starten.</string>
 
     <string name="location_services">Dienste</string>
-    <string name="location_services_summary">Durch die Verwendung der Dienste gibst du Daten preis.\n*Die App neu starten.</string>
+    <string name="location_services_summary">*Durch die Verwendung von Diensten gibst Du Daten preis.\nDie App neu starten.</string>
 
     <string name="community_category">Community</string>
 
     <string name="sharing_title">Community beitreten</string>
-    <string name="sharing_summary">Teile Deine Gerätedaten und verbessere damit die Empfehlungen.</string>
+    <string name="sharing_summary">Ich teile meine Gerätedaten und verbessere damit die Empfehlungen.</string>
 
     <string name="notification_title">Benachrichtigungen empfangen</string>
     <string name="notification_summary">Ich will benachrichtigt werden wenn sich das Laden lohnt.</string>

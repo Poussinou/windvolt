@@ -49,7 +49,6 @@ import org.windvolt.R;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
@@ -70,7 +69,7 @@ import java.util.Date;
  */
 public class Recommendation extends Fragment {
 
-    final int MAX_BATTERY_TRACE = 10;
+    final int BATTERY_TRACK_ENTRIES = 10;
 
 
 
@@ -100,7 +99,9 @@ public class Recommendation extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
+        // static context is needed for nested dialogs
         context = getContext();
+
 
         // record battery
         recordBattery();
@@ -394,11 +395,12 @@ public class Recommendation extends Fragment {
 
         final int CHART_LINES = 5;
 
-        final String CHART_DOT = "•";
+        //final String CHART_DOT = "•";
+        final String CHART_DOT = "+";
         final String CHART_NO_DOT = " ";
 
-        final String VALUE_DELIM = "  ";
-
+        final String CHART_DELIM = "  ";
+        final int CHART_SIZE = 3;
 
 
         @Override
@@ -409,8 +411,11 @@ public class Recommendation extends Fragment {
 
             final View view = inflater.inflate(R.layout.battery_tracker, null);
 
+            // makeSampleData() creates a test array for this dialog
             //makeSampleData();
 
+
+            /* load tracking data from preferences */
             SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
             String levels = sharedPreferences.getString("battery_level", "");
             String times = sharedPreferences.getString("battery_time", "");
@@ -425,7 +430,6 @@ public class Recommendation extends Fragment {
 
 
             /* create chart */
-
             ArrayList<TextView> lines = new ArrayList<>();
 
             TextView l0 = view.findViewById(R.id.chart_line0);
@@ -449,7 +453,7 @@ public class Recommendation extends Fragment {
                 int border = l * 100/CHART_LINES;
 
                 // print line
-                String t = "";
+                String load = "";
                 for (int p=0; p<size; p++) {
                     String vlevel = vlevels[p];
 
@@ -458,33 +462,36 @@ public class Recommendation extends Fragment {
                         int ilevel = flevel.intValue();
 
 
-                        if (ilevel > border) { t = prepose(t, CHART_DOT); }
-                        else { t = prepose(t, CHART_NO_DOT); }
+                        if (ilevel > border) { load = prepose(load, CHART_DOT); }
+                        else { load = prepose(load, CHART_NO_DOT); }
                     }
-                }
-                tv.setText(t);
-            }
+                }//for
+
+                tv.setText(load);
+            }//for
 
 
 
 
 
             // print chart legend
-            //SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-
-            String cl0 = "", cl1 = "";
+            String legend0 = "", legend1 = "";
             int sumup = 0;
 
             for (int p=0; p<size; p++) {
                 String vlevel = vlevels[p], vtime = vtimes[p];
 
                 if (!vlevel.isEmpty()) {
+
+                    // get level
                     Float flevel = Float.parseFloat(vlevel);
                     int ilevel = flevel.intValue();
 
+                    // sumup
                     sumup += ilevel;
 
 
+                    // calculate time difference
                     long milliseconds = 0;
 
                     try { // calculate time since last launch
@@ -495,33 +502,39 @@ public class Recommendation extends Fragment {
 
                     } catch (Exception e) {}
 
+
+                    // analyze time difference
                     long minutes = milliseconds/1000/60;
                     long hours = minutes/60;
                     long days = hours/24;
 
                     if (days > 0) {
-                        cl0 = prepose(cl0,"" + days);
-                        cl1 = prepose(cl1, "d");
+                        legend0 = prepose(legend0,"" + days);
+                        legend1 = prepose(legend1, "d");
                     } else  if (hours > 0) {
-                        cl0 = prepose(cl0,"" + hours);
-                        cl1 = prepose(cl1, "h");
+                        legend0 = prepose(legend0,"" + hours);
+                        legend1 = prepose(legend1, "h");
                     } else {
-                        cl0 = prepose(cl0,"" + minutes);
-                        cl1 = prepose(cl1, "m");
+                        legend0 = prepose(legend0,"" + minutes);
+                        legend1 = prepose(legend1, "m");
                     }
 
                 }//vlevel.isEmpty()
+
             }//for
 
 
-            TextView legend0 = view.findViewById(R.id.chart_legend0);
-            legend0.setText(cl0);
 
-            TextView legend1 = view.findViewById(R.id.chart_legend1);
-            legend1.setText(cl1);
+            TextView vlegend0 = view.findViewById(R.id.chart_legend0);
+            vlegend0.setText(legend1);
+
+            TextView vlegend1 = view.findViewById(R.id.chart_legend1);
+            vlegend1.setText(legend0);
 
             TextView level = view.findViewById(R.id.track_level);
-            level.setText("average " + sumup/size + "%");
+
+            int avergae = sumup/size;
+            level.setText("average " + avergae + "%");
 
 
             // dialog features
@@ -583,8 +596,8 @@ public class Recommendation extends Fragment {
             if (t.isEmpty()) {
                 output = value;
             } else {
-                output = value + VALUE_DELIM;
-                output = output.substring(0, 3);
+                output = value + CHART_DELIM;
+                output = output.substring(0, CHART_SIZE);
             }
 
             return output + t;
@@ -596,38 +609,38 @@ public class Recommendation extends Fragment {
             SharedPreferences.Editor editor = sharedPreferences.edit();
 
 
+            // control values
+            String levels = "10.0";
+            levels += ";20.0";
+            levels += ";30.0";
+            levels += ";40.0";
+            levels += ";50.0";
+            levels += ";60.0";
+            levels += ";70.0";
+            levels += ";80.0";
+            levels += ";90.0";
+            levels += ";100.0";
 
-                // control values
-                String levels = "100.0";
-                levels += ";90.0";
-                levels += ";80.0";
-                levels += ";70.0";
-                levels += ";60.0";
-                levels += ";50.0";
-                levels += ";40.0";
-                levels += ";30.0";
-                levels += ";20.0";
-                levels += ";10.0";
+            Date now = new Date(System.currentTimeMillis());
+            Calendar calendar = Calendar.getInstance();
+            String times = Long.toString(now.getTime());
+
+            for (int t=0; t<10; t++) {
+                calendar.setTime(now);
+
+                calendar.add(Calendar.HOUR, -7);
+
+                now = calendar.getTime();
+
+                times += ";" + Long.toString(now.getTime());
+            }
 
 
-                String times = "2021-03-31 15:00:00";
-                times += ";2021-03-31 10:07:00";
-                times += ";2021-03-28 16:00:00";
-                times += ";2021-03-24 11:00:00";
-                times += ";2021-03-23 10:02:00";
-                times += ";2021-03-22 10:00:00";
-                times += ";2021-03-21 12:08:00";
-                times += ";2021-03-18 11:07:00";
-                times += ";2021-03-15 11:00:00";
-                times += ";2021-02-11 15:30:00";
+            editor.putString("battery_level", levels);
+            editor.apply();
 
-
-
-                editor.putString("battery_level", levels);
-                editor.apply();
-
-                editor.putString("battery_time", times);
-                editor.apply();
+            editor.putString("battery_time", times);
+            editor.apply();
 
         }
     }
@@ -700,7 +713,6 @@ public class Recommendation extends Fragment {
 
 
         // calculate time
-        //SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         long milliseconds = 0;
 
         Date now = new Date(System.currentTimeMillis());
@@ -754,7 +766,6 @@ public class Recommendation extends Fragment {
 
 
         /* show time since last */
-        //SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         long milliseconds = 0;
 
         try { // calculate time since last launch
@@ -920,7 +931,7 @@ public class Recommendation extends Fragment {
                 String level = values[p];
 
                 if (!level.isEmpty()) {
-                    if (hits < MAX_BATTERY_TRACE) {
+                    if (hits < BATTERY_TRACK_ENTRIES) {
                         battery_level +=  ";" + level;
                         hits++;
                     }
@@ -960,7 +971,7 @@ public class Recommendation extends Fragment {
                 String time = values[p];
 
                 if (!time.isEmpty()) {
-                    if (hits < MAX_BATTERY_TRACE) {
+                    if (hits < BATTERY_TRACK_ENTRIES) {
                         battery_time +=  ";" + time;
                         hits++;
                     }

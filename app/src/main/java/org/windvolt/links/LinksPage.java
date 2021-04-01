@@ -35,7 +35,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import org.windvolt.R;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class LinksPage extends Fragment {
 

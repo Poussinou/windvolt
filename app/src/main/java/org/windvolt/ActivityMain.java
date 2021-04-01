@@ -26,10 +26,10 @@ import android.view.MenuItem;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import org.windvolt.story.StoryOfWindvolt;
 import org.windvolt.system.About;
 import org.windvolt.system.DeviceManagement;
 import org.windvolt.system.Settings;
-import org.windvolt.story.StoryOfWindvolt;
 
 public class ActivityMain extends AppCompatActivity {
 

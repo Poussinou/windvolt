@@ -18,10 +18,6 @@
 */
 package org.windvolt.diagram;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.content.res.AppCompatResources;
-
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -34,6 +30,10 @@ import android.view.Display;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.content.res.AppCompatResources;
 
 import com.google.android.material.snackbar.Snackbar;
 

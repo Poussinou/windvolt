@@ -35,8 +35,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.windvolt.diagram.BusinessModel;
 import org.windvolt.diagram.WhoIsWho;
-import org.windvolt.system.DeviceManagement;
 import org.windvolt.story.StoryOfWindvolt;
+import org.windvolt.system.DeviceManagement;
 
 public class Welcome extends Fragment {
 

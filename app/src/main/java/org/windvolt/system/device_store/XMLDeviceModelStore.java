@@ -47,7 +47,7 @@ public class XMLDeviceModelStore {
     final String ns = null;
     static String xml_file = "devices.xml";
 
-    Context devices_context;
+    Context context;
 
     List<DeviceModel> deviceStore = new ArrayList<>();
 
@@ -60,12 +60,12 @@ public class XMLDeviceModelStore {
     private int xpower = 0;
     public String getPowerCapability() { return Integer.toString(xpower); }
 
-    public XMLDeviceModelStore(@NonNull Context context) {
-        devices_context = context;
+    public XMLDeviceModelStore(@NonNull Context set_context) {
+        context = set_context;
     }
 
     public ArrayAdapter createListViewAdapter(int resourceId, int textViewResourceId) {
-        ListViewAdapter = new ArrayAdapter(devices_context, resourceId, textViewResourceId, new ArrayList()) {
+        ListViewAdapter = new ArrayAdapter(context, resourceId, textViewResourceId, new ArrayList()) {
 
         };
 
@@ -153,14 +153,14 @@ public class XMLDeviceModelStore {
 
     public boolean isSharingAllowed() {
 
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(devices_context);
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
         boolean value = sharedPreferences.getBoolean("community_sharing", false);
 
         return value;
     }
     public boolean isNotificationAllowed() {
 
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(devices_context);
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
         boolean value = sharedPreferences.getBoolean("community_notifications", false);
 
         return value;
@@ -179,7 +179,7 @@ public class XMLDeviceModelStore {
 
         try {
 
-            FileInputStream fileInputStream = devices_context.openFileInput(xml_file);
+            FileInputStream fileInputStream = context.openFileInput(xml_file);
 
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();
@@ -221,7 +221,7 @@ public class XMLDeviceModelStore {
         error_message = "okay";
 
         try {
-            FileOutputStream fileOutputStream = devices_context.openFileOutput(xml_file, Context.MODE_PRIVATE);
+            FileOutputStream fileOutputStream = context.openFileOutput(xml_file, Context.MODE_PRIVATE);
 
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();

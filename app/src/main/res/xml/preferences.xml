@@ -65,7 +65,7 @@
         <CheckBoxPreference
             app:defaultValue="false"
             app:enabled="false"
-            app:key="community_updates"
+            app:key="community_sharing"
             app:summary="@string/sharing_summary"
             app:title="@string/sharing_title">
 

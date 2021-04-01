@@ -144,26 +144,26 @@ public class XMLDeviceModelStore {
 
                 int l = 24 - name.length() - desc.length();
 
-                String d = Integer.toString(pos) + " " + name + " " + desc;
+                String d = pos + " " + name + " " + desc;
                 adapter.add(d);
             }
 
         }
     }
 
-    public boolean isUpdateAllowed() {
+    public boolean isSharingAllowed() {
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(devices_context);
-        boolean updates = sharedPreferences.getBoolean("updates", false);
+        boolean value = sharedPreferences.getBoolean("community_sharing", false);
 
-        return updates;
+        return value;
     }
     public boolean isNotificationAllowed() {
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(devices_context);
-        boolean notifications = sharedPreferences.getBoolean("notifications", false);
+        boolean value = sharedPreferences.getBoolean("community_notifications", false);
 
-        return notifications;
+        return value;
     }
 
 
@@ -281,9 +281,9 @@ public class XMLDeviceModelStore {
             return false;
         }
 
-        if (isUpdateAllowed()) {
+        if (isSharingAllowed()) {
             // TODO update online catalog
-
+            ;
         }
 
         return true;

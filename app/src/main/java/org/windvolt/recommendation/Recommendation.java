@@ -19,7 +19,6 @@
 package org.windvolt.recommendation;
 
 import android.app.Dialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -91,16 +90,11 @@ public class Recommendation extends Fragment {
     String battery_level_now, battery_level_before;
     String battery_time_now, battery_time_before;
 
-    static Context context;
-
 
 
     /* VIEW */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
-        // static context is needed for nested dialogs
-        context = getContext();
 
 
         // record battery
@@ -135,7 +129,7 @@ public class Recommendation extends Fragment {
 
         // load location name
         //
-        location = loadLocation();
+        location = zLoadLocation();
 
         // display location
         //
@@ -184,7 +178,7 @@ public class Recommendation extends Fragment {
 
 
         /* allow or hide services */
-        if (!locationServiceAllowed()) {
+        if (!zLocationServiceAllowed()) {
             services_open.setVisibility(View.GONE);
         }
 
@@ -209,7 +203,7 @@ public class Recommendation extends Fragment {
         location_chooser.setTextColor(Color.BLACK); // must
 
         /* adapt stations */
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(context, R.layout.location_item, names);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), R.layout.location_item, names);
         location_chooser.setAdapter(adapter);
 
 
@@ -223,7 +217,7 @@ public class Recommendation extends Fragment {
                 location = location_chooser.getText().toString();
                 loc_display.setText(location);
 
-                saveLocation(location);
+                zSaveLocation(location);
 
 
 
@@ -233,8 +227,8 @@ public class Recommendation extends Fragment {
                 String longitude = geo[0];
                 String latitude = geo[1];
 
-                saveLongitude(longitude);
-                saveLatitude(latitude);
+                zSaveLongitude(longitude);
+                zSaveLatitude(latitude);
 
 
 
@@ -262,7 +256,7 @@ public class Recommendation extends Fragment {
 
                 /* user assurance */
                 String location_saved = getString(R.string.location_saved); // values
-                Toast.makeText(context, location_saved, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), location_saved, Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -313,7 +307,7 @@ public class Recommendation extends Fragment {
             final View view = inflater.inflate(R.layout.location_services, null);
 
 
-            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
             String loc = sharedPreferences.getString("location_input", "");
 
             //String services = getString(R.string.location_services); // values
@@ -335,7 +329,7 @@ public class Recommendation extends Fragment {
             windy.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+                    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
 
                     String longitude = sharedPreferences.getString("location_longitude", "");
                     String latitude = sharedPreferences.getString("location_latitude", "");
@@ -347,7 +341,7 @@ public class Recommendation extends Fragment {
                     url += ",";
                     url += "10";
 
-                    context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
+                    getContext().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
                 }
             });
 
@@ -356,7 +350,7 @@ public class Recommendation extends Fragment {
             maps.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+                    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
 
                     String longitude = sharedPreferences.getString("location_longitude", "");
                     String latitude = sharedPreferences.getString("location_latitude", "");
@@ -367,7 +361,7 @@ public class Recommendation extends Fragment {
                     url += "/";
                     url += longitude;
 
-                    context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
+                    getContext().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
                 }
             });
 
@@ -376,14 +370,14 @@ public class Recommendation extends Fragment {
             knowledge.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+                    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
 
                     String loc = sharedPreferences.getString("location_input", "");
 
                     String url = "https://de.wikipedia.org/w/index.php?search=";
                     url += loc;
 
-                    context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
+                    getContext().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
                 }
             });
         }
@@ -419,7 +413,7 @@ public class Recommendation extends Fragment {
 
 
             /* load tracking data from preferences */
-            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
             String levels = sharedPreferences.getString("battery_level", "");
             String times = sharedPreferences.getString("battery_time", "");
 
@@ -555,34 +549,28 @@ public class Recommendation extends Fragment {
                 public void onClick(DialogInterface dialog, int which) {
 
                     // query decision
-
                     AlertDialog.Builder query = new AlertDialog.Builder(getActivity());
 
+                    query.setTitle("clear battery track");
                     query.setMessage("the battery track will be rebuilt over time");
-                    query.setTitle("clear battery track?");
 
-                    query.setNegativeButton("cancel", null);
-                    query.setPositiveButton("okay", new DialogInterface.OnClickListener() {
-
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-
-                            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
-                            SharedPreferences.Editor editor = sharedPreferences.edit();
-
-                            // clear
-                            editor.putString("battery_level", "");
-                            editor.apply();
-
-                            editor.putString("battery_time", "");
-                            editor.apply();
-
-
-                            Toast.makeText(context, "battery track cleared", Toast.LENGTH_LONG).show();
-                        }
-                    });
+                    query.setPositiveButton("okay", null);
                     query.create().show();
 
+                    // cleat battery track
+                    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+
+                    // clear
+                    editor.putString("battery_level", "");
+                    editor.apply();
+
+                    editor.putString("battery_time", "");
+                    editor.apply();
+
+
+                    // reassure user
+                    Toast.makeText(getContext(), "battery track cleared", Toast.LENGTH_LONG).show();
                 }
             });
 
@@ -611,7 +599,7 @@ public class Recommendation extends Fragment {
         * creates sample data for diagnostic
         */
         private void makeSampleData() {
-            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
             SharedPreferences.Editor editor = sharedPreferences.edit();
 
 
@@ -686,8 +674,8 @@ public class Recommendation extends Fragment {
 
     /* display latitude/longitude */
     private void displayGeodata() {
-        String longitude = loadLongitude();
-        String latitude = loadLatitude();
+        String longitude = zLoadLongitude();
+        String latitude = zLoadLatitude();
 
         if (longitude.isEmpty()) { longitude = "-"; }
         if (latitude.isEmpty()) { latitude = "-"; }
@@ -701,13 +689,13 @@ public class Recommendation extends Fragment {
     /* read and set battery level */
     private void recordBattery() {
 
-        battery_level_before = loadBatteryLevel();
-        battery_time_before = loadBatteryTime();
+        battery_level_before = zLoadBatteryLevel();
+        battery_time_before = zLoadBatteryTime();
 
 
         /* get load % */
         IntentFilter ifilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
-        Intent batteryStatus = context.registerReceiver(null, ifilter);
+        Intent batteryStatus = getContext().registerReceiver(null, ifilter);
 
         int level = batteryStatus.getIntExtra(BatteryManager.EXTRA_LEVEL, -1);
         int scale = batteryStatus.getIntExtra(BatteryManager.EXTRA_SCALE, -1);
@@ -747,16 +735,16 @@ public class Recommendation extends Fragment {
         } catch (Exception e) {
 
             // initialialize values
-            saveBatteryLevel(battery_level_now);
-            saveBatteryTime(battery_time_now);
+            zSaveBatteryLevel(battery_level_now);
+            zSaveBatteryTime(battery_time_now);
         }
 
         long hours = milliseconds/1000/60/60;
 
         // save if more than 1 hour ago
         if (hours > 0) {
-            saveBatteryLevel(battery_level_now);
-            saveBatteryTime(battery_time_now);
+            zSaveBatteryLevel(battery_level_now);
+            zSaveBatteryTime(battery_time_now);
 
             battery_time_before = Long.toString(last_time.getTime());
         }
@@ -858,47 +846,58 @@ public class Recommendation extends Fragment {
 
     /* preferences load/save */
 
-    private String loadLocation() {
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+    private String zLoadLocation() {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         String loc = sharedPreferences.getString("location_input", "");
         return loc;
     }
-    private void saveLocation(String value) {
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+    private void zSaveLocation(String value) {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("location_input", value);
         editor.apply();
     }
 
 
-    private String loadLongitude() {
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+    private String zLoadLongitude() {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         String longitude = sharedPreferences.getString("location_longitude", "");
         return longitude;
     }
-    private void saveLongitude(String value) {
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+    private void zSaveLongitude(String value) {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("location_longitude", value);
         editor.apply();
     }
 
-    private String loadLatitude() {
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+    private String zLoadLatitude() {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         String latitude = sharedPreferences.getString("location_latitude", "");
         return latitude;
     }
-    private void saveLatitude(String value) {
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+    private void zSaveLatitude(String value) {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("location_latitude", value);
         editor.apply();
     }
 
 
+    private void zClearBatteryTrack() {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        SharedPreferences.Editor editor = sharedPreferences.edit();
 
-    private String loadBatteryLevel() {
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+        // clear
+        editor.putString("battery_level", "");
+        editor.apply();
+
+        editor.putString("battery_time", "");
+        editor.apply();
+    }
+
+    private String zLoadBatteryLevel() {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         String battery_levels = sharedPreferences.getString("battery_level", "");
         String[] values = battery_levels.split(";");
 
@@ -910,8 +909,8 @@ public class Recommendation extends Fragment {
 
         return battery_level;
     }
-    private void saveBatteryLevel(String value) {
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+    private void zSaveBatteryLevel(String value) {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
         String battery_levels = sharedPreferences.getString("battery_level", "");
@@ -938,8 +937,8 @@ public class Recommendation extends Fragment {
         editor.apply();
     }
 
-    private String loadBatteryTime() {
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+    private String zLoadBatteryTime() {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
 
         String battery_times = sharedPreferences.getString("battery_time", "");
         String[] values = battery_times.split(";");
@@ -950,8 +949,8 @@ public class Recommendation extends Fragment {
 
         return battery_time;
     }
-    private void saveBatteryTime(String value) {
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+    private void zSaveBatteryTime(String value) {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
         String battery_times = sharedPreferences.getString("battery_time", "");
@@ -978,8 +977,9 @@ public class Recommendation extends Fragment {
         editor.apply();
     }
 
-    private boolean locationServiceAllowed() {
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+
+    private boolean zLocationServiceAllowed() {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
 
         return sharedPreferences.getBoolean("location_services", false);
     }

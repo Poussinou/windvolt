@@ -561,7 +561,7 @@ public class Recommendation extends Fragment {
                     editor.apply();
 
 
-                    Toast.makeText(getContext(), "battery track will rebuild", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), "battery track cleared", Toast.LENGTH_LONG).show();
                 }
             });
 

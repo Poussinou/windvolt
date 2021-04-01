@@ -334,7 +334,7 @@ public class Recommendation extends Fragment {
             windy.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+                    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
 
                     String longitude = sharedPreferences.getString("location_longitude", "");
                     String latitude = sharedPreferences.getString("location_latitude", "");
@@ -355,7 +355,7 @@ public class Recommendation extends Fragment {
             maps.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+                    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
 
                     String longitude = sharedPreferences.getString("location_longitude", "");
                     String latitude = sharedPreferences.getString("location_latitude", "");
@@ -375,7 +375,7 @@ public class Recommendation extends Fragment {
             knowledge.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+                    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
 
                     String loc = sharedPreferences.getString("location_input", "");
 

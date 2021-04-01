@@ -94,7 +94,7 @@ public class Recommendation extends Fragment {
 
     static Context context;
 
-    /* view location */
+    /* VIEW */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -191,7 +191,7 @@ public class Recommendation extends Fragment {
     }
 
 
-    /* edit location */
+    /* EDIT */
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
@@ -295,7 +295,7 @@ public class Recommendation extends Fragment {
     }
 
 
-    /* show installed services */
+    /* services */
     public static class ServicesDialog extends DialogFragment {
 
         @Override
@@ -487,6 +487,7 @@ public class Recommendation extends Fragment {
                         Date last_time = new Date(Long.parseLong(vtime));
 
                         milliseconds = this_time.getTime() - last_time.getTime();
+
                     } catch (Exception e) {}
 
                     long minutes = milliseconds/1000/60;
@@ -544,7 +545,7 @@ public class Recommendation extends Fragment {
 
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            
+
                             SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
                             SharedPreferences.Editor editor = sharedPreferences.edit();
 
@@ -561,13 +562,10 @@ public class Recommendation extends Fragment {
                     });
                     query.create().show();
 
-
-
-
-
-
                 }
             });
+
+
 
             return builder.create();
         }

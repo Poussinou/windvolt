@@ -709,14 +709,16 @@ public class Recommendation extends Fragment {
         // calculate time
         long milliseconds = 0;
 
-        Date now = new Date(System.currentTimeMillis());
-        battery_time_now = Long.toString(now.getTime());
+        long time_now = System.currentTimeMillis();
 
-        Date last_time = now;
+        battery_time_now = Long.toString(time_now);
+
+        long time_before = time_now;
+
 
         try { // calculate time difference
 
-            last_time.setTime(Long.parseLong(battery_time_before));
+            time_before = Long.parseLong(battery_time_before);
 
             /*
             // tune date
@@ -730,7 +732,7 @@ public class Recommendation extends Fragment {
             last_time = calendar.getTime();
             */
 
-            milliseconds = now.getTime() - last_time.getTime();
+            milliseconds = time_now - time_before;
 
         } catch (Exception e) {
 
@@ -746,7 +748,7 @@ public class Recommendation extends Fragment {
             zSaveBatteryLevel(battery_level_now);
             zSaveBatteryTime(battery_time_now);
 
-            battery_time_before = Long.toString(last_time.getTime());
+            battery_time_before = Long.toString(time_before);
         }
 
     }
@@ -763,10 +765,11 @@ public class Recommendation extends Fragment {
 
         try { // calculate time difference
 
-            Date this_time = new Date(Long.parseLong(battery_time_now));
-            Date last_time = new Date(Long.parseLong(battery_time_before));
+            long time_now = Long.parseLong(battery_time_now);
+            long time_before = Long.parseLong(battery_time_before);
 
-            milliseconds = this_time.getTime() - last_time.getTime();
+
+            milliseconds = time_now - time_before;
 
         } catch (Exception e) {}
 

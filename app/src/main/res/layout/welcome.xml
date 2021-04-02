@@ -137,7 +137,7 @@
         android:clickable="true"
         android:contentDescription="devices"
         android:focusable="true"
-        app:backgroundTint="@color/colorAccent"
+        app:backgroundTint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:rippleColor="#FFFFFF"

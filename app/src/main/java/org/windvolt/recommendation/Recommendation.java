@@ -790,10 +790,10 @@ public class Recommendation extends Fragment {
         try {
             float level_before = Float.parseFloat(battery_level_before);
 
-            Float delta_time = level_now - level_before;
-            int intdelta = delta_time.intValue();
+            Float delta_level = level_now - level_before;
+            int intdelta = delta_level.intValue();
 
-            if (delta_time < 0) { bat += "" + intdelta; }
+            if (delta_level < 0) { bat += "" + intdelta; }
             else { bat += "+" + intdelta; }
 
 

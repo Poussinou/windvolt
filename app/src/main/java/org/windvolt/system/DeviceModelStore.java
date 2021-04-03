@@ -16,7 +16,7 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-package org.windvolt.system.device_store;
+package org.windvolt.system;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -29,6 +29,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import org.windvolt.models.DeviceModel;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -43,7 +44,7 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
-public class XMLDeviceModelStore {
+public class DeviceModelStore {
     final String ns = null;
     static String xml_file = "devices.xml";
 
@@ -60,7 +61,7 @@ public class XMLDeviceModelStore {
     private int xpower = 0;
     public String getPowerCapability() { return Integer.toString(xpower); }
 
-    public XMLDeviceModelStore(@NonNull Context set_context) {
+    public DeviceModelStore(@NonNull Context set_context) {
         context = set_context;
     }
 
@@ -78,7 +79,9 @@ public class XMLDeviceModelStore {
     public boolean initialize() {
 
         if (getDeviceCount() == 0) {
-            addDevice("Alcatel X1", "0", "100");
+            // add current device
+
+            //addDevice("Alcatel X1", "0", "100");
         }
 
         return true;

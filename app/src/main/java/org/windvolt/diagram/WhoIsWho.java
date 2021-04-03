@@ -28,6 +28,8 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -43,7 +45,6 @@ public class WhoIsWho extends AppCompatActivity {
 
     Drawable icon;
     BoxTreeLayout diagram;
-    //BoxTreeLayout diagram;
 
     int w = 480;
     int h = 720;
@@ -137,7 +138,7 @@ public class WhoIsWho extends AppCompatActivity {
             canvas.drawLine(20, 20, 0, 20, paint);
 
 
-            /* draw connections
+            // draw connections
             paint.setColor(Color.BLACK);
             paint.setStrokeWidth(4);
 
@@ -150,7 +151,7 @@ public class WhoIsWho extends AppCompatActivity {
 
                 canvas.drawLine(rx, ry, x1, y1, paint);
             }
-             */
+
 
             super.dispatchDraw(canvas);
         }
@@ -181,22 +182,33 @@ public class WhoIsWho extends AppCompatActivity {
 
     private TextView addChild(String name, String action, int angle) {
 
+        LinearLayout l = new LinearLayout(this);
+        l.setOrientation(LinearLayout.HORIZONTAL);
+
+
         TextView tv = new TextView(this);
         tv.setText(name);
         tv.setContentDescription(action);
 
-        tv.setBackground(icon);
+        //tv.setBackground(icon);
         //tv.setBackgroundColor(Color.LTGRAY);
 
         RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(w, h);
-        params.width = 160;
-        params.height = 40;
+        params.width = 320;
+        params.height = 100;
 
 
         params.leftMargin = (int) (rx + tab * Math.cos(Math.toRadians(angle)));
         params.topMargin = (int) (ry + tab * Math.sin(Math.toRadians(angle)));
 
-        diagram.addView(tv, params);
+        ImageView i = new ImageView(this);
+        i.setImageResource(R.drawable.windvolt_small);
+
+        //l.setBackground(icon);
+
+        l.addView(i);
+        l.addView(tv);
+        diagram.addView(l, params);
 
         tv.setOnClickListener(new doClick(action));
 

@@ -149,7 +149,6 @@ public class Recommendation extends Fragment {
                 loadStations();
                 location_chooser.setText(location);
 
-
                 // toogle visibilty
                 loc_display.setVisibility(View.GONE);
                 geo_display.setVisibility(View.GONE);

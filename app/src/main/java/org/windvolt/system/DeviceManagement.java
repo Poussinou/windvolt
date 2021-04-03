@@ -38,11 +38,10 @@ import androidx.fragment.app.DialogFragment;
 import com.google.android.material.snackbar.Snackbar;
 
 import org.windvolt.R;
-import org.windvolt.system.device_store.XMLDeviceModelStore;
 
 public class DeviceManagement extends AppCompatActivity {
 
-    static XMLDeviceModelStore deviceStore;
+    static DeviceModelStore deviceStore;
     static TextView sumupDevices;
 
     @Override
@@ -62,7 +61,7 @@ public class DeviceManagement extends AppCompatActivity {
         MODEL
          */
 
-        deviceStore = new XMLDeviceModelStore(this);
+        deviceStore = new DeviceModelStore(this);
         deviceStore.createListViewAdapter(R.layout.system_device_list, R.id.device_name);
 
         ListView lv = (ListView) findViewById(R.id.list_devices);
@@ -75,6 +74,7 @@ public class DeviceManagement extends AppCompatActivity {
 
                  if (deviceStore.isNotificationAllowed()) {
                      // TODO notify
+                     ;
                  }
              }
         }

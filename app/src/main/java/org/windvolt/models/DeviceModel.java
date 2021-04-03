@@ -16,20 +16,20 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-package org.windvolt.system.device_store;
+package org.windvolt.models;
 
 public class DeviceModel {
 
-    String device_name = "<name>";
-    public String getName() { return device_name; }
-    public void setName(String value) { device_name = value; }
+    String name = "<name>";
+    public String getName() { return name; }
+    public void setName(String value) { name = value; }
 
-    String device_type = "0";
-    public String getType() { return device_type; }
-    public void setType(String value) { device_type = value; }
+    String type = "0";
+    public String getType() { return type; }
+    public void setType(String value) { type = value; }
 
-    String device_power = "100";
-    public String getPower() { return device_power; }
-    public void setPower(String value) { device_power = value; }
+    String power = "100";
+    public String getPower() { return power; }
+    public void setPower(String value) { power = value; }
 
 }

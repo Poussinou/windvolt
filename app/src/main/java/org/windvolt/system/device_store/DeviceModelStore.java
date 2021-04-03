@@ -16,7 +16,7 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-package org.windvolt.system;
+package org.windvolt.system.device_store;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -30,7 +30,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import org.windvolt.models.DeviceModel;
+import org.windvolt.system.device_store.DeviceModel;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;

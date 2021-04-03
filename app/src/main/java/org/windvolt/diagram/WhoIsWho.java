@@ -113,8 +113,7 @@ public class WhoIsWho extends AppCompatActivity {
 
         addChild(" 50Hertz ", "50hertz.de", -45);
     }
-
-
+    
 
 
     private class BoxTreeLayout extends RelativeLayout {

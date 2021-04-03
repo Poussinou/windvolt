@@ -39,6 +39,7 @@ import androidx.fragment.app.DialogFragment;
 import com.google.android.material.snackbar.Snackbar;
 
 import org.windvolt.R;
+import org.windvolt.system.device_store.DeviceModelStore;
 
 public class DeviceManagement extends AppCompatActivity {
 

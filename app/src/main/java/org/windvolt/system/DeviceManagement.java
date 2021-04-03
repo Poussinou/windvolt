@@ -21,6 +21,7 @@ package org.windvolt.system;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -68,16 +69,13 @@ public class DeviceManagement extends AppCompatActivity {
         lv.setAdapter(deviceStore.getListViewAdapter());
 
         deviceStore.loadModel();
+        deviceStore.initialize();
 
-
-        if (deviceStore.initialize()) {
-
-
-            if (deviceStore.isNotificationAllowed()) {
-                // TODO notify
-                ;
-            }
+        if (deviceStore.isNotificationAllowed()) {
+            // TODO notify
+            ;
         }
+
 
         sumupDevices = findViewById(R.id.device_sum);
         sumupDevices.setText(deviceStore.getPowerCapability());
@@ -102,7 +100,12 @@ public class DeviceManagement extends AppCompatActivity {
                     public void onClick(View view) {
                         // TODO share devices
 
-                        Snackbar.make(view, "derzeit nicht unterstützt", Snackbar.LENGTH_LONG).show();
+                        String androidId = Settings.Secure.getString(getContentResolver(), android.provider.Settings.Secure.ANDROID_ID);
+
+                        String notice = androidId;
+                        notice = "derzeit nicht unterstützt";
+
+                        Snackbar.make(view, notice, Snackbar.LENGTH_LONG).show();
                     }
                 }
         );

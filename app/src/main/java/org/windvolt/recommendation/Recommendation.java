@@ -24,6 +24,8 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.media.AudioManager;
+import android.media.ToneGenerator;
 import android.net.Uri;
 import android.os.BatteryManager;
 import android.os.Bundle;
@@ -170,6 +172,10 @@ public class Recommendation extends Fragment {
         services_open.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                ToneGenerator beep = new ToneGenerator(AudioManager.STREAM_ALARM, 80);
+                beep.startTone(ToneGenerator.TONE_PROP_BEEP, 200);
+
                 ServicesDialog dialog = new ServicesDialog();
                 dialog.show(getActivity().getSupportFragmentManager(), getString(R.string.location_services));
             }

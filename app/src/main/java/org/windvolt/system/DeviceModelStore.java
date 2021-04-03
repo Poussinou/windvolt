@@ -20,6 +20,7 @@ package org.windvolt.system;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.widget.ArrayAdapter;
 
 import androidx.annotation.NonNull;
@@ -80,8 +81,10 @@ public class DeviceModelStore {
 
         if (getDeviceCount() == 0) {
             // add current device
+            String manufacturer = Build.MANUFACTURER;
+            String model = Build.MODEL;
 
-            //addDevice("Alcatel X1", "0", "100");
+            addDevice(manufacturer + "/" + model, "0", "11");
         }
 
         return true;

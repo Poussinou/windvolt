@@ -67,16 +67,16 @@ public class DeviceManagement extends AppCompatActivity {
         ListView lv = (ListView) findViewById(R.id.list_devices);
         lv.setAdapter(deviceStore.getListViewAdapter());
 
-        if (deviceStore.loadModel()) {
-
-             if (deviceStore.initialize()) {
+        deviceStore.loadModel();
 
 
-                 if (deviceStore.isNotificationAllowed()) {
-                     // TODO notify
-                     ;
-                 }
-             }
+        if (deviceStore.initialize()) {
+
+
+            if (deviceStore.isNotificationAllowed()) {
+                // TODO notify
+                ;
+            }
         }
 
         sumupDevices = findViewById(R.id.device_sum);

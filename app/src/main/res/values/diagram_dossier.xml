@@ -37,13 +37,12 @@
     <!-- network -->
     <string name="net_0">
         <![CDATA[
-            <strong>netztransparenz.de</strong>
-            <br /><br /><br /><br />
-            Informationsplattform der deutschen Übertragungsnetzbetreiber (ÜNB)
-            <br /><br />
-            Verweise:
+            <strong>netztransparenz.de
             <br />regelleistung.net
             <br />netzentwicklungsplan.de
+            </strong>
+            <br /><br /><br /><br />
+            Informationsplattformen der deutschen Übertragungsnetzbetreiber (ÜNB)
         ]]>
     </string>
 
@@ -110,12 +109,6 @@
             <br /><br />
         ]]>
     </string>
-    <string name="com_ecology">
-        <![CDATA[
-            <strong>konventionelle Anbieter</strong>
-            <br /><br />
-        ]]>
-    </string>
 
     <string name="com_rwe">
         <![CDATA[
@@ -123,12 +116,7 @@
             <br /><br />
         ]]>
     </string>
-    <string name="com_lichtblick">
-        <![CDATA[
-            <strong>lichtblick.de</strong>
-            <br /><br />
-        ]]>
-    </string>
+
     <string name="com_eon">
         <![CDATA[
             <strong>eon.de</strong>
@@ -145,5 +133,29 @@
 
     </string>
 
+
+
+    <string name="com_ecology">
+        <![CDATA[
+            <strong>oekostrom-anbieter.info</strong>
+            <br /><br />
+            <br /><br />
+            Die wichtigsten unabhängigen Ökostromanbieter in Deutschland sind die Naturstrom AG,
+             die EWS Schönau eG und die Greenpeace Energy eG. Diese Ökostromanbieter werden auch
+              als Ökostrom-Pioniere bezeichnet. Darüber hinaus sind in diesem Zusammenhang die noch
+               relativ jungen Anbieter Bürgerwerke eG und Polarstern GmbH zu nennen.
+                Alle genannten Anbieter gelten als besonders empfehlenswert, denn sie liefern echten Ökostrom,
+                 fördern den Bau von Neuanlagen zur Erzeugung von Strom aus Erneuerbaren Energien und sind
+                  nicht mit den großen Stromkonzernen verflochten, die eigene Atom- und Kohlekraftwerke betreiben
+                   oder an solchen beteiligt sind. Die Unabängigkeit des vierten Ökostrom-Pionieres LichtBlick SE
+                    ist seit spätestens 2018 leider nicht mehr gegeben.
+        ]]>
+    </string>
+    <string name="com_lichtblick">
+        <![CDATA[
+            <strong>lichtblick.de</strong>
+            <br /><br />
+        ]]>
+    </string>
 
 </resources>

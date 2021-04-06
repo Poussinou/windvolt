@@ -77,13 +77,14 @@ public class WhoIsWho extends AppCompatActivity {
         diagram_space = (LinearLayout) findViewById(R.id.diagram_space);
         diagram_web = (WebView) findViewById(R.id.diagram_web);
 
+        diagram_web.setBackgroundColor(0xF8F2E2);
 
         // listeners
 
         // use onBackPressed()
         //diagram_symbol.setOnClickListener(doLevelUp);
 
-        diagram_title.setOnClickListener(doOpenFocus);
+        //diagram_title.setOnClickListener(doOpenFocus);
 
 
         // create the store
@@ -106,12 +107,11 @@ public class WhoIsWho extends AppCompatActivity {
 
 
         String html = getString(Integer.parseInt(focus.getAdress())); // values
-        //html = "<p>" + html + "</p>";
         diagram_web.loadDataWithBaseURL(null, html, "text/html", "utf-8", null);
 
         // set focus title and subject
-        diagram_title.setText("  " + focus.getTitle());
-        diagram_subject.setText("  " + focus.getSubject());
+        diagram_title.setText(focus.getTitle());
+        diagram_subject.setText(focus.getSubject());
 
 
         // remove current children
@@ -127,9 +127,9 @@ public class WhoIsWho extends AppCompatActivity {
 
             for (int c=0; c<size; c++) {
                 String c_id = children_[c];
-                if (!c_id.isEmpty()) {
-                    createChild(focus, c_id);
-                }
+
+                if (!c_id.isEmpty()) createChild(focus, c_id);
+
             }//child
         }//children
     }
@@ -157,7 +157,7 @@ public class WhoIsWho extends AppCompatActivity {
         TextView text = new TextView(this);
         text.setTextAppearance(this, R.style.TextAppearance_MaterialComponents_Headline4);
 
-        text.setText("  " + child.getTitle());
+        text.setText(" " + child.getTitle());
 
         layout.addView(image);
         layout.addView(text);
@@ -183,7 +183,7 @@ public class WhoIsWho extends AppCompatActivity {
 
 
 
-        String n0 = store.addChild(netz, "50Herz", "50Herz",
+        String n0 = store.addChild(netz, "50Hertz", "50Hertz",
                 symbol, R.string.net_50herz);
         String n1 = store.addChild(netz, "Amprion", "Amprion",
                 symbol, R.string.net_ampirion);
@@ -221,34 +221,6 @@ public class WhoIsWho extends AppCompatActivity {
 
     }
 
-        /* mindmap
-        RelativeLayout.LayoutParams diagramLayout = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
-        diagram = new BoxTreeLayout(this);
-        setContentView(diagram, diagramLayout);
-
-        private class BoxTreeLayout extends RelativeLayout {
-        protected void dispatchDraw(Canvas canvas) {
-
-        canvas.drawLine(0, 0, 20, 20, paint);
-        canvas.drawLine(20, 20, 20, 0, paint);
-        canvas.drawLine(20, 20, 0, 20, paint);
-
-
-        // draw connections
-        int size = getChildCount();
-
-        super.dispatchDraw(canvas);
-
-
-       RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(w, h);
-        params.width = 320;
-        params.height = 100;
-        params.leftMargin = (int) (rx + tab * Math.cos(Math.toRadians(angle)));
-        params.topMargin = (int) (ry + tab * Math.sin(Math.toRadians(angle)));
-
-        diagram.addView(l, params);
-         */
-
 
     @Override
     public void onBackPressed() {
@@ -256,8 +228,8 @@ public class WhoIsWho extends AppCompatActivity {
         if (null == parent) {
             super.onBackPressed();
         } else {
-            ToneGenerator beep = new ToneGenerator(AudioManager.STREAM_ALARM, 80);
-            beep.startTone(ToneGenerator.TONE_CDMA_ANSWER, 200);
+            //ToneGenerator beep = new ToneGenerator(AudioManager.STREAM_ALARM, 80);
+            //beep.startTone(ToneGenerator.TONE_CDMA_ANSWER, 200);
 
             String parent_id = parent.getId();
             setFocus(parent_id);
@@ -271,10 +243,8 @@ public class WhoIsWho extends AppCompatActivity {
 
         @Override
         public void onClick(View view) {
-
-            ToneGenerator beep = new ToneGenerator(AudioManager.STREAM_ALARM, 80);
-            beep.startTone(ToneGenerator.TONE_CDMA_ANSWER, 200);
-
+            //ToneGenerator beep = new ToneGenerator(AudioManager.STREAM_ALARM, 80);
+            //beep.startTone(ToneGenerator.TONE_CDMA_ANSWER, 200);
 
             setFocus(id);
         }
@@ -290,8 +260,8 @@ public class WhoIsWho extends AppCompatActivity {
         public void onClick(View v) {
             DiagramModel parent = store.findParent(id);
             if (null != parent) {
-                ToneGenerator beep = new ToneGenerator(AudioManager.STREAM_ALARM, 80);
-                beep.startTone(ToneGenerator.TONE_CDMA_ANSWER, 200);
+                //ToneGenerator beep = new ToneGenerator(AudioManager.STREAM_ALARM, 80);
+                //beep.startTone(ToneGenerator.TONE_CDMA_ANSWER, 200);
 
                 String parent_id = parent.getId();
                 setFocus(parent_id);
@@ -305,7 +275,6 @@ public class WhoIsWho extends AppCompatActivity {
         public void setId(String set_id) { id = set_id; }
 
         @Override
-        public void onClick(View v) {
-        }
+        public void onClick(View v) {}
     }
 }

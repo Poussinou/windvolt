@@ -1,6 +1,11 @@
 windvolt
 
 #Version 1.10
+diagram update planned
+
+##Version 1.04
+
+diagram v0
 
 location:       location assistant,
                 location service
@@ -12,7 +17,6 @@ battery tracking now in milliseconds
 story:          added images
 
 
-##Version 1.04
 de-de:          'Strategische Nutzung erneuerbarer Energie'
 
 strings:        texts improved, prepared translations

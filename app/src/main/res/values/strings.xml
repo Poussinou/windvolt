@@ -126,6 +126,15 @@
     <string name="location_services">Dienste</string>
     <string name="location_services_summary">*Durch die Verwendung von Diensten gibst Du Daten preis.\nDie App neu starten.</string>
 
+
+
+    <string name="battery_category">Betterie</string>
+
+    <string name="battery_state">Batteriestatus.</string>
+    <string name="battry_summary">Ich interessiere mich für den Stromverbrauch meines Smartphones.\nDie App neu starten.</string>
+
+
+
     <string name="community_category">Community</string>
 
     <string name="sharing_title">Community beitreten</string>

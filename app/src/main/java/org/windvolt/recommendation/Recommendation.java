@@ -89,8 +89,6 @@ public class Recommendation extends Fragment {
     TextView loc_display, geo_display, bat_display;
 
 
-    boolean performance = true; // no battery
-
     String battery_level_now, battery_level_before;
     String battery_time_now, battery_time_before;
 
@@ -104,7 +102,9 @@ public class Recommendation extends Fragment {
         // record battery
         //switched off for performance
 
-        if (performance) recordBattery();
+        if (zBatteryTrackingAllowed()) {
+            recordBattery();
+        }
 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.recommendation, container, false);
@@ -170,7 +170,9 @@ public class Recommendation extends Fragment {
         displayGeodata();
 
 
-        if (performance) displayBattery();
+        if (zBatteryTrackingAllowed()) {
+            displayBattery();
+        }
 
 
         /* open services */
@@ -195,6 +197,10 @@ public class Recommendation extends Fragment {
             services_open.setVisibility(View.GONE);
         }
 
+        /* allow or hide battery tracking */
+        if (!zBatteryTrackingAllowed()) {
+            bat_display.setVisibility(View.GONE);
+        }
 
         /* return inflated view */
         return view;
@@ -1000,7 +1006,11 @@ public class Recommendation extends Fragment {
         return sharedPreferences.getBoolean("location_services", false);
     }
 
+    private boolean zBatteryTrackingAllowed() {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
 
+        return sharedPreferences.getBoolean("battery_tracking", false);
+    }
 
 
 

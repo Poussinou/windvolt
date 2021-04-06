@@ -22,6 +22,7 @@
     xmlns:app="http://schemas.android.com/apk/res/android"
     tools:ignore="NamespaceTypo">
 
+
     <PreferenceCategory
         app:title="@string/location_category"
         >
@@ -58,6 +59,15 @@
             app:summary="@string/location_services_summary"
             app:title="@string/location_services" />
 
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/battery_category">
+
+        <CheckBoxPreference
+            app:defaultValue="false"
+            app:key="battery_tracking"
+            app:summary="@string/battry_summary"
+            app:title="@string/battery_state" />
     </PreferenceCategory>
 
     <PreferenceCategory app:title="@string/community_category">

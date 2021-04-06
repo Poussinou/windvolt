@@ -19,8 +19,6 @@
 package org.windvolt.diagram;
 
 import android.graphics.drawable.Drawable;
-import android.media.AudioManager;
-import android.media.ToneGenerator;
 import android.os.Bundle;
 import android.view.View;
 import android.webkit.WebView;
@@ -218,6 +216,16 @@ public class WhoIsWho extends AppCompatActivity {
 
         String k20 = store.addChild(k2, "Lichtblick", "Lichtblick erneuerbare",
                 R.drawable.windvolt_small, R.string.com_lichtblick);
+        String k21 = store.addChild(k2, "EWS Schönau", "EWS Schönau",
+                R.drawable.windvolt_small, R.string.com_schoenau);
+        String k22 = store.addChild(k2, "Naturstrom", "Naturstrom",
+                R.drawable.windvolt_small, R.string.com_naturstrom);
+        String k23 = store.addChild(k2, "greenpeace", "greenpeace",
+                R.drawable.windvolt_small, R.string.com_greenpeace);
+        String k24 = store.addChild(k2, "Bürgerwerke", "Bürgerwerke",
+                R.drawable.windvolt_small, R.string.com_buergerwerke);
+        String k26 = store.addChild(k2, "Polarstern", "Polarstern",
+                R.drawable.windvolt_small, R.string.com_polarstern);
 
     }
 

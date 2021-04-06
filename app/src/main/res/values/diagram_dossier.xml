@@ -157,5 +157,35 @@
             <br /><br />
         ]]>
     </string>
+    <string name="com_naturstrom">
+        <![CDATA[
+            <strong>naturstrom.de</strong>
+            <br /><br />
+        ]]>
+    </string>
+    <string name="com_schoenau">
+        <![CDATA[
+            <strong>ews-schoenau.de</strong>
+            <br /><br />
+        ]]>
+    </string>
+    <string name="com_greenpeace">
+        <![CDATA[
+            <strong>greenpeace-energy.de</strong>
+            <br /><br />
+        ]]>
+    </string>
+    <string name="com_buergerwerke">
+        <![CDATA[
+            <strong>buergerwerke.de</strong>
+            <br /><br />
+        ]]>
+    </string>
+    <string name="com_polarstern">
+        <![CDATA[
+            <strong>polarstern-energie.de</strong>
+            <br /><br />
+        ]]>
+    </string>
 
 </resources>

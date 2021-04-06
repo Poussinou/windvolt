@@ -93,7 +93,7 @@
 
     <!-- page1 'solar' -->
     <string name="page1_label">who is who</string>
-    <string name="page1_hello">Who is Who</string>
+    <string name="page1_hello">who is who</string>
     <string name="page1_open">whoiswho</string>
     <string name="page1_exit">zurück</string>
 

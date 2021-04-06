@@ -63,16 +63,16 @@ public class LinksPage extends Fragment {
         private ArrayList<LinkModel> links = new ArrayList<>();
 
         public LinkAdapter() {
-            links.add(new LinkModel("Livedaten der Netzagentur", "https://www.smard.de", R.drawable.logo_smard));
-            links.add(new LinkModel("Nachrichten (viele Tracker)", "https://www.windjournal.de", R.drawable.logo_windjournal));
-            links.add(new LinkModel("BMWE Energiewende", "https://www.erneuerbare-energien.de", R.drawable.logo_energiewende));
-            links.add(new LinkModel("Windkraft beim Umweltamt", "https://www.umweltbundesamt.de/themen/klima-energie/erneuerbare-energien/windenergie", R.drawable.logo_umweltamt));
-            links.add(new LinkModel("Verband Windenergie", "https://www.wind-energie.de", R.drawable.logo_windverband));
-            links.add(new LinkModel("Windbranche", "https://www.windbranche.de/wind/windstrom/windenergie-deutschland", R.drawable.logo_windbranche));
-            links.add(new LinkModel("ENTSO-E Transparenzplattform", "https://www.netztransparenz.de/Weitere-Veroeffentlichungen/Windenergie-Hochrechnung", R.drawable.logo_netztransparenz));
+            links.add(new LinkModel("Livedaten der Netzagentur", "https://www.smard.de", R.drawable.link_smard));
+            links.add(new LinkModel("Nachrichten (viele Tracker)", "https://www.windjournal.de", R.drawable.link_windjournal));
+            links.add(new LinkModel("BMWE Energiewende", "https://www.erneuerbare-energien.de", R.drawable.link_energiewende));
+            links.add(new LinkModel("Windkraft beim Umweltamt", "https://www.umweltbundesamt.de/themen/klima-energie/erneuerbare-energien/windenergie", R.drawable.link_umweltamt));
+            links.add(new LinkModel("Verband Windenergie", "https://www.wind-energie.de", R.drawable.link_windverband));
+            links.add(new LinkModel("Windbranche", "https://www.windbranche.de/wind/windstrom/windenergie-deutschland", R.drawable.link_windbranche));
+            links.add(new LinkModel("ENTSO-E Transparenzplattform", "https://www.netztransparenz.de/Weitere-Veroeffentlichungen/Windenergie-Hochrechnung", R.drawable.link_netztransparenz));
 
             // no https for bricklebrit
-            links.add(new LinkModel("Strombörse EEX (kein https)", "http://bricklebrit.com/stromboerse_leipzig.html", R.drawable.logo_bricklebrit));
+            links.add(new LinkModel("Strombörse EEX (kein https)", "http://bricklebrit.com/stromboerse_leipzig.html", R.drawable.link_bricklebrit));
         }
 
 

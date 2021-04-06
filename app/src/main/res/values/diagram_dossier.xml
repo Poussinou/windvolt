@@ -1,0 +1,149 @@
+<!--
+ This file is part of windvolt.org.
+
+ Copyright (c) 2020 Max Sumer
+
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<resources>
+
+    <!-- windvolt -->
+    <string name="windvolt">
+        <![CDATA[
+            <br /><br />
+            <strong>
+                <center>who-is-who</center>
+            </strong>
+            <br /><br /><br /><br />
+                <center>Diese Galerie bietet zu vielen Marktteilnehmern ein Dossier.</center>
+            <br /><br /><br /><br />
+
+            <i>*Wähle einen Eintrag oder benutze die Rücktaste</i>
+
+        ]]>
+    </string>
+
+    <!-- network -->
+    <string name="net_0">
+        <![CDATA[
+            <strong>netztransparenz.de</strong>
+            <br /><br /><br /><br />
+            Informationsplattform der deutschen Übertragungsnetzbetreiber (ÜNB)
+            <br /><br />
+            Verweise:
+            <br />regelleistung.net
+            <br />netzentwicklungsplan.de
+        ]]>
+    </string>
+
+    <string name="net_50herz">
+        <![CDATA[
+            <strong>50hertz.com/de</strong>
+            <br /><br />
+            <br /><br />The roots of 50Hertz Transmission GmbH reach back to the year 1963, when VEB Verbundnetz Elektroenergie was established in the GDR as the operator of the extra high-voltage grid. By 1990, this grid was developed to reach a system length of 4,312 km at 380 kV and 6,416 km at 220 kV. In 55 substations, electricity was exchanged with the regional energy suppliers.
+            <br /><br />In 1991, Verbundnetz was incorporated into Vereinigte Energiewerke AG (VEAG), which was established one year earlier, together with the East German power plants. On 1 January 1994, VEAG was sold to a consortium of seven West German energy suppliers for six billion DM. The companies Preussen-Elektra, Rheinisch-Westfälische Elektrizitätswerke and Bayernwerk held 75% while the other 25% was held by EBH, a holding owned by BEWAG, VEW, Badenwerk, EVS and Hamburgische Electricitäts-Werken (HEW).
+            <br /><br />In 2001, HEW, which in the meantime had become a subsidiary of the Swedish company Vattenfall, acquired the majority share ownership in VEAG. This way, the transmission system now operated by 50Hertz became the property of Vattenfall. In June 2002, Vattenfall Europe transferred the transmission system to an independent subsidiary: Vattenfall Europe (VE) Transmission GmbH. In September 2002, VEAG was merged with the companies HEW, Laubag (Lausitzer Braunkohle AG) and BEWAG into the new company Vattenfall Europe.
+        ]]>
+    </string>
+
+    <string name="net_ampirion">
+        <![CDATA[
+            <strong>amprion.net</strong>
+            <br /><br />Damit die Lichter immer leuchten
+
+            <br /><br />Amprion ist einer von vier Übertragungs- netzbetreibern in Deutschland.
+             Unsere Höchstspannungsleitungen sind Lebensadern der Gesellschaft: Sie transportieren den Strom für 29 Millionen Menschen
+              in einem Gebiet von Niedersachsen bis zu den Alpen. Wir halten das Netz stabil und sicher
+               – und bereiten den Weg für ein klimaverträgliches Energiesystem.
+
+            <br /><br />Unseren Auftrag definiert der Gesetzgeber in § 11 Energiewirtschaftsgesetz (EnWG).
+
+        ]]>
+    </string>
+
+    <string name="net_tennet">
+        <![CDATA[
+            <strong>tennet.eu</strong>
+            <br /><br />
+            <br /><br />Die Niederlande sowie weite Teile Deutschlands werden rund um die Uhr an allen Tagen des Jahres von uns mit Strom versorgt.
+             Ohne uns könnten Sie vieles nicht tun: Ihren Computer benutzen, Ihre Lebensmittel kühlen, Ihr Telefon aufladen, fernsehen,
+              mit dem Zug zur Arbeit fahren, Geld abheben oder das Licht anschalten. Ohne uns könnten Unternehmen keine Autos, Kleidung
+               und Geräte herstellen. Alles, was mit Strom funktioniert, wird von uns mit Strom versorgt.
+                Ohne Strom hätten wir es in unserer heutigen Welt, in der jeder jederzeit online ist und alles vernetzt ist, sehr schwer.
+                 Zum Glück sorgen wir dafür, dass die Lichter niemals ausgehen. Das zeigt unsere Erfolgsbilanz:
+                  Wir bieten eine Versorgungssicherheit von 99,99%. Damit gehören wir zu den Besten in unserer Branche.
+        ]]>
+    </string>
+    <string name="net_transnet">
+        <![CDATA[
+            <strong>transnetbw.de</strong>
+            <br /><br />
+            Die TransnetBW GmbH betreibt das Strom-Übertragungsnetz in Baden-Württemberg. Mit diesem Transportnetz sichern wir
+             die Stromversorgung in der Region, in Deutschland und in Europa. Wir steuern und kontrollieren die Energieflüsse
+              im Netz, sorgen für Instandhaltung, Netzplanung und Netzentwicklung.
+               Zahlreiche Stromhändler, Kraftwerks- und Verteilnetzbetreiber im In- und Ausland zählen
+                zu unseren Kunden und Partnern.
+        ]]>
+    </string>
+
+    <!-- company -->
+    <string name="com_0">
+        <![CDATA[
+            <strong>check24.de</strong>
+            <br /><br />
+        ]]>
+    </string>
+    <string name="com_conventional">
+        <![CDATA[
+            <strong>konventionelle Anbieter</strong>
+            <br /><br />
+        ]]>
+    </string>
+    <string name="com_ecology">
+        <![CDATA[
+            <strong>konventionelle Anbieter</strong>
+            <br /><br />
+        ]]>
+    </string>
+
+    <string name="com_rwe">
+        <![CDATA[
+            <strong>rwe.de</strong>
+            <br /><br />
+        ]]>
+    </string>
+    <string name="com_lichtblick">
+        <![CDATA[
+            <strong>lichtblick.de</strong>
+            <br /><br />
+        ]]>
+    </string>
+    <string name="com_eon">
+        <![CDATA[
+            <strong>eon.de</strong>
+            <br /><br />
+        ]]>
+    </string>
+    <string name="com_ovag">
+        <![CDATA[
+            <strong>ovag.de</strong>
+            <br /><br />
+            <img src="https://fi.ovag.de/files/oe/style/img/logo.svg" alt="OVAG" />
+        ]]>
+        <br />
+
+    </string>
+
+
+</resources>

@@ -40,6 +40,7 @@ public class DiagramStore {
         String id = Integer.toString(Integer.parseInt(rootId) + size);
         child.setId(id);
 
+
         // add to parent
         if (parent != null) {
             String children = parent.getChildren();

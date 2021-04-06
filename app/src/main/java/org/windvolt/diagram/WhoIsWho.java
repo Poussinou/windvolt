@@ -18,7 +18,6 @@
 */
 package org.windvolt.diagram;
 
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.media.AudioManager;
 import android.media.ToneGenerator;
@@ -44,6 +43,8 @@ public class WhoIsWho extends AppCompatActivity {
     TextView diagram_title;
     TextView diagram_subject;
 
+    Drawable roundbox;
+
     LinearLayout diagram_space;
     WebView diagram_web;
 
@@ -52,8 +53,9 @@ public class WhoIsWho extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.diagram_whoiswho);
+        setContentView(R.layout.diagram_boxtree);
 
+        roundbox = getResources().getDrawable(R.drawable.gui_roundbox);
 
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
@@ -77,7 +79,10 @@ public class WhoIsWho extends AppCompatActivity {
 
 
         // listeners
-        diagram_symbol.setOnClickListener(doLevelUp);
+
+        // use onBackPressed()
+        //diagram_symbol.setOnClickListener(doLevelUp);
+
         diagram_title.setOnClickListener(doOpenFocus);
 
 
@@ -101,8 +106,7 @@ public class WhoIsWho extends AppCompatActivity {
 
 
         String html = getString(Integer.parseInt(focus.getAdress())); // values
-        html = "<p>" + html + "</p>";
-
+        //html = "<p>" + html + "</p>";
         diagram_web.loadDataWithBaseURL(null, html, "text/html", "utf-8", null);
 
         // set focus title and subject
@@ -138,12 +142,12 @@ public class WhoIsWho extends AppCompatActivity {
     public void createChild(DiagramModel parent, String id) {
         DiagramModel child = store.findModel(id);
 
-        LinearLayout l = new LinearLayout(this);
-        l.setOrientation(LinearLayout.HORIZONTAL);
+        LinearLayout layout = new LinearLayout(this);
+        layout.setOrientation(LinearLayout.HORIZONTAL);
 
-        Drawable roundbox = getResources().getDrawable(R.drawable.gui_roundbox);
-        l.setBackground(roundbox);
-        l.setPadding(8, 8, 8, 8);
+
+        layout.setBackground(roundbox);
+        layout.setPadding(8, 8, 8, 8);
 
 
         ImageView image = new ImageView(this);
@@ -152,14 +156,14 @@ public class WhoIsWho extends AppCompatActivity {
 
         TextView text = new TextView(this);
         text.setTextAppearance(this, R.style.TextAppearance_MaterialComponents_Headline4);
-        text.setOnClickListener(new SetFocus(text, id));
 
         text.setText("  " + child.getTitle());
 
-        l.addView(image);
-        l.addView(text);
+        layout.addView(image);
+        layout.addView(text);
+        layout.setOnClickListener(new SetFocus(text, id));
 
-        diagram_space.addView(l);
+        diagram_space.addView(layout);
     }
 
 
@@ -181,7 +185,7 @@ public class WhoIsWho extends AppCompatActivity {
 
         String n0 = store.addChild(netz, "50Herz", "50Herz",
                 symbol, R.string.net_50herz);
-        String n1 = store.addChild(netz, "Ampirion", "Ampirion",
+        String n1 = store.addChild(netz, "Amprion", "Amprion",
                 symbol, R.string.net_ampirion);
         String n2 = store.addChild(netz, "Tennet TSO", "Tennet TSO",
                 symbol, R.string.net_tennet);
@@ -192,106 +196,73 @@ public class WhoIsWho extends AppCompatActivity {
 
 
 
-        String konzern = store.addChild(root, "Strom Konzerne", "Die deutschen Stromkonzerne",
+        String konzern = store.addChild(root, "Stromanbieter", "Die deutschen Stromanbieter",
                 R.drawable.windvolt_small, R.string.com_0);
 
 
 
-        String k0 = store.addChild(konzern, "RWE", "Rheinisch-WEstfälische Energiebetriebe",
+        String k1 = store.addChild(konzern, "konventioneller Strom", "Fossile, Atom",
+                R.drawable.windvolt_small, R.string.com_conventional);
+
+        String k10 = store.addChild(k1, "RWE", "Rheinisch-WEstfälische Energiebetriebe",
                 R.drawable.windvolt_small, R.string.com_rwe);
-        String k1 = store.addChild(konzern, "eon", "EON",
+        String k11 = store.addChild(k1, "eon", "EON",
                 R.drawable.windvolt_small, R.string.com_eon);
-        String k2 = store.addChild(konzern, "Lichtblick", "Lichtblick erneuerbare",
-                R.drawable.windvolt_small, R.string.com_lichtblick);
-        String k3 = store.addChild(konzern, "OVAG", "Oberhessische Versorgung Aktiengesellschaft",
+        String k12 = store.addChild(k1, "OVAG", "Oberhessische Versorgung Aktiengesellschaft",
                 R.drawable.windvolt_small, R.string.com_ovag);
 
 
+
+        String k2 = store.addChild(konzern, "Ökoanbieter", "Ökostrom",
+                R.drawable.windvolt_small, R.string.com_ecology);
+
+        String k20 = store.addChild(k2, "Lichtblick", "Lichtblick erneuerbare",
+                R.drawable.windvolt_small, R.string.com_lichtblick);
+
     }
 
-/*
+        /* mindmap
         RelativeLayout.LayoutParams diagramLayout = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
         diagram = new BoxTreeLayout(this);
-
         setContentView(diagram, diagramLayout);
 
-
-            private class BoxTreeLayout extends RelativeLayout {
-        Paint paint;
-
-        public BoxTreeLayout(Context context) {
-            super(context);
-            paint = new Paint();
-        }
-
-
+        private class BoxTreeLayout extends RelativeLayout {
         protected void dispatchDraw(Canvas canvas) {
 
-
-    paint.setColor(Color.RED);
-    paint.setStrokeWidth(8);
-
-    canvas.drawLine(0, 0, 20, 20, paint);
-    canvas.drawLine(20, 20, 20, 0, paint);
-    canvas.drawLine(20, 20, 0, 20, paint);
+        canvas.drawLine(0, 0, 20, 20, paint);
+        canvas.drawLine(20, 20, 20, 0, paint);
+        canvas.drawLine(20, 20, 0, 20, paint);
 
 
-    // draw connections
-    paint.setColor(Color.BLACK);
-    paint.setStrokeWidth(4);
+        // draw connections
+        int size = getChildCount();
 
-    int size = getChildCount();
-    for (int v = 1; v < size; v++) {
-        View tv = getChildAt(v);
-
-        int x1 = tv.getLeft();
-        int y1 = tv.getTop() + tv.getHeight()/2;
-
-        canvas.drawLine(rx, ry, x1, y1, paint);
-    }
+        super.dispatchDraw(canvas);
 
 
-    super.dispatchDraw(canvas);
-}
-}
-
-
-    private TextView addChild(String name, String action, int angle) {
-
-        LinearLayout l = new LinearLayout(this);
-        l.setOrientation(LinearLayout.HORIZONTAL);
-
-
-        TextView tv = new TextView(this);
-        tv.setText(name);
-        tv.setContentDescription(action);
-
-        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(w, h);
+       RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(w, h);
         params.width = 320;
         params.height = 100;
-
-
         params.leftMargin = (int) (rx + tab * Math.cos(Math.toRadians(angle)));
         params.topMargin = (int) (ry + tab * Math.sin(Math.toRadians(angle)));
 
-        ImageView i = new ImageView(this);
-        i.setImageResource(R.drawable.windvolt_small);
-
-        //l.setBackground(icon);
-
-        l.addView(i);
-        l.addView(tv);
         diagram.addView(l, params);
-
-        tv.setOnClickListener(new doClick(action));
-
-        return tv;
-    }
-
-
-
          */
 
+
+    @Override
+    public void onBackPressed() {
+        DiagramModel parent = store.findParent(focus_id);
+        if (null == parent) {
+            super.onBackPressed();
+        } else {
+            ToneGenerator beep = new ToneGenerator(AudioManager.STREAM_ALARM, 80);
+            beep.startTone(ToneGenerator.TONE_CDMA_ANSWER, 200);
+
+            String parent_id = parent.getId();
+            setFocus(parent_id);
+        }
+    }
 
     private class SetFocus implements View.OnClickListener {
         View view;

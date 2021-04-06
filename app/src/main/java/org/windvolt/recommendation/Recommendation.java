@@ -89,9 +89,10 @@ public class Recommendation extends Fragment {
     TextView loc_display, geo_display, bat_display;
 
 
+    boolean performance = true; // no battery
+
     String battery_level_now, battery_level_before;
     String battery_time_now, battery_time_before;
-
 
 
     /* VIEW */
@@ -99,8 +100,11 @@ public class Recommendation extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
 
+
         // record battery
-        recordBattery();
+        //switched off for performance
+
+        if (performance) recordBattery();
 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.recommendation, container, false);
@@ -164,11 +168,13 @@ public class Recommendation extends Fragment {
 
         /* refresh display */
         displayGeodata();
-        displayBattery();
+
+
+        if (performance) displayBattery();
 
 
         /* open services */
-        FloatingActionButton services_open = (FloatingActionButton) view.findViewById(R.id.services_open);
+        final FloatingActionButton services_open = (FloatingActionButton) view.findViewById(R.id.services_open);
         services_open.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -177,7 +183,9 @@ public class Recommendation extends Fragment {
                 beep.startTone(ToneGenerator.TONE_PROP_BEEP, 200);
 
                 ServicesDialog dialog = new ServicesDialog();
-                dialog.show(getActivity().getSupportFragmentManager(), getString(R.string.location_services));
+
+                String services = getString(R.string.location_services); // values
+                dialog.show(getActivity().getSupportFragmentManager(), services);
             }
         });
 
@@ -315,8 +323,8 @@ public class Recommendation extends Fragment {
             SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
             String loc = sharedPreferences.getString("location_input", "");
 
-            //String services = getString(R.string.location_services); // values
-            builder.setView(view).setTitle("Dienste: " + loc);
+            String services = getString(R.string.location_services); // values
+            builder.setView(view).setTitle(services + ": " + loc);
 
 
             // register services

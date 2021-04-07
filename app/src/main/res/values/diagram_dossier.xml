@@ -26,7 +26,7 @@
                 <center>who-is-who</center>
             </strong>
             <br /><br /><br /><br />
-                <center>Diese Galerie bietet zu vielen Marktteilnehmern ein Dossier.</center>
+                <center>Diese Galerie bietet Dossiers zu vielen Marktteilnehmern</center>
             <br /><br /><br /><br />
 
             <i>*Wähle einen Eintrag oder benutze die Rücktaste</i>
@@ -37,19 +37,21 @@
     <!-- network -->
     <string name="net_0">
         <![CDATA[
-            <strong>netztransparenz.de
-            <br />regelleistung.net
-            <br />netzentwicklungsplan.de
+            <strong>
+                <a href="https://netztransparenz.de">netztransparenz.de</a><br />
+                <a href="https://regelleistung.net">regelleistung.net</a><br />
+                <a href="https://netzentwicklungsplan.de">netzentwicklungsplan.de</a>
             </strong>
-            <br /><br /><br /><br />
-            Informationsplattformen der deutschen Übertragungsnetzbetreiber (ÜNB)
+            <br /><br />
+            Transparenzplattformen der deutschen Übertragungsnetzbetreiber (ÜNB)
         ]]>
     </string>
 
     <string name="net_50herz">
         <![CDATA[
-            <strong>50hertz.com/de</strong>
-            <br /><br />
+            <strong>
+                <a href="https://50hertz.com/de">50hertz.com/de</a>
+            </strong>
             <br /><br />The roots of 50Hertz Transmission GmbH reach back to the year 1963, when VEB Verbundnetz Elektroenergie was established in the GDR as the operator of the extra high-voltage grid. By 1990, this grid was developed to reach a system length of 4,312 km at 380 kV and 6,416 km at 220 kV. In 55 substations, electricity was exchanged with the regional energy suppliers.
             <br /><br />In 1991, Verbundnetz was incorporated into Vereinigte Energiewerke AG (VEAG), which was established one year earlier, together with the East German power plants. On 1 January 1994, VEAG was sold to a consortium of seven West German energy suppliers for six billion DM. The companies Preussen-Elektra, Rheinisch-Westfälische Elektrizitätswerke and Bayernwerk held 75% while the other 25% was held by EBH, a holding owned by BEWAG, VEW, Badenwerk, EVS and Hamburgische Electricitäts-Werken (HEW).
             <br /><br />In 2001, HEW, which in the meantime had become a subsidiary of the Swedish company Vattenfall, acquired the majority share ownership in VEAG. This way, the transmission system now operated by 50Hertz became the property of Vattenfall. In June 2002, Vattenfall Europe transferred the transmission system to an independent subsidiary: Vattenfall Europe (VE) Transmission GmbH. In September 2002, VEAG was merged with the companies HEW, Laubag (Lausitzer Braunkohle AG) and BEWAG into the new company Vattenfall Europe.
@@ -58,9 +60,9 @@
 
     <string name="net_ampirion">
         <![CDATA[
-            <strong>amprion.net</strong>
-            <br /><br />Damit die Lichter immer leuchten
-
+            <strong>
+                <a href="https://amprion.de">amprion.de</a>
+            </strong>
             <br /><br />Amprion ist einer von vier Übertragungs- netzbetreibern in Deutschland.
              Unsere Höchstspannungsleitungen sind Lebensadern der Gesellschaft: Sie transportieren den Strom für 29 Millionen Menschen
               in einem Gebiet von Niedersachsen bis zu den Alpen. Wir halten das Netz stabil und sicher
@@ -73,7 +75,9 @@
 
     <string name="net_tennet">
         <![CDATA[
-            <strong>tennet.eu</strong>
+            <strong>
+                <a href="https://tennet.eu">tennet.eu</a>
+            </strong>
             <br /><br />
             <br /><br />Die Niederlande sowie weite Teile Deutschlands werden rund um die Uhr an allen Tagen des Jahres von uns mit Strom versorgt.
              Ohne uns könnten Sie vieles nicht tun: Ihren Computer benutzen, Ihre Lebensmittel kühlen, Ihr Telefon aufladen, fernsehen,
@@ -86,7 +90,9 @@
     </string>
     <string name="net_transnet">
         <![CDATA[
-            <strong>transnetbw.de</strong>
+            <strong>
+                <a href="https://transnetbw.de">transnetbw.de</a>
+            </strong>
             <br /><br />
             Die TransnetBW GmbH betreibt das Strom-Übertragungsnetz in Baden-Württemberg. Mit diesem Transportnetz sichern wir
              die Stromversorgung in der Region, in Deutschland und in Europa. Wir steuern und kontrollieren die Energieflüsse
@@ -99,7 +105,9 @@
     <!-- company -->
     <string name="com_0">
         <![CDATA[
-            <strong>check24.de</strong>
+            <strong>
+                <a href="https://check24.de">check24.de</a>
+            </strong>
             <br /><br />
         ]]>
     </string>
@@ -112,22 +120,27 @@
 
     <string name="com_rwe">
         <![CDATA[
-            <strong>rwe.de</strong>
+            <strong>
+                <a href="https://rwe.de">rwe.de</a>
+            </strong>
             <br /><br />
         ]]>
     </string>
 
     <string name="com_eon">
         <![CDATA[
-            <strong>eon.de</strong>
+            <strong>
+                <a href="https://eon.de">eon.de</a>
+            </strong>
             <br /><br />
         ]]>
     </string>
     <string name="com_ovag">
         <![CDATA[
-            <strong>ovag.de</strong>
+            <strong>
+                <a href="https://ovag.de">ovag.de</a>
+            </strong>
             <br /><br />
-            <img src="https://fi.ovag.de/files/oe/style/img/logo.svg" alt="OVAG" />
         ]]>
         <br />
 
@@ -137,7 +150,10 @@
 
     <string name="com_ecology">
         <![CDATA[
-            <strong>oekostrom-anbieter.info</strong>
+            <strong>
+                <a href="https://oekostrom-anbieter.info">oekostrom-anbieter.info</a>
+            </strong>
+
             <br /><br />
             <br /><br />
             Die wichtigsten unabhängigen Ökostromanbieter in Deutschland sind die Naturstrom AG,
@@ -153,37 +169,50 @@
     </string>
     <string name="com_lichtblick">
         <![CDATA[
-            <strong>lichtblick.de</strong>
+            <strong>
+                <a href="https://lichtblick.de">lichtblick.de</a>
+            </strong>
             <br /><br />
+
         ]]>
     </string>
     <string name="com_naturstrom">
         <![CDATA[
-            <strong>naturstrom.de</strong>
+            <strong>
+                <a href="https://naturstrom.de">naturstrom.de</a>
+            </strong>
             <br /><br />
         ]]>
     </string>
     <string name="com_schoenau">
         <![CDATA[
-            <strong>ews-schoenau.de</strong>
+            <strong>
+                <a href="https://ews-schoenau.de">ews-schoenau.de</a>
+            </strong>
             <br /><br />
         ]]>
     </string>
     <string name="com_greenpeace">
         <![CDATA[
-            <strong>greenpeace-energy.de</strong>
+            <strong>
+                <a href="https://greenpeace-energy.de">greenpeace-energy.de</a>
+            </strong>
             <br /><br />
         ]]>
     </string>
     <string name="com_buergerwerke">
         <![CDATA[
-            <strong>buergerwerke.de</strong>
+            <strong>
+                <a href="https://buergerwerke.de">buergerwerke.de</a>
+            </strong>
             <br /><br />
         ]]>
     </string>
     <string name="com_polarstern">
         <![CDATA[
-            <strong>polarstern-energie.de</strong>
+            <strong>
+                <a href="https://polarstern-energie.de">polarstern-energie.de</a>
+            </strong>
             <br /><br />
         ]]>
     </string>

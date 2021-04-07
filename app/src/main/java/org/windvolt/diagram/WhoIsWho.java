@@ -175,58 +175,63 @@ public class WhoIsWho extends AppCompatActivity {
                 symbol, R.string.windvolt);
 
 
-
-        String netz = store.addChild(root, "Netzbetreiber", "Die deutschen Netzbetreiber",
-                symbol, R.string.net_0);
-
-
-
-        String n0 = store.addChild(netz, "50Hertz", "50Hertz",
-                symbol, R.string.net_50herz);
-        String n1 = store.addChild(netz, "Amprion", "Amprion",
-                symbol, R.string.net_ampirion);
-        String n2 = store.addChild(netz, "Tennet TSO", "Tennet TSO",
-                symbol, R.string.net_tennet);
-        String n3 = store.addChild(netz, "Transnet BW", "transnet",
-                R.drawable.windvolt_small, R.string.net_transnet);
+        // net
+        if (true) {
+            String netz = store.addChild(root, "Netzbetreiber", "Die deutschen Netzbetreiber",
+                    symbol, R.string.net_0);
 
 
 
+            String n0 = store.addChild(netz, "50Hertz", "50Hertz",
+                    symbol, R.string.net_50herz);
+            String n1 = store.addChild(netz, "Amprion", "Amprion",
+                    symbol, R.string.net_ampirion);
+            String n2 = store.addChild(netz, "Tennet TSO", "Tennet TSO",
+                    symbol, R.string.net_tennet);
+            String n3 = store.addChild(netz, "Transnet BW", "transnet",
+                    R.drawable.windvolt_small, R.string.net_transnet);
+        }
 
 
-        String konzern = store.addChild(root, "Stromanbieter", "Die deutschen Stromanbieter",
-                R.drawable.windvolt_small, R.string.com_0);
+        // com
+        if (true) {
+            String konzern = store.addChild(root, "Stromanbieter", "Die deutschen Stromanbieter",
+                    R.drawable.windvolt_small, R.string.com_0);
 
 
 
-        String k1 = store.addChild(konzern, "konventioneller Strom", "Fossile, Atom",
-                R.drawable.windvolt_small, R.string.com_conventional);
+            String k1 = store.addChild(konzern, "konventioneller Strom", "Fossile, Atom",
+                    R.drawable.windvolt_small, R.string.com_conventional);
 
-        String k10 = store.addChild(k1, "RWE", "Rheinisch-WEstfälische Energiebetriebe",
-                R.drawable.windvolt_small, R.string.com_rwe);
-        String k11 = store.addChild(k1, "eon", "EON",
-                R.drawable.windvolt_small, R.string.com_eon);
-        String k12 = store.addChild(k1, "OVAG", "Oberhessische Versorgung Aktiengesellschaft",
-                R.drawable.windvolt_small, R.string.com_ovag);
+            String k10 = store.addChild(k1, "RWE", "Rheinisch-WEstfälische Energiebetriebe",
+                    R.drawable.windvolt_small, R.string.com_rwe);
+            String k11 = store.addChild(k1, "eon", "EON",
+                    R.drawable.windvolt_small, R.string.com_eon);
+            String k12 = store.addChild(k1, "OVAG", "Oberhessische Versorgung Aktiengesellschaft",
+                    R.drawable.windvolt_small, R.string.com_ovag);
 
 
 
-        String k2 = store.addChild(konzern, "Ökoanbieter", "Ökostrom",
-                R.drawable.windvolt_small, R.string.com_ecology);
+            // eco
+            if (true) {
 
-        String k20 = store.addChild(k2, "Lichtblick", "Lichtblick erneuerbare",
-                R.drawable.windvolt_small, R.string.com_lichtblick);
-        String k21 = store.addChild(k2, "EWS Schönau", "EWS Schönau",
-                R.drawable.windvolt_small, R.string.com_schoenau);
-        String k22 = store.addChild(k2, "Naturstrom", "Naturstrom",
-                R.drawable.windvolt_small, R.string.com_naturstrom);
-        String k23 = store.addChild(k2, "greenpeace", "greenpeace",
-                R.drawable.windvolt_small, R.string.com_greenpeace);
-        String k24 = store.addChild(k2, "Bürgerwerke", "Bürgerwerke",
-                R.drawable.windvolt_small, R.string.com_buergerwerke);
-        String k26 = store.addChild(k2, "Polarstern", "Polarstern",
-                R.drawable.windvolt_small, R.string.com_polarstern);
+                String k2 = store.addChild(konzern, "Ökoanbieter", "Ökostrom",
+                        R.drawable.windvolt_small, R.string.com_ecology);
 
+                String k20 = store.addChild(k2, "Lichtblick", "Lichtblick erneuerbare",
+                        R.drawable.windvolt_small, R.string.com_lichtblick);
+                String k21 = store.addChild(k2, "EWS Schönau", "EWS Schönau",
+                        R.drawable.windvolt_small, R.string.com_schoenau);
+                String k22 = store.addChild(k2, "Naturstrom", "Naturstrom",
+                        R.drawable.windvolt_small, R.string.com_naturstrom);
+                String k23 = store.addChild(k2, "greenpeace", "greenpeace",
+                        R.drawable.windvolt_small, R.string.com_greenpeace);
+                String k24 = store.addChild(k2, "Bürgerwerke", "Bürgerwerke",
+                        R.drawable.windvolt_small, R.string.com_buergerwerke);
+                String k26 = store.addChild(k2, "Polarstern", "Polarstern",
+                        R.drawable.windvolt_small, R.string.com_polarstern);
+            }
+        }
     }
 
 

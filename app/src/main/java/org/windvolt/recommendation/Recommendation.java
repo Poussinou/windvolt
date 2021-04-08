@@ -421,7 +421,7 @@ public class Recommendation extends Fragment {
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
             LayoutInflater inflater = requireActivity().getLayoutInflater();
 
-            final View view = inflater.inflate(R.layout.battery_tracker, null);
+            final View view = inflater.inflate(R.layout.battery_history, null);
 
             // makeSampleData() creates sample data for diagnostic
 

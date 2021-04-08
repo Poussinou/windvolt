@@ -21,199 +21,244 @@
     <!-- windvolt -->
     <string name="windvolt">
         <![CDATA[
-            <br /><br />
-            <strong>
-                <center>who-is-who</center>
-            </strong>
-            <br /><br /><br /><br />
-                <center>Diese Galerie bietet Dossiers zu vielen Marktteilnehmern</center>
-            <br /><br /><br /><br />
+            <table border="0" cellpadding="4">
+                <tr><td><strong><center>
+                    who is who
+                </center></strong></td></tr>
 
+                <tr><td>Diese Galerie beleuchtet die Marktteilnehmer<td></tr>
+            </table>
+
+            <br /><br /><br /><br />
             <i>*Wähle einen Eintrag oder benutze die Rücktaste</i>
-
         ]]>
     </string>
 
     <!-- network -->
     <string name="net_0">
         <![CDATA[
-            <strong>
-                <a href="https://netztransparenz.de">netztransparenz.de</a><br />
-                <a href="https://regelleistung.net">regelleistung.net</a><br />
-                <a href="https://netzentwicklungsplan.de">netzentwicklungsplan.de</a>
-            </strong>
-            <br /><br />
-            Transparenzplattformen der deutschen Übertragungsnetzbetreiber (ÜNB)
+            <table border="0" cellpadding="4">
+                <tr><td><strong>
+                    <a href="https://netztransparenz.de">netztransparenz.de</a>
+                </strong></td></tr>
+                <tr><td>Transparenzplattformen der deutschen Übertragungsnetzbetreiber (ÜNB)</td></tr>
+                <tr><td>
+                    <a href="https://regelleistung.net">regelleistung.net</a>
+                    <br />
+                    <a href="https://netzentwicklungsplan.de">netzentwicklungsplan.de</a>
+                </td></tr>
+            </table>
         ]]>
     </string>
 
     <string name="net_50herz">
         <![CDATA[
-            <strong>
-                <a href="https://50hertz.com/de">50hertz.com/de</a>
-            </strong>
-            <br /><br />The roots of 50Hertz Transmission GmbH reach back to the year 1963, when VEB Verbundnetz Elektroenergie was established in the GDR as the operator of the extra high-voltage grid. By 1990, this grid was developed to reach a system length of 4,312 km at 380 kV and 6,416 km at 220 kV. In 55 substations, electricity was exchanged with the regional energy suppliers.
-            <br /><br />In 1991, Verbundnetz was incorporated into Vereinigte Energiewerke AG (VEAG), which was established one year earlier, together with the East German power plants. On 1 January 1994, VEAG was sold to a consortium of seven West German energy suppliers for six billion DM. The companies Preussen-Elektra, Rheinisch-Westfälische Elektrizitätswerke and Bayernwerk held 75% while the other 25% was held by EBH, a holding owned by BEWAG, VEW, Badenwerk, EVS and Hamburgische Electricitäts-Werken (HEW).
-            <br /><br />In 2001, HEW, which in the meantime had become a subsidiary of the Swedish company Vattenfall, acquired the majority share ownership in VEAG. This way, the transmission system now operated by 50Hertz became the property of Vattenfall. In June 2002, Vattenfall Europe transferred the transmission system to an independent subsidiary: Vattenfall Europe (VE) Transmission GmbH. In September 2002, VEAG was merged with the companies HEW, Laubag (Lausitzer Braunkohle AG) and BEWAG into the new company Vattenfall Europe.
+            <table border="0" cellpadding="4">
+                <tr><td><strong>
+                    <a href="https://50hertz.com/de">50hertz.com/de</a>
+                </strong></td></tr>
+
+                <tr><td>Die 50Hertz Transmission GmbH betreibt das Übertragungsnetz der Vattenfall Europe<td></tr>
+                <tr><td>Den Auftrag definiert der Gesetzgeber in § 11 Energiewirtschaftsgesetz (EnWG)</td></tr>
+            </table>
         ]]>
     </string>
 
     <string name="net_ampirion">
         <![CDATA[
-            <strong>
-                <a href="https://amprion.de">amprion.de</a>
-            </strong>
-            <br /><br />Amprion ist einer von vier Übertragungs- netzbetreibern in Deutschland.
-             Unsere Höchstspannungsleitungen sind Lebensadern der Gesellschaft: Sie transportieren den Strom für 29 Millionen Menschen
-              in einem Gebiet von Niedersachsen bis zu den Alpen. Wir halten das Netz stabil und sicher
-               – und bereiten den Weg für ein klimaverträgliches Energiesystem.
+            <table border="0" cellpadding="4">
+                <tr><td><strong>
+                    <a href="https://amprion.de">amprion.de</a>
+                </strong></td></tr>
 
-            <br /><br />Unseren Auftrag definiert der Gesetzgeber in § 11 Energiewirtschaftsgesetz (EnWG).
-
+                <tr><td>Amprion mit Sizt in Dortmund<td></tr>
+                <tr><td>
+                    in einem Gebiet von Niedersachsen bis zu den Alpen
+                    <br />auf dem Weg für ein klimaverträgliches Energiesystem
+                </td></tr>
+                <tr><td>Den Auftrag definiert der Gesetzgeber in § 11 Energiewirtschaftsgesetz (EnWG)</td></tr>
+            </table>
         ]]>
     </string>
 
     <string name="net_tennet">
         <![CDATA[
-            <strong>
-                <a href="https://tennet.eu">tennet.eu</a>
-            </strong>
-            <br /><br />
-            <br /><br />Die Niederlande sowie weite Teile Deutschlands werden rund um die Uhr an allen Tagen des Jahres von uns mit Strom versorgt.
-             Ohne uns könnten Sie vieles nicht tun: Ihren Computer benutzen, Ihre Lebensmittel kühlen, Ihr Telefon aufladen, fernsehen,
-              mit dem Zug zur Arbeit fahren, Geld abheben oder das Licht anschalten. Ohne uns könnten Unternehmen keine Autos, Kleidung
-               und Geräte herstellen. Alles, was mit Strom funktioniert, wird von uns mit Strom versorgt.
-                Ohne Strom hätten wir es in unserer heutigen Welt, in der jeder jederzeit online ist und alles vernetzt ist, sehr schwer.
-                 Zum Glück sorgen wir dafür, dass die Lichter niemals ausgehen. Das zeigt unsere Erfolgsbilanz:
-                  Wir bieten eine Versorgungssicherheit von 99,99%. Damit gehören wir zu den Besten in unserer Branche.
+           <table border="0" cellpadding="4">
+                <tr><td><strong>
+                    <a href="https://tennet.eu">tennet.eu</a>
+                </strong></td></tr>
+
+                <tr><td>Tennet TSO mit Sitz in Arnhem, Niederlande</td></tr>
+                <tr><td>in weiten Teilen Deutschlands und in den Niederlanden</td></tr>
+                <tr><td>versorgt etwa 42 Millionen Menschen</td></tr>
+                <tr><td>Den Auftrag definiert der Gesetzgeber in § 11 Energiewirtschaftsgesetz (EnWG)</td></tr>
+            </table>
         ]]>
     </string>
     <string name="net_transnet">
         <![CDATA[
-            <strong>
-                <a href="https://transnetbw.de">transnetbw.de</a>
-            </strong>
-            <br /><br />
-            Die TransnetBW GmbH betreibt das Strom-Übertragungsnetz in Baden-Württemberg. Mit diesem Transportnetz sichern wir
-             die Stromversorgung in der Region, in Deutschland und in Europa. Wir steuern und kontrollieren die Energieflüsse
-              im Netz, sorgen für Instandhaltung, Netzplanung und Netzentwicklung.
-               Zahlreiche Stromhändler, Kraftwerks- und Verteilnetzbetreiber im In- und Ausland zählen
-                zu unseren Kunden und Partnern.
+            <table border="0" cellpadding="4">
+                <tr><td><strong>
+                    <a href="https://transnetbw.de">transnetbw.de</a>
+                </strong></td></tr>
+
+                <tr><td>Transnet BW mit Sitz in Stuttgart</td></tr>
+                <tr><td>betreibt das Strom-Übertragungsnetz in Baden-Württemberg</td></tr>
+                <tr><td>Intelligent Energy System Services in Kooperation mit der Porsche-Tochter MHP</td></tr>
+                <tr><td>Den Auftrag definiert der Gesetzgeber in § 11 Energiewirtschaftsgesetz (EnWG)</td></tr>
+            </table>
         ]]>
     </string>
 
     <!-- company -->
     <string name="com_0">
         <![CDATA[
-            <strong>
-                <a href="https://check24.de">check24.de</a>
-            </strong>
-            <br /><br />
+            <table border="0" cellpadding="4">
+                <tr><td><strong>
+                    Die Stromzähler
+                </strong></td></tr>
+
+                <tr><td>berechnet Verbrauch</td></tr>
+            </table>
         ]]>
     </string>
     <string name="com_conventional">
         <![CDATA[
-            <strong>konventionelle Anbieter</strong>
-            <br /><br />
+            <table border="0" cellpadding="4">
+                <tr><td><strong>
+                    konventionelle Energie
+                </strong></td></tr>
+
+                <tr><td>aus fossilen Brennstoffen oder Kernspaltung</td></tr>
+            </table>
         ]]>
     </string>
 
     <string name="com_rwe">
         <![CDATA[
-            <strong>
-                <a href="https://rwe.de">rwe.de</a>
-            </strong>
-            <br /><br />
+            <table border="0" cellpadding="4">
+                <tr><td><strong>
+                    <a href="https://rwe.de">rwe.de</a>
+                </strong></td></tr>
+
+                <tr><td>Sitz</td></tr>
+            </table>
         ]]>
     </string>
 
     <string name="com_eon">
         <![CDATA[
-            <strong>
-                <a href="https://eon.de">eon.de</a>
-            </strong>
-            <br /><br />
+            <table border="0" cellpadding="4">
+                <tr><td><strong>
+                    <a href="https://eon.de">eon.de</a>
+                </strong></td></tr>
+
+                <tr><td>Sitz</td></tr>
+            </table>
         ]]>
     </string>
     <string name="com_ovag">
         <![CDATA[
-            <strong>
-                <a href="https://ovag.de">ovag.de</a>
-            </strong>
-            <br /><br />
-        ]]>
-        <br />
+            <table border="0" cellpadding="4">
+                <tr><td><strong>
+                    <a href="https://ovag.de">ovag.de</a>
+                </strong></td></tr>
 
+                <tr><td>Sitz</td></tr>
+            </table>
+        ]]>
     </string>
 
 
 
     <string name="com_ecology">
         <![CDATA[
-            <strong>
-                <a href="https://oekostrom-anbieter.info">oekostrom-anbieter.info</a>
-            </strong>
+            <table border="0" cellpadding="4">
+                <tr><td><strong>
+                    <a href="https://oekostrom-anbieter.info">oekostrom-anbieter.info</a>
+                </strong></td></tr>
 
-            <br /><br />
-            <br /><br />
-            Die wichtigsten unabhängigen Ökostromanbieter in Deutschland sind die Naturstrom AG,
-             die EWS Schönau eG und die Greenpeace Energy eG. Diese Ökostromanbieter werden auch
-              als Ökostrom-Pioniere bezeichnet. Darüber hinaus sind in diesem Zusammenhang die noch
-               relativ jungen Anbieter Bürgerwerke eG und Polarstern GmbH zu nennen.
-                Alle genannten Anbieter gelten als besonders empfehlenswert, denn sie liefern echten Ökostrom,
-                 fördern den Bau von Neuanlagen zur Erzeugung von Strom aus Erneuerbaren Energien und sind
-                  nicht mit den großen Stromkonzernen verflochten, die eigene Atom- und Kohlekraftwerke betreiben
-                   oder an solchen beteiligt sind. Die Unabängigkeit des vierten Ökostrom-Pionieres LichtBlick SE
+                <tr><td>
+                    Die wichtigsten unabhängigen Ökostromanbieter in Deutschland sind die Naturstrom AG,
+                    die EWS Schönau eG und die Greenpeace Energy eG. Diese Ökostromanbieter werden auch
+                    als Ökostrom-Pioniere bezeichnet. Darüber hinaus sind in diesem Zusammenhang die noch
+                    relativ jungen Anbieter Bürgerwerke eG und Polarstern GmbH zu nennen.
+                    Alle genannten Anbieter gelten als besonders empfehlenswert, denn sie liefern echten Ökostrom,
+                    fördern den Bau von Neuanlagen zur Erzeugung von Strom aus Erneuerbaren Energien und sind
+                    nicht mit den großen Stromkonzernen verflochten, die eigene Atom- und Kohlekraftwerke betreiben
+                    oder an solchen beteiligt sind. Die Unabängigkeit des vierten Ökostrom-Pionieres LichtBlick SE
                     ist seit spätestens 2018 leider nicht mehr gegeben.
+                </td></tr>
+            </table>
         ]]>
     </string>
     <string name="com_lichtblick">
         <![CDATA[
-            <strong>
-                <a href="https://lichtblick.de">lichtblick.de</a>
-            </strong>
-            <br /><br />
+            <table border="0" cellpadding="4">
+                <tr><td><strong>
+                    <a href="https://lichtblick.de">lichtblick.de</a>
+                </strong></td></tr>
 
+                <tr><td>Sitz</td></tr>
+            </table>
         ]]>
     </string>
     <string name="com_naturstrom">
         <![CDATA[
-            <strong>
-                <a href="https://naturstrom.de">naturstrom.de</a>
-            </strong>
-            <br /><br />
+            <table border="0" cellpadding="4">
+                <tr><td><strong>
+                    <a href="https://naturstrom.de">naturstrom.de</a>
+                </strong></td></tr>
+
+                <tr><td>Sitz</td></tr>
+            </table>
         ]]>
     </string>
     <string name="com_schoenau">
         <![CDATA[
-            <strong>
-                <a href="https://ews-schoenau.de">ews-schoenau.de</a>
-            </strong>
-            <br /><br />
+            <table border="0" cellpadding="4">
+                <tr><td><strong>
+                    <a href="https://ews-schoenau.de">ews-schoenau.de</a>
+                </strong></td></tr>
+
+                <tr><td>Sitz</td></tr>
+            </table>
         ]]>
     </string>
     <string name="com_greenpeace">
         <![CDATA[
-            <strong>
-                <a href="https://greenpeace-energy.de">greenpeace-energy.de</a>
-            </strong>
-            <br /><br />
+            <table border="0" cellpadding="4">
+                <tr><td><strong>
+                    <a href="https://greenpeace-energy.de">greenpeace-energy.de</a>
+                </strong></td></tr>
+
+                <tr><td>Sitz</td></tr>
+            </table>
         ]]>
     </string>
     <string name="com_buergerwerke">
         <![CDATA[
-            <strong>
-                <a href="https://buergerwerke.de">buergerwerke.de</a>
-            </strong>
-            <br /><br />
+            <table border="0" cellpadding="4">
+                <tr><td><strong>
+                    <a href="https://buergerwerke.de">buergerwerke.de</a>
+                </strong></td></tr>
+
+                <tr><td>Sitz</td></tr>
+            </table>
         ]]>
     </string>
     <string name="com_polarstern">
         <![CDATA[
             <strong>
-                <a href="https://polarstern-energie.de">polarstern-energie.de</a>
+
             </strong>
-            <br /><br />
+            <table border="0" cellpadding="4">
+                <tr><td><strong>
+                    <a href="https://polarstern-energie.de">polarstern-energie.de</a>
+                </strong></td></tr>
+
+                <tr><td>Sitz</td></tr>
+            </table>
         ]]>
     </string>
 

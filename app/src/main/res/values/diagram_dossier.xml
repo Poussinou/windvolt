@@ -71,7 +71,7 @@
                     <a href="https://amprion.de">amprion.de</a>
                 </strong></td></tr>
 
-                <tr><td>Amprion mit Sizt in Dortmund<td></tr>
+                <tr><td>Amprion mit Sitz in Dortmund<td></tr>
                 <tr><td>
                     in einem Gebiet von Niedersachsen bis zu den Alpen
                     <br />auf dem Weg für ein klimaverträgliches Energiesystem
@@ -122,6 +122,8 @@
             </table>
         ]]>
     </string>
+
+
     <string name="com_conventional">
         <![CDATA[
             <table border="0" cellpadding="4">
@@ -141,7 +143,13 @@
                     <a href="https://rwe.de">rwe.de</a>
                 </strong></td></tr>
 
-                <tr><td>Sitz</td></tr>
+                <tr><td>RWE Power AG mit Sitz in Essen</td></tr>
+
+                <tr><td>
+                    Wir von RWE versorgen Menschen und Unternehmen seit über 120 Jahren zuverlässig mit Strom
+                     – rund um die Uhr. Dass Strom jederzeit aus der Steckdose fließt, ist für viele selbstverständlich
+                      – das ist es, weil Stromerzeuger wie wir dafür sorgen.
+                </td></tr>
             </table>
         ]]>
     </string>
@@ -153,10 +161,16 @@
                     <a href="https://eon.de">eon.de</a>
                 </strong></td></tr>
 
-                <tr><td>Sitz</td></tr>
+                <tr><td>E.ON Energie Deutschland GmbH mit Sitz in München</td></tr>
+
+                <tr><td>
+                    Immer mehr Menschen suchen nach einem umweltfreundlichen Anbieter, der CO2-neutral Energie
+                     aus Erneuerbaren Quellen liefert. Sie auch? Wir haben den passenden Ökotarif für Ihre Ansprüche.
+                </td></tr>
             </table>
         ]]>
     </string>
+
     <string name="com_ovag">
         <![CDATA[
             <table border="0" cellpadding="4">
@@ -165,6 +179,12 @@
                 </strong></td></tr>
 
                 <tr><td>Sitz</td></tr>
+
+                <tr><td>
+                    Über 220000 Kunden in der Region und deutschlandweit beliefern wir sicher mit Strom und Erdgas.
+                     Unseren Fokus legen wir dabei nicht nur auf günstige Preise, sondern auch auf
+                      faire Vertragsbedingungen, einen ausgezeichneten Service und attraktive Mehrwerte für unsere Kunden.
+                </td></tr>
             </table>
         ]]>
     </string>
@@ -199,10 +219,17 @@
                     <a href="https://lichtblick.de">lichtblick.de</a>
                 </strong></td></tr>
 
-                <tr><td>Sitz</td></tr>
+                <tr><td>Hamburg</td></tr>
+
+                <tr><td>
+                    Bei LichtBlick gibt es nur grünen Strom und sonst nichts.
+                </td></tr>
+
             </table>
         ]]>
     </string>
+
+
     <string name="com_naturstrom">
         <![CDATA[
             <table border="0" cellpadding="4">
@@ -210,7 +237,12 @@
                     <a href="https://naturstrom.de">naturstrom.de</a>
                 </strong></td></tr>
 
-                <tr><td>Sitz</td></tr>
+                <tr><td>Düsseldorf</td></tr>
+
+                <tr><td>
+                    Wir treiben seit unserer Gründung 1998 eine saubere, sichere und wirtschaftliche Energieversorgung
+                     auf Basis erneuerbarer Energien voran – gemeinsam mit den Bürgern vor Ort.
+                </td></tr>
             </table>
         ]]>
     </string>
@@ -221,7 +253,11 @@
                     <a href="https://ews-schoenau.de">ews-schoenau.de</a>
                 </strong></td></tr>
 
-                <tr><td>Sitz</td></tr>
+                <tr><td>Schönau im Schwarzwald</td></tr>
+                <tr><td>
+                    Energiewende mitgestalten
+                </td></tr>
+
             </table>
         ]]>
     </string>
@@ -232,7 +268,8 @@
                     <a href="https://greenpeace-energy.de">greenpeace-energy.de</a>
                 </strong></td></tr>
 
-                <tr><td>Sitz</td></tr>
+                <tr><td>Sitz in Hamburg</td></tr>
+                <tr><td>Nachhaltige Energie für Privathaushalte</td></tr>
             </table>
         ]]>
     </string>
@@ -243,7 +280,11 @@
                     <a href="https://buergerwerke.de">buergerwerke.de</a>
                 </strong></td></tr>
 
-                <tr><td>Sitz</td></tr>
+                <tr><td>Sitz in Heidelberg</td></tr>
+                <tr><td>
+                    Wir haben einen Energieversorger aufgebaut, der uns Bürgern gehört und bei dem jeder mitmachen kann.
+                    Wir arbeiten für eine dezentrale Energieversorgung, die zu 100 % mit Erneuerbaren Energien funktioniert.
+                </td></tr>
             </table>
         ]]>
     </string>
@@ -257,7 +298,27 @@
                     <a href="https://polarstern-energie.de">polarstern-energie.de</a>
                 </strong></td></tr>
 
-                <tr><td>Sitz</td></tr>
+                <tr><td>München</td></tr>
+                <tr><td>
+                    Erzeugt in einem deutschen Laufwasserkraftwerk. Zertifiziert vom Grüner Strom-Label.
+                     Bestnoten von Öko-Test, Utopia und Robin Wood. Besser geht’s nicht.
+                </td></tr>
+            </table>
+        ]]>
+    </string>
+
+
+
+
+    <!-- politics -->
+    <string name="pol_0">
+        <![CDATA[
+            <table border="0" cellpadding="4">
+                <tr><td><strong>
+                    Die Regulierer
+                </strong></td></tr>
+
+                <tr><td>macht Gesetze</td></tr>
             </table>
         ]]>
     </string>

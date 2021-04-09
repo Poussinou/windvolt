@@ -238,6 +238,18 @@ public class WhoIsWho extends AppCompatActivity {
                         green, R.string.com_polarstern);
             }
         }
+
+
+        // politics
+        if (true) {
+            int pol = R.drawable.wiw_politics;
+
+            String k3 = store.addChild(root, "Politik/Verbände", "Ökostrom",
+                    pol, R.string.pol_0);
+
+            String k20 = store.addChild(k3, "Netzagentur", "Bundesnetzagentur",
+                    pol, R.string.pol_0);
+        }
     }
 
 

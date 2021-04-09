@@ -248,7 +248,7 @@ public class WhoIsWho extends AppCompatActivity {
                     pol, R.string.pol_0);
 
             String k20 = store.addChild(k3, "Netzagentur", "Bundesnetzagentur",
-                    pol, R.string.pol_0);
+                    pol, R.string.pol_netzagentur);
         }
     }
 

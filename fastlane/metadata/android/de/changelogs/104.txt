@@ -1,21 +1,12 @@
 windvolt
 
-#Version 1.10
-diagram update planned
-
-##Version 1.04
-
-diagram v0
+#Version 1.04
 
 location:       location assistant,
-                location service
-                geolocation,
-                battery
-
-battery tracking now in milliseconds
+                location services,
+                battery history
 
 story:          added images
-
 
 de-de:          'Strategische Nutzung erneuerbarer Energie'
 
@@ -24,8 +15,3 @@ preferences:    texts improved, location displayed, restart notice
 devices:        XMLDeviceStore  ->  XMLModelStore, analog ModelStore
 story:          page 6 replaced, page 7 inserted
 links:          adapter integrated
-
-
-###Version 1.03
-initial official release
-i used the app myself for 3 month and made many changes

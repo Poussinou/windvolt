@@ -323,4 +323,22 @@
         ]]>
     </string>
 
+
+    <string name="pol_netzagentur">
+        <![CDATA[
+            <table border="0" cellpadding="4">
+                <tr><td><strong>
+                    <a href="https://smard.de">smard.de</a>
+                </strong></td></tr>
+
+                <tr><td>Berlin/Bonn</td></tr>
+
+                <tr><td>
+                    Die Bundesnetzagentur ist eine Behörde des Bundesministeriums für Wirtscahft und Energie.
+                     Sie veröffentlicht regelmäßig Details zur Stromproduktion und liefert Marktdaten.
+                </td></tr>
+            </table>
+        ]]>
+    </string>
+
 </resources>

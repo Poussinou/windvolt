@@ -80,7 +80,7 @@ public class WhoIsWho extends AppCompatActivity {
                     net, R.string.net_transnet);
         }
 
-
+        // pricing
         if (true) {
             int stock = R.drawable.wiw_exchange;
 
@@ -134,11 +134,11 @@ public class WhoIsWho extends AppCompatActivity {
         }
 
 
-        // politics
+        // network
         if (true) {
             int pol = R.drawable.wiw_politics;
 
-            String k3 = store.addChild(root, "Politik/Verbände", "Regulierung EEG Studien",
+            String k3 = store.addChild(root, "Netzwerke", "EEG, Regulierung, Forschung, Beratung",
                     pol, R.string.pol_0);
 
             store.addChild(k3, "BM Wirtschaft/Energie", "Bundesministerium für für Wirtschaft und Energie",
@@ -263,11 +263,12 @@ public class WhoIsWho extends AppCompatActivity {
         image.setImageResource(res);
 
         TextView text = new TextView(this);
+        text.setPadding(8, 8, 8, 8);
         //text.setTextAppearance(this, R.style.TextAppearance_MaterialComponents_Headline4); // 34sp
         //text.setTextAppearance(this, R.style.TextAppearance_AppCompat_Large); // 22sp
         text.setTextAppearance(this, R.style.TextAppearance_AppCompat_Headline); //24sp
 
-        text.setText(" " + child.getTitle());
+        text.setText(child.getTitle());
 
         layout.addView(image);
         layout.addView(text);

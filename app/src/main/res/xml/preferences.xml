@@ -65,7 +65,7 @@
 
         <CheckBoxPreference
             app:defaultValue="false"
-            app:key="battery_tracking"
+            app:key="battery_history"
             app:summary="@string/battry_summary"
             app:title="@string/battery_state" />
     </PreferenceCategory>

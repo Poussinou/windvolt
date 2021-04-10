@@ -65,20 +65,21 @@ import java.util.Date;
         - latitude/longitude display
 
 
-        - battery tracker display
-        - battery tracking dialog
+        - battery history display
+        - battery history dialog
  */
 public class Recommendation extends Fragment {
 
-    final int BATTERY_TRACK_ENTRIES = 10;
+    final int BATTERY_HISTORY_ENTRIES = 10;
 
 
+    final int RECOMMENDATION_NOT_AVAILABLE = -1;
+    final int RECOMMENDATION_AVOID_LOADING = 0;
+    final int RECOMMENDATION_LOAD_SMART_DEVICES = 1;
+    final int RECOMMENDATION_LOAD_MORE_DEVICES = 10;
+    final int RECOMMENDATION_LOAD_MANY_DEVICES = 11;
 
-    final int LOAD_NOT_AVAILABLE = -1;
-    final int LOAD_NOT_RECOMMENDED = 0;
-    final int LOAD_SMART_DEVICES = 1;
-    final int LOAD_MORE_DEVICES = 10;
-    final int LOAD_MANY_DEVICES = 11;
+
 
     ArrayList<String> names = new ArrayList<>();
     ArrayList<String> allnames = new ArrayList<>();
@@ -102,7 +103,7 @@ public class Recommendation extends Fragment {
         // record battery
         //switched off for performance
 
-        if (zBatteryTrackingAllowed()) {
+        if (zBatteryHistoryAllowed()) {
             recordBattery();
         }
 
@@ -114,7 +115,7 @@ public class Recommendation extends Fragment {
         // UPDATE RECOMMENDATION
         // TODO calculate recommendation
         //
-        setRecommendation(view, LOAD_NOT_AVAILABLE);
+        setRecommendation(view, RECOMMENDATION_NOT_AVAILABLE);
 
 
         // UPDATE LOCATION AND GEODATA
@@ -170,7 +171,7 @@ public class Recommendation extends Fragment {
         displayGeodata();
 
 
-        if (zBatteryTrackingAllowed()) {
+        if (zBatteryHistoryAllowed()) {
             displayBattery();
         }
 
@@ -197,8 +198,8 @@ public class Recommendation extends Fragment {
             services_open.setVisibility(View.GONE);
         }
 
-        /* allow or hide battery tracking */
-        if (!zBatteryTrackingAllowed()) {
+        /* allow or hide battery history */
+        if (!zBatteryHistoryAllowed()) {
             bat_display.setVisibility(View.GONE);
         }
 
@@ -292,19 +293,19 @@ public class Recommendation extends Fragment {
         TextView recommend = view.findViewById(R.id.recommendation_text);
 
         switch (state) {
-            case LOAD_NOT_RECOMMENDED:
+            case RECOMMENDATION_AVOID_LOADING:
                 recommend.setText(getString(R.string.recommendation_load_prevent)); // vlaues
                 break;
 
-            case LOAD_SMART_DEVICES:
+            case RECOMMENDATION_LOAD_SMART_DEVICES:
                 recommend.setText(getString(R.string.recommendation_load_small)); // values
                 break;
 
-            case LOAD_MORE_DEVICES:
+            case RECOMMENDATION_LOAD_MORE_DEVICES:
                 recommend.setText(getString(R.string.recommendation_load_more)); // values
                 break;
 
-            case LOAD_MANY_DEVICES:
+            case RECOMMENDATION_LOAD_MANY_DEVICES:
                 recommend.setText(getString(R.string.recommendation_load_all)); // values
                 break;
 
@@ -474,8 +475,7 @@ public class Recommendation extends Fragment {
                     String vlevel = vlevels[p];
 
                     if (!vlevel.isEmpty()) {
-                        Float flevel = Float.parseFloat(vlevel);
-                        int ilevel = flevel.intValue();
+                        int ilevel = Integer.parseInt(vlevel);
 
 
                         if (ilevel > border) { load = prepose(load, CHART_DOT); }
@@ -570,13 +570,13 @@ public class Recommendation extends Fragment {
                     // query decision
                     AlertDialog.Builder query = new AlertDialog.Builder(getActivity());
 
-                    query.setTitle("clear battery track");
-                    query.setMessage("the battery track will be rebuilt over time");
+                    query.setTitle("clear battery history");
+                    query.setMessage("the battery history will be rebuilt over time");
 
                     query.setPositiveButton("okay", null);
                     query.create().show();
 
-                    // cleat battery track
+                    // cleat battery history
                     SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
                     SharedPreferences.Editor editor = sharedPreferences.edit();
 
@@ -589,7 +589,7 @@ public class Recommendation extends Fragment {
 
 
                     // reassure user
-                    Toast.makeText(getContext(), "battery track cleared", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), "battery history cleared", Toast.LENGTH_LONG).show();
                 }
             });
 
@@ -719,20 +719,16 @@ public class Recommendation extends Fragment {
         int level = batteryStatus.getIntExtra(BatteryManager.EXTRA_LEVEL, -1);
         int scale = batteryStatus.getIntExtra(BatteryManager.EXTRA_SCALE, -1);
 
-        Float lbattery = level * 100 / (float)scale;
-        battery_level_now = lbattery.toString();
-
-
+        Float fbattery = level * 100 / (float)scale;
+        Integer ibattery = fbattery.intValue();
+        battery_level_now = ibattery.toString();
 
 
         // calculate time
         long milliseconds = 0;
-
         long time_now = System.currentTimeMillis();
-
         battery_time_now = Long.toString(time_now);
-
-        long time_before = time_now;
+        Long time_before = time_now;
 
 
         try { // calculate time difference
@@ -804,20 +800,18 @@ public class Recommendation extends Fragment {
 
 
         /* display load difference */
-        Float level_now = Float.parseFloat(battery_level_now);
+        int level_now = Integer.parseInt(battery_level_now);
 
         try {
-            float level_before = Float.parseFloat(battery_level_before);
+            int level_before = Integer.parseInt(battery_level_before);
 
-            Float delta_level = level_now - level_before;
-            int intdelta = delta_level.intValue();
+            int delta = level_now - level_before;
 
-            if (delta_level < 0) { bat += "" + intdelta; }
-            else { bat += "+" + intdelta; }
-
+            if (delta < 0) { bat += "" + delta; }
+            else { bat += "+" + delta; }
 
         } catch (Exception e) {
-            bat += "" + level_now.intValue();
+            bat += "" + level_now;
         }
         bat += "%";
 
@@ -870,8 +864,8 @@ public class Recommendation extends Fragment {
 
     private String zLoadLocation() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-        String loc = sharedPreferences.getString("location_input", "");
-        return loc;
+        String location = sharedPreferences.getString("location_input", "");
+        return location;
     }
     private void zSaveLocation(String value) {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
@@ -906,7 +900,7 @@ public class Recommendation extends Fragment {
     }
 
 
-    private void zClearBatteryTrack() {
+    private void zClearBatteryHistory() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
@@ -946,7 +940,7 @@ public class Recommendation extends Fragment {
                 String level = values[p];
 
                 if (!level.isEmpty()) {
-                    if (hits < BATTERY_TRACK_ENTRIES) {
+                    if (hits < BATTERY_HISTORY_ENTRIES) {
                         battery_level +=  ";" + level;
                         hits++;
                     }
@@ -986,7 +980,7 @@ public class Recommendation extends Fragment {
                 String time = values[p];
 
                 if (!time.isEmpty()) {
-                    if (hits < BATTERY_TRACK_ENTRIES) {
+                    if (hits < BATTERY_HISTORY_ENTRIES) {
                         battery_time +=  ";" + time;
                         hits++;
                     }
@@ -1006,10 +1000,10 @@ public class Recommendation extends Fragment {
         return sharedPreferences.getBoolean("location_services", false);
     }
 
-    private boolean zBatteryTrackingAllowed() {
+    private boolean zBatteryHistoryAllowed() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
 
-        return sharedPreferences.getBoolean("battery_tracking", false);
+        return sharedPreferences.getBoolean("battery_history", false);
     }
 
 

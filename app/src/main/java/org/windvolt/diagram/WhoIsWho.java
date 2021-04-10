@@ -19,6 +19,8 @@
 package org.windvolt.diagram;
 
 import android.graphics.drawable.Drawable;
+import android.media.AudioManager;
+import android.media.ToneGenerator;
 import android.os.Bundle;
 import android.view.View;
 import android.webkit.WebView;
@@ -47,6 +49,114 @@ public class WhoIsWho extends AppCompatActivity {
     WebView diagram_web;
 
     String focus_id;
+
+    boolean beep = false;
+
+    private void createStoreData() {
+        int symbol = R.drawable.windvolt_small;
+
+
+        String root = store.addChild("", "windvolt", "Windenergie",
+                symbol, R.string.windvolt);
+
+
+        // net
+        if (true) {
+
+            int net = R.drawable.wiw_net;
+
+            String netz = store.addChild(root, "Netzbetreiber", "Die deutschen Netzbetreiber",
+                    net, R.string.net_0);
+
+
+
+            store.addChild(netz, "50Hertz", "50Hertz Transmission GmbH",
+                    net, R.string.net_50herz);
+            store.addChild(netz, "Amprion", "Amprion GmbH",
+                    net, R.string.net_ampirion);
+            store.addChild(netz, "Tennet", "Tennet TSO",
+                    net, R.string.net_tennet);
+            store.addChild(netz, "Transnet BW", "Transnet BW GmbH",
+                    net, R.string.net_transnet);
+        }
+
+
+        if (true) {
+            int stock = R.drawable.wiw_exchange;
+
+            store.addChild(root, "Börse", "Strombörse EEX",
+                    stock, R.string.com_stock);
+        }
+
+        // com
+        if (true) {
+            int com = R.drawable.wiw_com;
+
+            String konzern = store.addChild(root, "Versorger", "Stromversorger in Deutschland",
+                    com, R.string.com_0);
+
+
+
+            String k1 = store.addChild(konzern, "konventionelle", "Versorgung mit konventioneller Energie",
+                    com, R.string.com_conventional);
+
+            store.addChild(k1, "RWE", "Rheinisch-Westfälische Energiebetriebe",
+                    com, R.string.com_rwe);
+            store.addChild(k1, "eon", "EON Energie Deutschland",
+                    com, R.string.com_eon);
+            store.addChild(k1, "OVAG", "Oberhessische Versorgung Aktiengesellschaft",
+                    com, R.string.com_ovag);
+
+
+
+            // eco
+            if (true) {
+                int green = R.drawable.wiw_green;
+
+                String k2 = store.addChild(konzern, "Ökoanbieter", "Ökostromversorger",
+                        green, R.string.com_ecology);
+
+                store.addChild(k2, "Lichtblick", "Lichtblick SE",
+                        green, R.string.com_lichtblick);
+                store.addChild(k2, "Naturstrom", "Naturstrom AG",
+                        green, R.string.com_naturstrom);
+                store.addChild(k2, "EWS Schönau", "EWS Schönau eG",
+                        green, R.string.com_schoenau);
+                store.addChild(k2, "greenpeace", "greenpeace energy eG",
+                        green, R.string.com_greenpeace);
+                store.addChild(k2, "Bürgerwerke", "Bürgerwerke eG",
+                        green, R.string.com_buergerwerke);
+                store.addChild(k2, "Polarstern", "Polarstern GmbH",
+                        green, R.string.com_polarstern);
+            }
+
+
+        }
+
+
+        // politics
+        if (true) {
+            int pol = R.drawable.wiw_politics;
+
+            String k3 = store.addChild(root, "Politik/Verbände", "Regulierung EEG Studien",
+                    pol, R.string.pol_0);
+
+            store.addChild(k3, "BM Wirtschaft/Energie", "Bundesministerium für für Wirtschaft und Energie",
+                    pol, R.string.pol_bmwi);
+
+            store.addChild(k3, "Bundesnetzagentur", "Bundesnetzagentur",
+                    pol, R.string.pol_netzagentur);
+
+            store.addChild(k3, "Bundesverband Windenergie", "Bundesverband Windenergie e.V.",
+                    pol, R.string.pol_verbandwind);
+
+            store.addChild(k3, "Forum Regenerative Energien", "Internationales Wirtschaftsforum Regenerative Energien",
+                    pol, R.string.pol_iwr);
+
+        }
+    }
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,7 +204,7 @@ public class WhoIsWho extends AppCompatActivity {
 
     }
 
-
+    /* */
     private void setFocus(String id) {
         focus_id = id;
         DiagramModel focus = store.findModel(id);
@@ -126,7 +236,7 @@ public class WhoIsWho extends AppCompatActivity {
             for (int c=0; c<size; c++) {
                 String c_id = children_[c];
 
-                if (!c_id.isEmpty()) createChild(focus, c_id);
+                if (!c_id.isEmpty()) createChildView(focus, c_id);
 
             }//child
         }//children
@@ -137,7 +247,7 @@ public class WhoIsWho extends AppCompatActivity {
      * public void createChild(DiagramModel parent, String id)
      * creates view to display child
      */
-    public void createChild(DiagramModel parent, String id) {
+    public void createChildView(DiagramModel parent, String id) {
         DiagramModel child = store.findModel(id);
 
         LinearLayout layout = new LinearLayout(this);
@@ -153,103 +263,17 @@ public class WhoIsWho extends AppCompatActivity {
         image.setImageResource(res);
 
         TextView text = new TextView(this);
-        text.setTextAppearance(this, R.style.TextAppearance_MaterialComponents_Headline4);
+        //text.setTextAppearance(this, R.style.TextAppearance_MaterialComponents_Headline4); // 34sp
+        //text.setTextAppearance(this, R.style.TextAppearance_AppCompat_Large); // 22sp
+        text.setTextAppearance(this, R.style.TextAppearance_AppCompat_Headline); //24sp
 
         text.setText(" " + child.getTitle());
 
         layout.addView(image);
         layout.addView(text);
-        layout.setOnClickListener(new SetFocus(text, id));
+        layout.setOnClickListener(new SetFocus(id));
 
         diagram_space.addView(layout);
-    }
-
-
-
-
-    private void createStoreData() {
-        int symbol = R.drawable.windvolt_small;
-
-
-        String root = store.addChild("", "windvolt", "Windenergie",
-                symbol, R.string.windvolt);
-
-
-        // net
-        if (true) {
-
-            int net = R.drawable.wiw_net;
-
-            String netz = store.addChild(root, "Netzbetreiber", "Die deutschen Netzbetreiber",
-                    net, R.string.net_0);
-
-
-
-            String n0 = store.addChild(netz, "50Hertz", "50Hertz",
-                    net, R.string.net_50herz);
-            String n1 = store.addChild(netz, "Amprion", "Amprion",
-                    net, R.string.net_ampirion);
-            String n2 = store.addChild(netz, "Tennet TSO", "Tennet TSO",
-                    net, R.string.net_tennet);
-            String n3 = store.addChild(netz, "Transnet BW", "transnet",
-                    net, R.string.net_transnet);
-        }
-
-
-        // com
-        if (true) {
-            int com = R.drawable.wiw_com;
-
-            String konzern = store.addChild(root, "Stromanbieter", "Die deutschen Stromanbieter",
-                    com, R.string.com_0);
-
-
-
-            String k1 = store.addChild(konzern, "konventioneller Strom", "Fossile, Atom",
-                    com, R.string.com_conventional);
-
-            String k10 = store.addChild(k1, "RWE", "Rheinisch-WEstfälische Energiebetriebe",
-                    com, R.string.com_rwe);
-            String k11 = store.addChild(k1, "eon", "EON",
-                    com, R.string.com_eon);
-            String k12 = store.addChild(k1, "OVAG", "Oberhessische Versorgung Aktiengesellschaft",
-                    com, R.string.com_ovag);
-
-
-
-            // eco
-            if (true) {
-                int green = R.drawable.wiw_green;
-
-                String k2 = store.addChild(konzern, "Ökoanbieter", "Ökostrom",
-                        green, R.string.com_ecology);
-
-                String k20 = store.addChild(k1, "Lichtblick", "Lichtblick SE",
-                        green, R.string.com_lichtblick);
-                String k21 = store.addChild(k2, "EWS Schönau eG", "EWS Schönau eG",
-                        green, R.string.com_schoenau);
-                String k22 = store.addChild(k2, "Naturstrom AG", "Naturstrom AG",
-                        green, R.string.com_naturstrom);
-                String k23 = store.addChild(k2, "greenpeace eG", "greenpeace energy eG",
-                        green, R.string.com_greenpeace);
-                String k24 = store.addChild(k2, "Bürgerwerke eG", "Bürgerwerke eG",
-                        green, R.string.com_buergerwerke);
-                String k26 = store.addChild(k2, "Polarstern GmbH", "Polarstern GmbH",
-                        green, R.string.com_polarstern);
-            }
-        }
-
-
-        // politics
-        if (true) {
-            int pol = R.drawable.wiw_politics;
-
-            String k3 = store.addChild(root, "Politik/Verbände", "Ökostrom",
-                    pol, R.string.pol_0);
-
-            String k20 = store.addChild(k3, "Netzagentur", "Bundesnetzagentur",
-                    pol, R.string.pol_netzagentur);
-        }
     }
 
 
@@ -259,8 +283,10 @@ public class WhoIsWho extends AppCompatActivity {
         if (null == parent) {
             super.onBackPressed();
         } else {
-            //ToneGenerator beep = new ToneGenerator(AudioManager.STREAM_ALARM, 80);
-            //beep.startTone(ToneGenerator.TONE_CDMA_ANSWER, 200);
+            if (beep) {
+                ToneGenerator beep = new ToneGenerator(AudioManager.FLAG_PLAY_SOUND, 80);
+                beep.startTone(ToneGenerator.TONE_CDMA_ANSWER, 100);
+            }
 
             String parent_id = parent.getId();
             setFocus(parent_id);
@@ -268,14 +294,17 @@ public class WhoIsWho extends AppCompatActivity {
     }
 
     private class SetFocus implements View.OnClickListener {
-        View view;
         String id = "";
-        public SetFocus(View set_view, String set_id) { view = set_view; id = set_id; }
+        public SetFocus(String set_id) {
+            id = set_id;
+        }
 
         @Override
         public void onClick(View view) {
-            //ToneGenerator beep = new ToneGenerator(AudioManager.STREAM_ALARM, 80);
-            //beep.startTone(ToneGenerator.TONE_CDMA_ANSWER, 200);
+            if (beep) {
+                ToneGenerator beep = new ToneGenerator(AudioManager.FLAG_PLAY_SOUND, 80);
+                beep.startTone(ToneGenerator.TONE_CDMA_ANSWER, 100);
+            }
 
             setFocus(id);
         }
@@ -285,9 +314,11 @@ public class WhoIsWho extends AppCompatActivity {
     private LevelUpFocus doLevelUp = new LevelUpFocus();
     private class LevelUpFocus implements View.OnClickListener {
         String id = "";
-        public void setId(String set_id) { id = set_id; }
-        @Override
+        public void setId(String set_id) {
+            id = set_id;
+        }
 
+        @Override
         public void onClick(View v) {
             DiagramModel parent = store.findParent(id);
             if (null != parent) {
@@ -303,7 +334,9 @@ public class WhoIsWho extends AppCompatActivity {
     private OpenFocus doOpenFocus = new OpenFocus();
     private class OpenFocus implements View.OnClickListener {
         String id = "";
-        public void setId(String set_id) { id = set_id; }
+        public void setId(String set_id) {
+            id = set_id;
+        }
 
         @Override
         public void onClick(View v) {}

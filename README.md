@@ -11,7 +11,6 @@ windvolt targets the usage and pricing of renewable energy, especially wind
 - choose a location
 
 
-
 ## what's contained
 
 * recommendation
@@ -27,6 +26,7 @@ windvolt targets the usage and pricing of renewable energy, especially wind
     <img src="fastlane/metadata/android/de/images/screenshots/screenshot_1.png">
     <img src="fastlane/metadata/android/de/images/screenshots/screenshot_2.png">
 </div>
+
 
 ### code and license
 

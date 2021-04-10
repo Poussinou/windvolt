@@ -21,91 +21,104 @@
     <!-- windvolt -->
     <string name="windvolt">
         <![CDATA[
-            <table border="0" cellpadding="4">
+            <table border="0" cellpadding="8">
                 <tr><td><strong><center>
                     who is who
                 </center></strong></td></tr>
 
-                <tr><td>Diese Galerie beleuchtet die Marktteilnehmer<td></tr>
+                <tr><td>Diese Galerie beleuchtet die wichtigsten Marktteilnehmer<td></tr>
             </table>
-
-            <br /><br /><br /><br />
-            <i>*Wähle einen Eintrag oder benutze die Rücktaste</i>
         ]]>
     </string>
 
     <!-- network -->
     <string name="net_0">
         <![CDATA[
-            <table border="0" cellpadding="4">
+            <table border="0" cellpadding="8">
                 <tr><td><strong>
-                    <a href="https://netztransparenz.de">netztransparenz.de</a>
+                    Die vier deutschen Übertragungsnetzbetreiber
                 </strong></td></tr>
-                <tr><td>Transparenzplattformen der deutschen Übertragungsnetzbetreiber (ÜNB)</td></tr>
-                <tr><td>
-                    <a href="https://regelleistung.net">regelleistung.net</a>
-                    <br />
-                    <a href="https://netzentwicklungsplan.de">netzentwicklungsplan.de</a>
+
+                <tr><td>Transparenzportal der ÜNB
+                <br /><a href="https://netztransparenz.de">netztransparenz.de</a>
                 </td></tr>
+
+                <tr><td>weitere Portale:
+                <br /><a href="https://regelleistung.net">regelleistung.net</a>
+                <br /><a href="https://netzentwicklungsplan.de">netzentwicklungsplan.de</a>
             </table>
         ]]>
     </string>
 
     <string name="net_50herz">
         <![CDATA[
-            <table border="0" cellpadding="4">
+            <table border="0" cellpadding="8">
                 <tr><td><strong>
-                    <a href="https://50hertz.com/de">50hertz.com/de</a>
+                    50Hertz Transmission GmbH, Berlin
                 </strong></td></tr>
 
-                <tr><td>Die 50Hertz Transmission GmbH betreibt das Übertragungsnetz der Vattenfall Europe<td></tr>
+                <tr><td>Betreiber des Übertragungsnetzes der Vattenfall Europe<td></tr>
                 <tr><td>Den Auftrag definiert der Gesetzgeber in § 11 Energiewirtschaftsgesetz (EnWG)</td></tr>
+
+                <tr><td>Homepage:
+                <br /><a href="https://50hertz.com/de">50hertz.com/de</a>
+                <td></tr>
             </table>
         ]]>
     </string>
 
     <string name="net_ampirion">
         <![CDATA[
-            <table border="0" cellpadding="4">
+            <table border="0" cellpadding="8">
                 <tr><td><strong>
-                    <a href="https://amprion.de">amprion.de</a>
+                    Amprion GmbH, Dortmund
                 </strong></td></tr>
 
-                <tr><td>Amprion mit Sitz in Dortmund<td></tr>
-                <tr><td>
-                    in einem Gebiet von Niedersachsen bis zu den Alpen
-                    <br />auf dem Weg für ein klimaverträgliches Energiesystem
-                </td></tr>
+
+                <tr><td>Vernetzt ein Gebiet von Niedersachsen bis zu den Alpen</td></tr>
+
                 <tr><td>Den Auftrag definiert der Gesetzgeber in § 11 Energiewirtschaftsgesetz (EnWG)</td></tr>
+
+                <tr><td>Homepage:
+                <br /><a href="https://amprion.de">amprion.de</a>
+                </td></tr>
             </table>
         ]]>
     </string>
 
     <string name="net_tennet">
         <![CDATA[
-           <table border="0" cellpadding="4">
+           <table border="0" cellpadding="8">
                 <tr><td><strong>
-                    <a href="https://tennet.eu">tennet.eu</a>
+                    Tennet TSO, Arnhem in den Niederlanden
+
                 </strong></td></tr>
 
-                <tr><td>Tennet TSO mit Sitz in Arnhem, Niederlande</td></tr>
-                <tr><td>in weiten Teilen Deutschlands und in den Niederlanden</td></tr>
-                <tr><td>versorgt etwa 42 Millionen Menschen</td></tr>
+                <tr><td>Vernetzt weite Teile Deutschlands und in den Niederlanden</td></tr>
+                <tr><td>Vernetzt etwa 42 Millionen Menschen</td></tr>
+
                 <tr><td>Den Auftrag definiert der Gesetzgeber in § 11 Energiewirtschaftsgesetz (EnWG)</td></tr>
+
+                <tr><td>Homepage:
+                <br /><a href="https://tennet.eu">tennet.eu</a>
+                </td></tr>
             </table>
         ]]>
     </string>
     <string name="net_transnet">
         <![CDATA[
-            <table border="0" cellpadding="4">
+            <table border="0" cellpadding="8">
                 <tr><td><strong>
-                    <a href="https://transnetbw.de">transnetbw.de</a>
+                    Transnet BW GmbH, Stuttgart
                 </strong></td></tr>
 
-                <tr><td>Transnet BW mit Sitz in Stuttgart</td></tr>
-                <tr><td>betreibt das Strom-Übertragungsnetz in Baden-Württemberg</td></tr>
+                <tr><td>Betreibt das Strom-Übertragungsnetz in Baden-Württemberg</td></tr>
                 <tr><td>Intelligent Energy System Services in Kooperation mit der Porsche-Tochter MHP</td></tr>
                 <tr><td>Den Auftrag definiert der Gesetzgeber in § 11 Energiewirtschaftsgesetz (EnWG)</td></tr>
+
+                <tr><td>Homepage:
+                <br /><a href="https://transnetbw.de">transnetbw.de</a>
+                </td></tr>
             </table>
         ]]>
     </string>
@@ -113,12 +126,13 @@
     <!-- company -->
     <string name="com_0">
         <![CDATA[
-            <table border="0" cellpadding="4">
+            <table border="0" cellpadding="8">
                 <tr><td><strong>
-                    Die Stromzähler
+                    Versorgung der Verbraucher
                 </strong></td></tr>
 
-                <tr><td>berechnet Verbrauch</td></tr>
+                <tr><td>Verbrauchsmessung</td></tr>
+                <tr><td>Verbrauchsabrechnung</td></tr>
             </table>
         ]]>
     </string>
@@ -126,29 +140,31 @@
 
     <string name="com_conventional">
         <![CDATA[
-            <table border="0" cellpadding="4">
+            <table border="0" cellpadding="8">
                 <tr><td><strong>
                     konventionelle Energie
                 </strong></td></tr>
 
-                <tr><td>aus fossilen Brennstoffen oder Kernspaltung</td></tr>
+                <tr><td>aus fossilen Brennstoffen</td></tr>
+                <tr><td>aus Kernspaltung</td></tr>
+                <tr><td>zunehmend aus erneuerbarer Energie</td></tr>
             </table>
         ]]>
     </string>
 
     <string name="com_rwe">
         <![CDATA[
-            <table border="0" cellpadding="4">
+            <table border="0" cellpadding="8">
                 <tr><td><strong>
-                    <a href="https://rwe.de">rwe.de</a>
+                    RWE Power AG, Essen
                 </strong></td></tr>
 
-                <tr><td>RWE Power AG mit Sitz in Essen</td></tr>
-
                 <tr><td>
-                    Wir von RWE versorgen Menschen und Unternehmen seit über 120 Jahren zuverlässig mit Strom
-                     – rund um die Uhr. Dass Strom jederzeit aus der Steckdose fließt, ist für viele selbstverständlich
-                      – das ist es, weil Stromerzeuger wie wir dafür sorgen.
+                    Wir von RWE versorgen Menschen und Unternehmen seit über 120 Jahren zuverlässig mit Strom.
+                </td></tr>
+
+                <tr><td>Homepage:
+                <br /><a href="https://rwe.de">rwe.de</a>
                 </td></tr>
             </table>
         ]]>
@@ -156,34 +172,40 @@
 
     <string name="com_eon">
         <![CDATA[
-            <table border="0" cellpadding="4">
+            <table border="0" cellpadding="8">
                 <tr><td><strong>
-                    <a href="https://eon.de">eon.de</a>
-                </strong></td></tr>
+                    E.ON Energie Deutschland GmbH, München
 
-                <tr><td>E.ON Energie Deutschland GmbH mit Sitz in München</td></tr>
+                </strong></td></tr>
 
                 <tr><td>
                     Immer mehr Menschen suchen nach einem umweltfreundlichen Anbieter, der CO2-neutral Energie
-                     aus Erneuerbaren Quellen liefert. Sie auch? Wir haben den passenden Ökotarif für Ihre Ansprüche.
+                     aus Erneuerbaren Quellen liefert. Wir haben den passenden Ökotarif.
                 </td></tr>
+
+                <tr><td>Homepage:
+                <br /><a href="https://eon.de">eon.de</a>
+                </td></tr>
+
             </table>
         ]]>
     </string>
 
     <string name="com_ovag">
         <![CDATA[
-            <table border="0" cellpadding="4">
+            <table border="0" cellpadding="8">
                 <tr><td><strong>
-                    <a href="https://ovag.de">ovag.de</a>
+                    Oberhessische Versor­gungs- und Verkehrsgesellschaft mbH, Friedberg
                 </strong></td></tr>
-
-                <tr><td>Sitz</td></tr>
 
                 <tr><td>
                     Über 220000 Kunden in der Region und deutschlandweit beliefern wir sicher mit Strom und Erdgas.
                      Unseren Fokus legen wir dabei nicht nur auf günstige Preise, sondern auch auf
                       faire Vertragsbedingungen, einen ausgezeichneten Service und attraktive Mehrwerte für unsere Kunden.
+                </td></tr>
+
+                <tr><td>Homepage:
+                <br /><a href="https://ovag.de">ovag.de</a>
                 </td></tr>
             </table>
         ]]>
@@ -193,10 +215,14 @@
 
     <string name="com_ecology">
         <![CDATA[
-            <table border="0" cellpadding="4">
+            <table border="0" cellpadding="8">
                 <tr><td><strong>
-                    <a href="https://oekostrom-anbieter.info">oekostrom-anbieter.info</a>
+                    Ökostrom Versorger
                 </strong></td></tr>
+
+                <tr><td>Anbieter:
+                <br /><a href="https://oekostrom-anbieter.info">oekostrom-anbieter.info</a>
+                </td></tr>
 
                 <tr><td>
                     Die wichtigsten unabhängigen Ökostromanbieter in Deutschland sind die Naturstrom AG,
@@ -212,19 +238,22 @@
             </table>
         ]]>
     </string>
+
+
     <string name="com_lichtblick">
         <![CDATA[
-            <table border="0" cellpadding="4">
+            <table border="0" cellpadding="8">
                 <tr><td><strong>
-                    <a href="https://lichtblick.de">lichtblick.de</a>
+                    Lichtblick SE, Hamburg
                 </strong></td></tr>
-
-                <tr><td>Hamburg</td></tr>
 
                 <tr><td>
                     Bei LichtBlick gibt es nur grünen Strom und sonst nichts.
                 </td></tr>
 
+                <tr><td>Homepage:
+                <br /><a href="https://lichtblick.de">lichtblick.de</a>
+                </td></tr>
             </table>
         ]]>
     </string>
@@ -232,113 +261,227 @@
 
     <string name="com_naturstrom">
         <![CDATA[
-            <table border="0" cellpadding="4">
+            <table border="0" cellpadding="8">
                 <tr><td><strong>
-                    <a href="https://naturstrom.de">naturstrom.de</a>
+                    Naturstrom AG, NaturStromHandel GmbH, Düsseldorf
                 </strong></td></tr>
-
-                <tr><td>Düsseldorf</td></tr>
 
                 <tr><td>
                     Wir treiben seit unserer Gründung 1998 eine saubere, sichere und wirtschaftliche Energieversorgung
                      auf Basis erneuerbarer Energien voran – gemeinsam mit den Bürgern vor Ort.
                 </td></tr>
+
+                <tr><td>Homepage:
+                <br /><a href="https://naturstrom.de">naturstrom.de</a>
+                </td></tr>
             </table>
         ]]>
     </string>
+
     <string name="com_schoenau">
         <![CDATA[
-            <table border="0" cellpadding="4">
+            <table border="0" cellpadding="8">
                 <tr><td><strong>
-                    <a href="https://ews-schoenau.de">ews-schoenau.de</a>
+                    EWS Schönau eG, Schönau im Schwarzwald
                 </strong></td></tr>
 
-                <tr><td>Schönau im Schwarzwald</td></tr>
                 <tr><td>
-                    Energiewende mitgestalten
+                    Energiewende aus Bürgerhand
                 </td></tr>
 
+                <tr><td>Homepage:
+                <br /><a href="https://ews-schoenau.de">ews-schoenau.de</a>
+                </td></tr>
             </table>
         ]]>
     </string>
+
     <string name="com_greenpeace">
         <![CDATA[
-            <table border="0" cellpadding="4">
+            <table border="0" cellpadding="8">
                 <tr><td><strong>
-                    <a href="https://greenpeace-energy.de">greenpeace-energy.de</a>
+                    greenpeace energy eG, Hamburg
                 </strong></td></tr>
 
-                <tr><td>Sitz in Hamburg</td></tr>
-                <tr><td>Nachhaltige Energie für Privathaushalte</td></tr>
+                <tr><td>
+                    Überlassen Sie das Thema Energie nicht den großen Konzernen.
+                     Werden Sie als Genossen­schafts­mitglied Miteigentümer von
+                      Greenpeace Energy und verändern Sie mit uns die Energielandschaft.
+                </td></tr>
+
+                <tr><td>Homepage:
+                <br /><a href="https://greenpeace-energy.de">greenpeace-energy.de</a>
+                </td></tr>
             </table>
         ]]>
     </string>
+
     <string name="com_buergerwerke">
         <![CDATA[
-            <table border="0" cellpadding="4">
+            <table border="0" cellpadding="8">
                 <tr><td><strong>
-                    <a href="https://buergerwerke.de">buergerwerke.de</a>
+                    Bürgerwerke eG, Heidelberg
                 </strong></td></tr>
 
-                <tr><td>Sitz in Heidelberg</td></tr>
                 <tr><td>
                     Wir haben einen Energieversorger aufgebaut, der uns Bürgern gehört und bei dem jeder mitmachen kann.
                     Wir arbeiten für eine dezentrale Energieversorgung, die zu 100 % mit Erneuerbaren Energien funktioniert.
                 </td></tr>
+
+                <tr><td>Homepage:
+                <br /><a href="https://buergerwerke.de">buergerwerke.de</a>
+                </td></tr>
             </table>
         ]]>
     </string>
+
     <string name="com_polarstern">
         <![CDATA[
-            <strong>
-
-            </strong>
-            <table border="0" cellpadding="4">
+            <table border="0" cellpadding="8">
                 <tr><td><strong>
-                    <a href="https://polarstern-energie.de">polarstern-energie.de</a>
+                    Polarstern GmbH, München
                 </strong></td></tr>
 
-                <tr><td>München</td></tr>
                 <tr><td>
-                    Erzeugt in einem deutschen Laufwasserkraftwerk. Zertifiziert vom Grüner Strom-Label.
-                     Bestnoten von Öko-Test, Utopia und Robin Wood. Besser geht’s nicht.
+                    Unser Ökostrom wird in einem deutschen Laufwasserkraftwerk erzeugt. Zertifiziert vom Grüner Strom-Label.
+                     Bestnoten von Öko-Test, Utopia und Robin Wood.
+                </td></tr>
+
+                <tr><td>Homepage:
+                <br /><a href="https://polarstern-energie.de">polarstern-energie.de</a>
                 </td></tr>
             </table>
         ]]>
     </string>
 
 
+    <!-- pricing -->
+    <string name="com_stock">
+        <![CDATA[
+            <table border="0" cellpadding="8">
+                <tr><td><strong>
+                    Strombörse EEX, Leipzig
+                </strong></td></tr>
+
+                <tr><td>
+                    Die European Energy Exchange (EEX) ist die führende Energiebörse, die sichere, liquide und transparente Märkte
+                     für Energie- und Rohstoffprodukte rund um den Globus entwickelt, betreibt und verbindet.
+                      Als Teil der EEX Group, einer Gruppe von Unternehmen, die internationale Rohstoffmärkte bedienen,
+                       bietet sie Verträge über Strom, Erdgas und Emissionszertifikate sowie Fracht und landwirtschaftliche Produkte an.
+                        Im Auftrag des französischen Staates bietet die EEX auch Registrierungsdienste sowie Auktionen für
+                         Herkunftsnachweise an.
+                </td></tr>
+
+                <tr><td>Homepage:
+                <br /><a href="https://www.eex.com/de/">eex.com</a>
+                </td></tr>
+            </table>
+        ]]>
+    </string>
 
 
     <!-- politics -->
     <string name="pol_0">
         <![CDATA[
-            <table border="0" cellpadding="4">
+            <table border="0" cellpadding="8">
                 <tr><td><strong>
-                    Die Regulierer
+                    Politik, Verbände, Wissenschaft
                 </strong></td></tr>
 
-                <tr><td>macht Gesetze</td></tr>
+                <tr><td></td></tr>
             </table>
         ]]>
     </string>
 
 
-    <string name="pol_netzagentur">
+    <string name="pol_bmwi">
         <![CDATA[
-            <table border="0" cellpadding="4">
+            <table border="0" cellpadding="8">
                 <tr><td><strong>
-                    <a href="https://smard.de">smard.de</a>
+                    BMWi
+                    <br />Bundesmisiterium für Wirtschaft und Energie
                 </strong></td></tr>
 
-                <tr><td>Berlin/Bonn</td></tr>
-
-                <tr><td>
-                    Die Bundesnetzagentur ist eine Behörde des Bundesministeriums für Wirtscahft und Energie.
-                     Sie veröffentlicht regelmäßig Details zur Stromproduktion und liefert Marktdaten.
+                <tr><td>Homepage:
+                <br /><a href="https://www.bmwi.de">bmwi.de</a>
+                <br /><br />Informationsportal Erneuerbare Energien:
+                <br /><a href="https://www.erneuerbare-energien.de">erneuerbare-energien.de</a>
                 </td></tr>
             </table>
         ]]>
     </string>
 
+    <string name="pol_netzagentur">
+        <![CDATA[
+            <table border="0" cellpadding="8">
+                <tr><td><strong>
+                    Bundesnetzagentur
+                </strong></td></tr>
+                <tr><td>Berlin/Bonn</td></tr>
+
+                <tr><td>
+                    Die Bundesnetzagentur ist dem Bundesministeriums für Wirtscahft und Energie unterstellt.
+                </td></tr>
+                <tr><td>
+                    Sie veröffentlicht regelmäßig Zahlen zur Stromproduktion und liefert Marktdaten
+                     zum Download unter der creative commons Lizenz.
+                </td></tr>
+
+                <tr><td>Homepage:
+                <br /><a href="https://www.bundesnetzagentur.de">bundesnetzagentur.de</a>
+                <br /><br />Strommarktdaten:
+                <br /><a href="https://smard.de">smard.de</a>
+                </td></tr>
+            </table>
+        ]]>
+    </string>
+
+    <string name="pol_verbandwind">
+        <![CDATA[
+            <table border="0" cellpadding="8">
+                <tr><td><strong>
+                    Bundesverbang WindEnergie, Berlin
+                </strong></td></tr>
+
+                <tr><td>
+                    Klimawandel und steigende Energiekosten sind und bleiben zentrale Herausforderungen des 21. Jahrhunderts.
+                     Die Endlichkeit der fossilen Energieträger, der zunehmende Energiehunger der Menschen und die Erwärmung
+                      unseres Planeten machen ein Umdenken in der Energiepolitik nötig.
+                </td></tr>
+
+                <tr><td>
+                    Der BWE setzt sich seit Jahren immer erfolgreicher für einen nachhaltigen und effizienten Ausbau der Windenergie
+                     in Deutschland und die bestmögliche Nutzung von Windstrom ein. Seine Fachreferenten arbeiten zudem in internationalen
+                      Verbänden wie der WindEurope, dem Global Wind Energy Council (GWEC) und der World Wind Energy Association (WWEA)
+                       an der europäischen und weltweiten Entwicklung der Windenergie mit.
+                </td></tr>
+
+                <tr><td>Homepage:
+                <br /><a href="https://www.wind-energie.de">wind-energie.de</a>
+                </td></tr>
+            </table>
+        ]]>
+    </string>
+
+
+    <string name="pol_iwr">
+        <![CDATA[
+            <table border="0" cellpadding="8">
+                <tr><td><strong>
+                    Internationales Wirtschaftsforum Regenerative Energien
+                </strong></td></tr>
+
+                <tr><td>
+                    Wir forschen in unserem Institut unabhängig und kompetent, beraten Bundes- und Landesministerien
+                     sowie private Unternehmen. Damit gestalten wir das Branchenbild einer regenerativen Energiewirtschaft maßgeblich.
+                </td></tr>
+
+                <tr><td>Homepage:
+                <br /><a href="https://www.iwr-institut.de/de">iwr-institut.de</a>
+                <br /><br />Informationsportal Windbranche:
+                <br /><a href="https://www.windbranche.de/">windbranche.de</a>
+                </td></tr>
+            </table>
+        ]]>
+    </string>
 </resources>

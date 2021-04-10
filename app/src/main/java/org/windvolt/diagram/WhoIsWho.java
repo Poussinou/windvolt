@@ -56,7 +56,7 @@ public class WhoIsWho extends AppCompatActivity {
         int symbol = R.drawable.windvolt_small;
 
 
-        String root = store.addChild("", "windvolt", "Windenergie",
+        String root = store.addChild("", "windvolt", "Windenergie Galerie",
                 symbol, R.string.windvolt);
 
 

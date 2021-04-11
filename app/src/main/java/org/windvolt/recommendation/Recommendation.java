@@ -523,8 +523,12 @@ public class Recommendation extends Fragment {
                     long minutes = milliseconds/1000/60;
                     long hours = minutes/60;
                     long days = hours/24;
+                    long years = days/360;
 
-                    if (days > 0) {
+                    if (years > 0) {
+                        legend0 = prepose(legend0,"" + years);
+                        legend1 = prepose(legend1, "y");
+                    } else if (days > 0) {
                         legend0 = prepose(legend0,"" + days);
                         legend1 = prepose(legend1, "d");
                     } else  if (hours > 0) {
@@ -554,7 +558,7 @@ public class Recommendation extends Fragment {
 
 
             // dialog features
-            builder.setView(view).setTitle("battery");
+            builder.setView(view).setTitle("battery history");
 
             builder.setPositiveButton("exit", new DialogInterface.OnClickListener() {
                 @Override
@@ -571,7 +575,7 @@ public class Recommendation extends Fragment {
                     AlertDialog.Builder query = new AlertDialog.Builder(getActivity());
 
                     query.setTitle("clear battery history");
-                    query.setMessage("the battery history will be rebuilt over time");
+                    query.setMessage("battery history will rebuild over time if allowed");
 
                     query.setPositiveButton("okay", null);
                     query.create().show();
@@ -792,11 +796,17 @@ public class Recommendation extends Fragment {
         long minutes = milliseconds/1000/60;
         long hours = minutes/60;
         long days = hours/24;
+        long years = days/360;
 
-
-        if (days > 0) { bat += days + "d "; }
-        else  if (hours > 0) { bat += hours + "h "; }
-        else { bat += minutes + "m "; }
+        if (years > 0) {
+            bat += years + "y ";
+        } else if (days > 0) {
+            bat += days + "d ";
+        } else  if (hours > 0) {
+            bat += hours + "h ";
+        } else {
+            bat += minutes + "m ";
+        }
 
 
         /* display load difference */

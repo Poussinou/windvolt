@@ -76,24 +76,6 @@ public class DeviceModelStore {
     public ArrayAdapter getListViewAdapter() { return ListViewAdapter; }
 
 
-/*
-Identifying an Android Device – Available Identifiers
-
-Android ID via Settings.Secure 	2fc4b5912826ad1 	NONE
-Android Build.SERIAL 	HT6C90202028 	NONE
-Android Build.MODEL 	Pixel XL 	NONE
-Android Build.BRAND 	google 	NONE
-Android Build.MANUFACTURER 	Google 	NONE
-Android Build.DEVICE 	marlin 	NONE
-Android Build.PRODUCT 	marlin 	NONE
-
-Android ID via Settings.Secure
-This is a 64-bit quantity that is generated and stored when the device first boots.
-It is reset when the device is wiped.
-
-String androidId = Settings.Secure.getString(getContentResolver(), android.provider.Settings.Secure.ANDROID_ID);
- */
-
     public boolean initialize() {
 
         if (getDeviceCount() == 0) {
@@ -103,6 +85,18 @@ String androidId = Settings.Secure.getString(getContentResolver(), android.provi
 
             addDevice(manufacturer + "/" + model, "0", "11");
         }
+
+        /*
+        Android ID via Settings.Secure
+        Android Build.SERIAL 	HT6C90202028
+        Android Build.MODEL 	Pixel XL
+        Android Build.BRAND 	google
+        Android Build.MANUFACTURER 	Google
+        Android Build.DEVICE 	marlin
+        Android Build.PRODUCT 	marlin
+
+        String androidId = Settings.Secure.getString(getContentResolver(), android.provider.Settings.Secure.ANDROID_ID);
+        */
 
         return true;
     }

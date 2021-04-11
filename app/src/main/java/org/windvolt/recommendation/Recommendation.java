@@ -39,6 +39,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
@@ -72,6 +73,8 @@ public class Recommendation extends Fragment {
 
     final int BATTERY_HISTORY_ENTRIES = 10;
 
+    boolean history_allowed;
+    boolean services_allowed;
 
     final int RECOMMENDATION_NOT_AVAILABLE = -1;
     final int RECOMMENDATION_AVOID_LOADING = 0;
@@ -98,14 +101,11 @@ public class Recommendation extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-
+        history_allowed = zBatteryHistoryAllowed();
+        services_allowed = zLocationServiceAllowed();
 
         // record battery
-        //switched off for performance
-
-        if (zBatteryHistoryAllowed()) {
-            recordBattery();
-        }
+        recordBattery();
 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.recommendation, container, false);
@@ -126,13 +126,15 @@ public class Recommendation extends Fragment {
 
         // update battery
         bat_display = (TextView) view.findViewById(R.id.location_battery);
-        bat_display.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                BatteryDialog dialog = new BatteryDialog();
-                dialog.show(getActivity().getSupportFragmentManager(), "battery");
-            }
-        });
+        if (history_allowed) {
+            bat_display.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    BatteryDialog dialog = new BatteryDialog();
+                    dialog.show(getActivity().getSupportFragmentManager(), "battery");
+                }
+            });
+        }
 
         // load location name
         //
@@ -140,11 +142,11 @@ public class Recommendation extends Fragment {
 
         // display location
         //
-        String loc = location;
+        String notice_location = location;
         String notice = getString(R.string.location_notice); // values
-        if (location.isEmpty()) { loc = notice; }
+        if (location.isEmpty()) { notice_location = notice; }
 
-        loc_display.setText(loc);
+        loc_display.setText(notice_location);
 
 
         /* START EDITIG LOCATION */
@@ -169,37 +171,34 @@ public class Recommendation extends Fragment {
 
         /* refresh display */
         displayGeodata();
-
-
-        if (zBatteryHistoryAllowed()) {
-            displayBattery();
-        }
+        displayBattery();
 
 
         /* open services */
         final FloatingActionButton services_open = (FloatingActionButton) view.findViewById(R.id.services_open);
-        services_open.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                ToneGenerator beep = new ToneGenerator(AudioManager.STREAM_ALARM, 80);
-                beep.startTone(ToneGenerator.TONE_PROP_BEEP, 200);
+        if (services_allowed) {
+            services_open.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
 
-                ServicesDialog dialog = new ServicesDialog();
+                    ToneGenerator beep = new ToneGenerator(AudioManager.STREAM_ALARM, 80);
+                    beep.startTone(ToneGenerator.TONE_PROP_BEEP, 200);
 
-                String services = getString(R.string.location_services); // values
-                dialog.show(getActivity().getSupportFragmentManager(), services);
-            }
-        });
+                    ServicesDialog dialog = new ServicesDialog();
 
+                    String services = getString(R.string.location_services); // values
+                    dialog.show(getActivity().getSupportFragmentManager(), services);
+                }
+            });
+        } else {
 
-        /* allow or hide services */
-        if (!zLocationServiceAllowed()) {
             services_open.setVisibility(View.GONE);
         }
 
+
         /* allow or hide battery history */
-        if (!zBatteryHistoryAllowed()) {
+        if (!history_allowed) {
             bat_display.setVisibility(View.GONE);
         }
 
@@ -328,10 +327,10 @@ public class Recommendation extends Fragment {
 
 
             SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-            String loc = sharedPreferences.getString("location_input", "");
+            String value = sharedPreferences.getString("location_input", "");
 
             String services = getString(R.string.location_services); // values
-            builder.setView(view).setTitle(services + ": " + loc);
+            builder.setView(view).setTitle(services + ": " + value);
 
 
             // register services
@@ -362,6 +361,8 @@ public class Recommendation extends Fragment {
                     url += "10";
 
                     getContext().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
+
+                    dismiss();
                 }
             });
 
@@ -382,6 +383,8 @@ public class Recommendation extends Fragment {
                     url += longitude;
 
                     getContext().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
+
+                    dismiss();
                 }
             });
 
@@ -392,12 +395,14 @@ public class Recommendation extends Fragment {
                 public void onClick(View v) {
                     SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
 
-                    String loc = sharedPreferences.getString("location_input", "");
+                    String value = sharedPreferences.getString("location_input", "");
 
                     String url = "https://de.wikipedia.org/w/index.php?search=";
-                    url += loc;
+                    url += value;
 
                     getContext().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
+
+                    dismiss();
                 }
             });
         }
@@ -416,9 +421,12 @@ public class Recommendation extends Fragment {
         final String CHART_DELIM = "  ";
         final int CHART_SIZE = 3;
 
+
         @Override
         public Dialog onCreateDialog(@NonNull Bundle savedInstanceState) {
-            // Use the Builder class for convenient dialog construction
+
+            // battery dialog
+
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
             LayoutInflater inflater = requireActivity().getLayoutInflater();
 
@@ -432,11 +440,10 @@ public class Recommendation extends Fragment {
 
 
 
-            /* load tracking data from preferences */
+            /* load historic data from preferences */
             SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
             String levels = sharedPreferences.getString("battery_level", "");
             String times = sharedPreferences.getString("battery_time", "");
-
 
             String[] vlevels = levels.split(";");
             String[] vtimes = times.split(";");
@@ -471,15 +478,16 @@ public class Recommendation extends Fragment {
 
                 // print line
                 String load = "";
-                for (int p=0; p<size; p++) {
-                    String vlevel = vlevels[p];
-
+                for (String vlevel : vlevels) {
                     if (!vlevel.isEmpty()) {
                         int ilevel = Integer.parseInt(vlevel);
 
 
-                        if (ilevel > border) { load = prepose(load, CHART_DOT); }
-                        else { load = prepose(load, CHART_NO_DOT); }
+                        if (ilevel > border) {
+                            load = prepose(load, CHART_DOT);
+                        } else {
+                            load = prepose(load, CHART_NO_DOT);
+                        }
                     }
                 }//for
 
@@ -516,7 +524,7 @@ public class Recommendation extends Fragment {
 
                         milliseconds = this_time.getTime() - last_time.getTime();
 
-                    } catch (Exception e) {}
+                    } catch (Exception e) { milliseconds = 0; }
 
 
                     // analyze time difference
@@ -554,7 +562,8 @@ public class Recommendation extends Fragment {
             TextView level = view.findViewById(R.id.track_level);
 
             int avergae = sumup/size;
-            level.setText("average " + avergae + "%");
+            String level_display = "average " + avergae + "%";
+            level.setText(level_display);
 
 
             // dialog features
@@ -649,7 +658,7 @@ public class Recommendation extends Fragment {
 
                 now = calendar.getTime();
 
-                times += ";" + now.getTime();
+                times = times + ";" + now.getTime();
             }
 
 
@@ -712,6 +721,8 @@ public class Recommendation extends Fragment {
     /* read and set battery level */
     private void recordBattery() {
 
+        if (!history_allowed) return;
+
         battery_level_before = zLoadBatteryLevel();
         battery_time_before = zLoadBatteryTime();
 
@@ -726,6 +737,7 @@ public class Recommendation extends Fragment {
         Float fbattery = level * 100 / (float)scale;
         Integer ibattery = fbattery.intValue();
         battery_level_now = ibattery.toString();
+
 
 
         // calculate time
@@ -775,22 +787,21 @@ public class Recommendation extends Fragment {
     /* display battery */
     private void displayBattery() {
 
+        if (!history_allowed) return;
+
+
         String bat = "battery: ";
-
-
 
         /* show time since last */
         long milliseconds = 0;
 
         try { // calculate time difference
-
             long time_now = Long.parseLong(battery_time_now);
             long time_before = Long.parseLong(battery_time_before);
 
-
             milliseconds = time_now - time_before;
 
-        } catch (Exception e) {}
+        } catch (Exception e) { milliseconds = 0; }
 
 
         long minutes = milliseconds/1000/60;
@@ -848,22 +859,25 @@ public class Recommendation extends Fragment {
             String allstations = new String(station_list);
             String[] stations = allstations.split("\\|");
 
-            for (int i=0; i<stations.length; i++){
+            for (String station : stations) {
 
-                allnames.add(stations[i]);
+                allnames.add(station);
 
-                String[] values = stations[i].split(";");
-                String name = values[0];
+                String[] values = station.split(";");
+                String station_name = values[0];
 
-                names.add(name);
-            }
+                names.add(station_name);
+
+            }//for
 
             Collections.sort(names, null);
 
 
         } catch (IOException e) {
-            // could not read stations
 
+            // could not read stations
+            names.clear();
+            allnames.clear();
         }
     }
 
@@ -874,12 +888,14 @@ public class Recommendation extends Fragment {
 
     private String zLoadLocation() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-        String location = sharedPreferences.getString("location_input", "");
-        return location;
+        String value = sharedPreferences.getString("location_input", "");
+
+        return value;
     }
     private void zSaveLocation(String value) {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         SharedPreferences.Editor editor = sharedPreferences.edit();
+
         editor.putString("location_input", value);
         editor.apply();
     }
@@ -887,8 +903,9 @@ public class Recommendation extends Fragment {
 
     private String zLoadLongitude() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-        String longitude = sharedPreferences.getString("location_longitude", "");
-        return longitude;
+        String value = sharedPreferences.getString("location_longitude", "");
+
+        return value;
     }
     private void zSaveLongitude(String value) {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
@@ -899,12 +916,14 @@ public class Recommendation extends Fragment {
 
     private String zLoadLatitude() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-        String latitude = sharedPreferences.getString("location_latitude", "");
-        return latitude;
+        String value = sharedPreferences.getString("location_latitude", "");
+
+        return value;
     }
     private void zSaveLatitude(String value) {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         SharedPreferences.Editor editor = sharedPreferences.edit();
+
         editor.putString("location_latitude", value);
         editor.apply();
     }
@@ -927,36 +946,33 @@ public class Recommendation extends Fragment {
         String battery_levels = sharedPreferences.getString("battery_level", "");
         String[] values = battery_levels.split(";");
 
-        String battery_level = "";
+        String value = "";
 
         if (values.length > 0) {
-            battery_level = values[0];
+            value = values[0];
         }
 
-        return battery_level;
+        return value;
     }
     private void zSaveBatteryLevel(String value) {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
         String battery_levels = sharedPreferences.getString("battery_level", "");
-        String[] values = battery_levels.split(";");
+        String[] levels = battery_levels.split(";");
 
         String battery_level = value;
         int hits = 1;
 
-        if (values.length > 0) {
-            for (int p=0; p<values.length; p++) {
-                String level = values[p];
-
+        if (levels.length > 0) {
+            for (String level : levels) {
                 if (!level.isEmpty()) {
                     if (hits < BATTERY_HISTORY_ENTRIES) {
-                        battery_level +=  ";" + level;
+                        battery_level = battery_level + ";" + level;
                         hits++;
-                    }
-                }
-
-            }
+                    }//overflow
+                }//empty
+            }//for
         }
 
         editor.putString("battery_level", battery_level);
@@ -969,34 +985,33 @@ public class Recommendation extends Fragment {
         String battery_times = sharedPreferences.getString("battery_time", "");
         String[] values = battery_times.split(";");
 
-        String battery_time = "";
+        String value = "";
 
-        if (values.length > 0) battery_time = values[0];
+        if (values.length > 0) {
+            value = values[0];
+        }
 
-        return battery_time;
+        return value;
     }
     private void zSaveBatteryTime(String value) {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
         String battery_times = sharedPreferences.getString("battery_time", "");
-        String[] values = battery_times.split(";");
+        String[] times = battery_times.split(";");
 
         String battery_time = value;
         int hits = 1;
 
-        if (values.length > 0) {
-            for (int p=0; p<values.length; p++) {
-                String time = values[p];
-
+        if (times.length > 0) {
+            for (String time : times) {
                 if (!time.isEmpty()) {
                     if (hits < BATTERY_HISTORY_ENTRIES) {
-                        battery_time +=  ";" + time;
+                        battery_time = battery_time + ";" + time;
                         hits++;
-                    }
-                }
-
-            }
+                    }//overflow
+                }//empty
+            }//for
         }
 
         editor.putString("battery_time", battery_time);

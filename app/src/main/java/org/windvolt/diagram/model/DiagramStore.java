@@ -32,7 +32,7 @@ public class DiagramStore {
         return parent.getChildren();
     }
 
-    public String addChild(String parent_id, String title, String subject, int symbol, int address) {
+    public String addChild(String parent_id, String tag, String title, String subject, int symbol, int address) {
         DiagramModel parent = findModel(parent_id);
         DiagramModel child = new DiagramModel();
 
@@ -50,6 +50,7 @@ public class DiagramStore {
             parent.setChildren(children);
         }
 
+        child.setTag(tag);
         child.setTitle(title);
         child.setSubject(subject);
         child.setSymbol(Integer.toString(symbol));

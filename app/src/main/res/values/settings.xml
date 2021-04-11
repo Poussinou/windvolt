@@ -1,0 +1,51 @@
+<!--
+ This file is part of windvolt.org.
+
+ Copyright (c) 2020 Max Sumer
+
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<resources>
+    <!-- preferences -->
+    <string name="location_category">Ort</string>
+
+    <string name="location_title">Dein Ort</string>
+    <string name="location_summary">Freie Ortsangabe.\nDie App neu starten.</string>
+
+    <string name="location_longitude">Längengrad.</string>
+    <string name="location_longitude_summary">Freie Längenangabe.\nDie App neu starten.</string>
+
+    <string name="location_latitude">Breitengrad.</string>
+    <string name="location_latitude_summary">Freie Breitenangabe.\nDie App neu starten.</string>
+
+    <string name="location_services">Ortsdienste</string>
+    <string name="location_services_summary">*Durch die Verwendung von Ortsdiensten gibst Du Daten preis.\nDie App neu starten.</string>
+
+
+
+    <string name="battery_category">Betterie</string>
+
+    <string name="battery_state">Batteriestatus</string>
+    <string name="battry_summary">Ich interessiere mich für den Stromverbrauch meines Smartphones.\nDie App neu starten.</string>
+
+
+
+    <string name="community_category">Community</string>
+
+    <string name="sharing_title">Community beitreten</string>
+    <string name="sharing_summary">Ich teile meine Gerätedaten und verbessere damit die Empfehlungen.</string>
+
+    <string name="notification_title">Benachrichtigungen empfangen</string>
+    <string name="notification_summary">Ich will benachrichtigt werden wenn sich das Laden lohnt.</string>
+</resources>

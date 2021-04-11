@@ -109,38 +109,4 @@
     <string name="page3_open">links</string>
     <string name="page3_exit">zurück</string>
 
-
-
-    <!-- preferences -->
-    <string name="location_category">Ort</string>
-
-    <string name="location_title">Dein Ort</string>
-    <string name="location_summary">Freie Ortsangabe.\nDie App neu starten.</string>
-
-    <string name="location_longitude">Längengrad.</string>
-    <string name="location_longitude_summary">Freie Längenangabe.\nDie App neu starten.</string>
-
-    <string name="location_latitude">Breitengrad.</string>
-    <string name="location_latitude_summary">Freie Breitenangabe.\nDie App neu starten.</string>
-
-    <string name="location_services">Dienste</string>
-    <string name="location_services_summary">*Durch die Verwendung von Diensten gibst Du Daten preis.\nDie App neu starten.</string>
-
-
-
-    <string name="battery_category">Betterie</string>
-
-    <string name="battery_state">Batteriestatus</string>
-    <string name="battry_summary">Ich interessiere mich für den Stromverbrauch meines Smartphones.\nDie App neu starten.</string>
-
-
-
-    <string name="community_category">Community</string>
-
-    <string name="sharing_title">Community beitreten</string>
-    <string name="sharing_summary">Ich teile meine Gerätedaten und verbessere damit die Empfehlungen.</string>
-
-    <string name="notification_title">Benachrichtigungen empfangen</string>
-    <string name="notification_summary">Ich will benachrichtigt werden wenn sich das Laden lohnt.</string>
-
 </resources>

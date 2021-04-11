@@ -32,78 +32,79 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
+            android:id="@+id/diagram_header"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <ImageView
+                android:id="@+id/diagram_symbol"
+                android:layout_width="68dp"
+                android:layout_height="68dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:contentDescription="diagram_symbol"
+                app:srcCompat="@drawable/windvolt_small" />
 
             <LinearLayout
-                android:id="@+id/diagram_header"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-
-                <ImageView
-                    android:id="@+id/diagram_symbol"
-                    android:layout_width="68dp"
-                    android:layout_height="68dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginRight="8dp"
-                    app:srcCompat="@drawable/windvolt_small" />
-
-                <LinearLayout
-                    android:id="@+id/diagram_texts"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="4dp"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:paddingLeft="8dp">
-
-                    <TextView
-                        android:id="@+id/diagram_title"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="diagram_title"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
-
-                    <TextView
-                        android:id="@+id/diagram_subject"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="diagram_subject"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
-                </LinearLayout>
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:id="@+id/diagram_space"
-                android:layout_width="match_parent"
+                android:id="@+id/diagram_texts"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
-                android:background="#EDE8D7"
-                android:gravity="fill_horizontal"
+                android:layout_weight="1"
                 android:orientation="vertical"
-                android:padding="12dp">
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp">
 
+                <TextView
+                    android:id="@+id/diagram_path"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="diagram_path"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textSize="12sp" />
 
+                <TextView
+                    android:id="@+id/diagram_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="diagram_title"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+                <TextView
+                    android:id="@+id/diagram_subject"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="diagram_subject"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
             </LinearLayout>
-
-            <WebView
-                android:id="@+id/diagram_web"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scrollbars="vertical"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
 
         </LinearLayout>
 
+        <LinearLayout
+            android:id="@+id/diagram_space"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:background="#EDE8D7"
+            android:gravity="fill_horizontal"
+            android:orientation="vertical"
+            android:padding="12dp">
+
+
+        </LinearLayout>
+
+        <WebView
+            android:id="@+id/diagram_web"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
 
     </LinearLayout>

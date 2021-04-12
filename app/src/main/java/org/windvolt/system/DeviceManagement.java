@@ -201,6 +201,7 @@ public class DeviceManagement extends AppCompatActivity {
             return builder.create();
         }
     }//DialogAddDevice
+
     public static class DialogDeleteDevice extends DialogFragment {
 
         @NonNull

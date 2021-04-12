@@ -20,6 +20,7 @@ package org.windvolt.system.device_store;
 
 public class DeviceModel {
 
+    /* --------------------------------windvolt-------------------------------- */
     String name = "<name>";
     public String getName() { return name; }
     public void setName(String value) { name = value; }

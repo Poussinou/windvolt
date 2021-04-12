@@ -33,8 +33,7 @@ public class Page0 extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.page0, container, false);
-        return view;
+        return inflater.inflate(R.layout.page0, container, false);
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
@@ -46,5 +45,7 @@ public class Page0 extends Fragment {
         webView.loadDataWithBaseURL(null, htmlString, "text/html", "utf-8", null);
 
     }
+
+    /* --------------------------------windvolt-------------------------------- */
 
 }

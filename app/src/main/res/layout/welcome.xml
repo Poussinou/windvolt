@@ -141,7 +141,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:rippleColor="#FFFFFF"
-        app:srcCompat="@drawable/gui_colorring" />
+        app:srcCompat="@drawable/gui_color_ring" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

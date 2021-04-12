@@ -27,6 +27,7 @@ import org.windvolt.R;
 
 public class About extends AppCompatActivity {
 
+    /* --------------------------------windvolt-------------------------------- */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,4 +42,6 @@ public class About extends AppCompatActivity {
         }
 
     }
+
+    /* --------------------------------windvolt-------------------------------- */
 }

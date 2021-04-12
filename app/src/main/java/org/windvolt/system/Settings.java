@@ -52,6 +52,8 @@ public class Settings extends AppCompatActivity {
                 .commit();
     }
 
+    /* --------------------------------windvolt-------------------------------- */
+
     // preference fragment
     public static class PreferenceFragment extends PreferenceFragmentCompat {
 
@@ -76,5 +78,5 @@ public class Settings extends AppCompatActivity {
         }
 
 
-    }
+    }//PreferenceFragment
 }

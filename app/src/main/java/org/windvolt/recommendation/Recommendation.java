@@ -97,7 +97,9 @@ public class Recommendation extends Fragment {
     String battery_time_now, battery_time_before;
 
 
-    /* VIEW */
+    /* --------------------------------windvolt-------------------------------- */
+
+    //* VIEW */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -207,7 +209,7 @@ public class Recommendation extends Fragment {
     }
 
 
-    /* EDIT */
+    //* EDIT */
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
@@ -281,11 +283,11 @@ public class Recommendation extends Fragment {
 
     }
 
+    /* --------------------------------windvolt-------------------------------- */
 
 
 
-
-    /* set recommendation */
+    //* set recommendation */
     public void setRecommendation(View view, int state) {
 
         // display recommendation
@@ -314,11 +316,14 @@ public class Recommendation extends Fragment {
     }
 
 
-    /* services */
+    /* --------------------------------windvolt-------------------------------- */
+
+    //* services */
     public static class ServicesDialog extends DialogFragment {
 
+        @NonNull
         @Override
-        public Dialog onCreateDialog(@NonNull Bundle savedInstanceState) {
+        public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
             // Use the Builder class for convenient dialog construction
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
             LayoutInflater inflater = requireActivity().getLayoutInflater();
@@ -409,7 +414,7 @@ public class Recommendation extends Fragment {
 
     }
 
-
+    //* battery */
     public static class BatteryDialog extends DialogFragment {
 
         final int CHART_LINES = 5;
@@ -421,9 +426,9 @@ public class Recommendation extends Fragment {
         final String CHART_DELIM = "  ";
         final int CHART_SIZE = 3;
 
-
+        @NonNull
         @Override
-        public Dialog onCreateDialog(@NonNull Bundle savedInstanceState) {
+        public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
 
             // battery dialog
 
@@ -432,15 +437,13 @@ public class Recommendation extends Fragment {
 
             final View view = inflater.inflate(R.layout.battery_history, null);
 
-            // makeSampleData() creates sample data for diagnostic
-
-            if (false) {
-                makeSampleData();
-            }
+            // create diagnostic sample data
+            createSampleData(false);
 
 
 
-            /* load historic data from preferences */
+
+            //* load historic data from preferences */
             SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
             String levels = sharedPreferences.getString("battery_level", "");
             String times = sharedPreferences.getString("battery_time", "");
@@ -453,7 +456,7 @@ public class Recommendation extends Fragment {
 
 
 
-            /* create chart */
+            //* create chart */
             ArrayList<TextView> lines = new ArrayList<>();
 
             TextView l0 = view.findViewById(R.id.chart_line0);
@@ -611,7 +614,7 @@ public class Recommendation extends Fragment {
             return builder.create();
         }
 
-        /* preposes value to t */
+        //* preposes value to t */
         private String prepose(String t, String value) {
             String output;
 
@@ -627,10 +630,10 @@ public class Recommendation extends Fragment {
 
 
 
-        /*
-        * creates sample data for diagnostic
-        */
-        private void makeSampleData() {
+        //* creates diagnostic sample data */
+        private void createSampleData(boolean value) {
+            if (!value) return;
+
             SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
             SharedPreferences.Editor editor = sharedPreferences.edit();
 
@@ -668,16 +671,16 @@ public class Recommendation extends Fragment {
             editor.putString("battery_time", times);
             editor.apply();
 
-        }
+        }//createSampleData
     }
 
 
 
 
-    /* -------------------------------------------------------------------------------- */
+    /* --------------------------------windvolt-------------------------------- */
 
 
-    /* load latitude:longitude */
+    //* load latitude:longitude */
     private String loadGeodata() {
         String longitude = "";
         String latitude = "";
@@ -704,7 +707,7 @@ public class Recommendation extends Fragment {
         return longitude + ":" + latitude;
     }
 
-    /* display latitude/longitude */
+    //* display latitude/longitude */
     private void displayGeodata() {
         String longitude = zLoadLongitude();
         String latitude = zLoadLatitude();
@@ -718,7 +721,7 @@ public class Recommendation extends Fragment {
 
 
 
-    /* read and set battery level */
+    //* read and set battery level */
     private void recordBattery() {
 
         if (!history_allowed) return;
@@ -784,7 +787,7 @@ public class Recommendation extends Fragment {
 
     }
 
-    /* display battery */
+    //* display battery */
     private void displayBattery() {
 
         if (!history_allowed) return;
@@ -844,7 +847,7 @@ public class Recommendation extends Fragment {
 
 
 
-    /* read and adapt stations */
+    //* read and adapt stations */
     private void loadStations() {
         // load stations
         InputStream inputStream = getResources().openRawResource(R.raw.stations2);
@@ -882,9 +885,9 @@ public class Recommendation extends Fragment {
     }
 
 
+    /* --------------------------------windvolt-------------------------------- */
 
-
-    /* preferences load/save */
+    //* preferences load/save */
 
     private String zLoadLocation() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());

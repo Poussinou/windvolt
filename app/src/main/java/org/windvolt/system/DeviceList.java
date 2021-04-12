@@ -26,9 +26,12 @@ import org.windvolt.R;
 
 public class DeviceList extends AppCompatActivity {
 
+    /* --------------------------------windvolt-------------------------------- */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.system_device_list);
     }
+
+    /* --------------------------------windvolt-------------------------------- */
 }

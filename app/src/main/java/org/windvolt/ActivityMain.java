@@ -34,6 +34,8 @@ import org.windvolt.system.Settings;
 public class ActivityMain extends AppCompatActivity {
 
 
+    /* --------------------------------windvolt-------------------------------- */
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

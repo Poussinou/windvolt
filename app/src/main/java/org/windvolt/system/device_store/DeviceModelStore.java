@@ -169,27 +169,21 @@ public class DeviceModelStore {
     }
 
     public boolean isSharingAllowed() {
-
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
-        boolean value = sharedPreferences.getBoolean("community_sharing", false);
 
-        return value;
+        return sharedPreferences.getBoolean("community_sharing", false);
     }
     public boolean isNotificationAllowed() {
-
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
-        boolean value = sharedPreferences.getBoolean("community_notifications", false);
 
-        return value;
+        return sharedPreferences.getBoolean("community_notifications", false);
     }
 
 
+    /* --------------------------------windvolt-------------------------------- */
 
 
-
-    /*
-    xml file operations
-     */
+    //* xml file operations */
 
     public boolean loadModel() {
         error_message = "okay";

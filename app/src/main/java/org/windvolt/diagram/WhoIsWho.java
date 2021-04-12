@@ -65,7 +65,7 @@ public class WhoIsWho extends AppCompatActivity {
 
 
         // net
-        if (true) {
+        {
 
             int net = R.drawable.wiw_net;
 
@@ -85,7 +85,7 @@ public class WhoIsWho extends AppCompatActivity {
         }
 
         // pricing
-        if (true) {
+        {
             int stock = R.drawable.wiw_exchange;
 
             store.addChild(root, "exc", "Börse", "Strombörse EEX",
@@ -93,7 +93,7 @@ public class WhoIsWho extends AppCompatActivity {
         }
 
         // com
-        if (true) {
+        {
             int com = R.drawable.wiw_com;
 
             String konzern = store.addChild(root, "com","Versorger", "Stromversorger in Deutschland",
@@ -114,7 +114,7 @@ public class WhoIsWho extends AppCompatActivity {
 
 
             // eco
-            if (true) {
+            {
                 int green = R.drawable.wiw_green;
 
                 String k2 = store.addChild(konzern, "eco", "Ökoanbieter", "Ökostromversorger",
@@ -139,7 +139,7 @@ public class WhoIsWho extends AppCompatActivity {
 
 
         // network
-        if (true) {
+        {
             int pol = R.drawable.wiw_politics;
 
             String k3 = store.addChild(root, "shapers","Netzwerke", "EEG, Regulierung, Forschung, Beratung",
@@ -158,7 +158,8 @@ public class WhoIsWho extends AppCompatActivity {
                     pol, R.string.pol_iwr);
 
         }
-    }
+
+    }//createStoreData
 
 
 
@@ -205,9 +206,9 @@ public class WhoIsWho extends AppCompatActivity {
         // start diagram
         setFocus(store.getRootId());
 
-    }
+    }//onCreate
 
-    /* */
+    //* set focus */
     private void setFocus(String id) {
         focus_id = id;
         DiagramModel focus = store.findModel(id);
@@ -266,13 +267,10 @@ public class WhoIsWho extends AppCompatActivity {
         }
 
         diagram_path.setText(path);
-    }
+    }//setFocus
 
 
-    /*
-     * public void createChild(DiagramModel parent, String id)
-     * creates view to display child
-     */
+    //* create complex child view */
     public void createChildView(DiagramModel parent, String id) {
         DiagramModel child = store.findModel(id);
 
@@ -302,8 +300,9 @@ public class WhoIsWho extends AppCompatActivity {
         layout.setOnClickListener(new SetFocus(id));
 
         diagram_space.addView(layout);
-    }
+    }//createChildView
 
+    /* --------------------------------windvolt-------------------------------- */
 
     @Override
     public void onBackPressed() {
@@ -319,7 +318,7 @@ public class WhoIsWho extends AppCompatActivity {
             String parent_id = parent.getId();
             setFocus(parent_id);
         }
-    }
+    }//onBackPressed
 
     private class SetFocus implements View.OnClickListener {
         String id = "";
@@ -336,7 +335,7 @@ public class WhoIsWho extends AppCompatActivity {
 
             setFocus(id);
         }
-    }
+    }//SetFocus
 
 
     private LevelUpFocus doLevelUp = new LevelUpFocus();
@@ -357,7 +356,7 @@ public class WhoIsWho extends AppCompatActivity {
                 setFocus(parent_id);
             }
         }
-    }
+    }//LevelUpFocus
 
     private OpenFocus doOpenFocus = new OpenFocus();
     private class OpenFocus implements View.OnClickListener {
@@ -367,6 +366,8 @@ public class WhoIsWho extends AppCompatActivity {
         }
 
         @Override
-        public void onClick(View v) {}
-    }
+        public void onClick(View v) {
+            // not used here
+        }
+    }//OpenFocus
 }

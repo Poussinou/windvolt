@@ -38,9 +38,10 @@ import java.util.ArrayList;
 
 public class LinksPage extends Fragment {
 
+    /* --------------------------------windvolt-------------------------------- */
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
 
         View view = inflater.inflate(R.layout.links, container, false);
@@ -81,9 +82,7 @@ public class LinksPage extends Fragment {
         public LinkAdapter.LinkViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.links_item, parent, false);
 
-            LinkAdapter.LinkViewHolder viewHolder = new LinkAdapter.LinkViewHolder(view);
-
-            return viewHolder;
+            return new LinkAdapter.LinkViewHolder(view);
         }
 
         @Override

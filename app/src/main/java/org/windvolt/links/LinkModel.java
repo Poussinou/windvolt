@@ -29,6 +29,7 @@ public class LinkModel {
         setImage(image);
     }
 
+    /* --------------------------------windvolt-------------------------------- */
 
     public String getSubject() { return linkSubject; }
     public void setSubject(String value) { linkSubject = value; }

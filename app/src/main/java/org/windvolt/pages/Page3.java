@@ -32,16 +32,17 @@ public class Page3 extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.page3, container, false);
-
-        return view;
-    }
+        return inflater.inflate(R.layout.page3, container, false);
+    }//onCreateView
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
         // links fragment
-    }
 
+
+    }//onViewCreated
+
+    /* --------------------------------windvolt-------------------------------- */
 
 }

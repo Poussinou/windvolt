@@ -31,6 +31,7 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -59,9 +60,7 @@ public class DeviceManagement extends AppCompatActivity {
         }
 
 
-        /*
-        MODEL
-         */
+        //* MODEL */
 
         deviceStore = new DeviceModelStore(this);
         deviceStore.createListViewAdapter(R.layout.system_device_list, R.id.device_name);
@@ -89,9 +88,9 @@ public class DeviceManagement extends AppCompatActivity {
 
 
 
+        /* --------------------------------windvolt-------------------------------- */
 
-
-        /* DIALOG ACTIONS */
+        //* DIALOG ACTIONS */
 
         // share action
         findViewById(R.id.device_share).setOnClickListener(
@@ -101,10 +100,9 @@ public class DeviceManagement extends AppCompatActivity {
                     public void onClick(View view) {
                         // TODO share devices
 
-                        String androidId = Settings.Secure.getString(getContentResolver(), android.provider.Settings.Secure.ANDROID_ID);
+                        //String androidId = Settings.Secure.getString(getContentResolver(), android.provider.Settings.Secure.ANDROID_ID);
 
-                        String notice = androidId;
-                        notice = "derzeit nicht unterstützt";
+                        String notice = "derzeit nicht unterstützt";
 
                         Snackbar.make(view, notice, Snackbar.LENGTH_LONG).show();
                     }
@@ -139,16 +137,18 @@ public class DeviceManagement extends AppCompatActivity {
 
 
 
-    }
+    }//onCreate
 
 
-    /*
-    DEVICE DIALOGS
-     */
+    /* --------------------------------windvolt-------------------------------- */
+
+
+    //* DEVICE DIALOGS */
     public static class DialogAddDevice extends DialogFragment {
 
+        @NonNull
         @Override
-        public Dialog onCreateDialog(@NonNull Bundle savedInstanceState) {
+        public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
             // Use the Builder class for convenient dialog construction
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
             LayoutInflater inflater = requireActivity().getLayoutInflater();
@@ -200,11 +200,12 @@ public class DeviceManagement extends AppCompatActivity {
             // Create the AlertDialog object and return it
             return builder.create();
         }
-    }
+    }//DialogAddDevice
     public static class DialogDeleteDevice extends DialogFragment {
 
+        @NonNull
         @Override
-        public Dialog onCreateDialog(@NonNull Bundle savedInstanceState) {
+        public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
             // Use the Builder class for convenient dialog construction
 
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
@@ -242,6 +243,6 @@ public class DeviceManagement extends AppCompatActivity {
             // Create the AlertDialog object and return it
             return builder.create();
         }
-    }
+    }//DialogDeleteDevice
 
 }

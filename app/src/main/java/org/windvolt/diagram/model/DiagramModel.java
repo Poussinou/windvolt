@@ -20,6 +20,8 @@ package org.windvolt.diagram.model;
 
 public class DiagramModel extends MetaModel {
 
+    /* --------------------------------windvolt-------------------------------- */
+
     String title = "<title>";
     public String getTitle() { return title; }
     public void setTitle(String value) { title = value; }

@@ -60,30 +60,27 @@ public class Welcome extends Fragment {
 
 
 
-        /* load live widget */
+        //* load live chart */
         WebView webView = (WebView) view.findViewById(R.id.welcome_widget);
 
+        //String value = getString(R.string.welcome_html); // values
+        //webView.loadDataWithBaseURL(null, value, "text/html", "utf-8", null);
 
-        if (false) {
-            String value = getString(R.string.welcome_html); // values
-            webView.loadDataWithBaseURL(null, value, "text/html", "utf-8", null);
-        }
+        String value = "https://www.windjournal.de/einspeisung-live.php?w=320&h=160";
 
-        if (true) {
-            String value = "https://www.windjournal.de/einspeisung-live.php?w=320&h=160";
+        webView.setWebViewClient(new WebViewClient() {
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                view.loadUrl(url);
+                return true;
+            }
+        });
 
-            webView.setWebViewClient(new WebViewClient() {
-                @Override
-                public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                    view.loadUrl(url);
-                    return true;
-                }
-            });
+        webView.loadUrl(value);
 
-            webView.loadUrl(value);
-        }
     }
 
+    /* --------------------------------windvolt-------------------------------- */
 
     private void bindButtons(View view) {
         // view devices

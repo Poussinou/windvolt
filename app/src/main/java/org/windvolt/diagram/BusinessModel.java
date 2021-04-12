@@ -83,7 +83,7 @@ public class BusinessModel extends AppCompatActivity {
 
 
 
-        if (true) {
+        {
             addFrame(1, "Producer", "producer");
             addFrame(2, "Distributor", "distributor");
             addFrame(3, "Trader", "trader");
@@ -185,7 +185,7 @@ public class BusinessModel extends AppCompatActivity {
         }
     }
 
-
+    /* --------------------------------windvolt-------------------------------- */
 
     private void addFrame(int position, String name, String url) {
         TextView tv = new TextView(this);

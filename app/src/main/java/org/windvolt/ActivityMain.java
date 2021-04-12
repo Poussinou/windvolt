@@ -43,14 +43,13 @@ public class ActivityMain extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-    }
+    }//onCreate
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
-    }
+    }//onCreateOptionsMenu
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -88,6 +87,6 @@ public class ActivityMain extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
+    }//onOptionsItemSelected
 
 }

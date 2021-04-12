@@ -61,7 +61,7 @@ public class DiagramStore {
         store.add(child);
 
         return id;
-    }
+    }//addChild
 
     public DiagramModel findModel(String id) {
         DiagramModel found = null;
@@ -78,7 +78,7 @@ public class DiagramStore {
         }
 
         return found;
-    }
+    }//findModel
 
     public DiagramModel findParent(String id) {
         DiagramModel parent = null;
@@ -94,6 +94,6 @@ public class DiagramStore {
         }
 
         return parent;
-    }
+    }//findParent
 
 }

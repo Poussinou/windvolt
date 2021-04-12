@@ -283,8 +283,9 @@ public class Recommendation extends Fragment {
 
     }
 
-    /* --------------------------------windvolt-------------------------------- */
 
+
+    /* --------------------------------windvolt-------------------------------- */
 
 
     //* set recommendation */
@@ -344,8 +345,9 @@ public class Recommendation extends Fragment {
 
 
             return builder.create();
-        }
+        }//onCreateDialog
 
+        /* --------------------------------windvolt-------------------------------- */
 
         private void registerServices(View view) {
 
@@ -412,7 +414,7 @@ public class Recommendation extends Fragment {
             });
         }
 
-    }
+    }//ServicesDialog
 
     //* battery */
     public static class BatteryDialog extends DialogFragment {
@@ -501,7 +503,7 @@ public class Recommendation extends Fragment {
 
 
 
-            // print chart legend
+            // chart legend
             String legend0 = "", legend1 = "";
             int sumup = 0;
 
@@ -612,7 +614,9 @@ public class Recommendation extends Fragment {
 
 
             return builder.create();
-        }
+        }//onCreateDialog
+
+        /* --------------------------------windvolt-------------------------------- */
 
         //* preposes value to t */
         private String prepose(String t, String value) {
@@ -672,7 +676,7 @@ public class Recommendation extends Fragment {
             editor.apply();
 
         }//createSampleData
-    }
+    }//BatteryDialog
 
 
 

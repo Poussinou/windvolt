@@ -895,9 +895,8 @@ public class Recommendation extends Fragment {
 
     private String zLoadLocation() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-        String value = sharedPreferences.getString("location_input", "");
 
-        return value;
+        return sharedPreferences.getString("location_input", "");
     }
     private void zSaveLocation(String value) {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
@@ -910,22 +909,21 @@ public class Recommendation extends Fragment {
 
     private String zLoadLongitude() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-        String value = sharedPreferences.getString("location_longitude", "");
 
-        return value;
+        return sharedPreferences.getString("location_longitude", "");
     }
     private void zSaveLongitude(String value) {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         SharedPreferences.Editor editor = sharedPreferences.edit();
+
         editor.putString("location_longitude", value);
         editor.apply();
     }
 
     private String zLoadLatitude() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-        String value = sharedPreferences.getString("location_latitude", "");
 
-        return value;
+        return sharedPreferences.getString("location_latitude", "");
     }
     private void zSaveLatitude(String value) {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
